@@ -58,6 +58,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.3
+    functionName: Right
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1
     functionName: Down
     data: 
@@ -80,7 +87,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 4
-    functionName: 
+    functionName: None
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

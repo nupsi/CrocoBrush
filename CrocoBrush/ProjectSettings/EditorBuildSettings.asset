@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/CrocoBrush/Scenes/Main Menu.unity
+    guid: ace5ca7b52132e346a08088b458d5dc1
+  - enabled: 1
+    path: Assets/CrocoBrush/Scenes/Test.unity
+    guid: 70845830b221bf9459f5c32547fd718f
   m_configObjects: {}

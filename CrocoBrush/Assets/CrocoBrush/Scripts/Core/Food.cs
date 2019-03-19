@@ -4,28 +4,38 @@ namespace CrocoBrush
 {
     public class Food : MonoBehaviour
     {
-        [SerializeField]
         private GameObject m_circle;
-
-        private Mouth m_mouth;
+        private Teeth m_teeth;
         private float m_time;
         private bool m_initialized;
 
-        public void Initialize(Mouth mouth, Direction direction, float time, Vector3 position)
+        public void Initialize(Teeth teeth, float time)
         {
-            m_mouth = mouth;
+            m_teeth = teeth;
             m_time = time;
-            transform.position = position;
             m_circle.transform.localScale = Vector3.one * 2;
             m_initialized = true;
-            transform.LookAt(UnityEngine.Camera.main.transform);
+            transform.LookAt(Camera.main.transform);
+        }
+
+        private void Awake()
+        {
+            if(transform.childCount > 0)
+            {
+                m_circle = transform.GetChild(0).gameObject;
+            }
+            else
+            {
+                Debug.LogError("There is no child on Food object! (Add a child to represent the time left)");
+                Destroy(gameObject);
+            }
         }
 
         private void Update()
         {
             if(m_initialized)
             {
-                if (m_time > 0)
+                if(m_time > 0)
                 {
                     if(Circle.x > 1)
                     {
@@ -33,19 +43,21 @@ namespace CrocoBrush
                     }
                     m_time -= Time.deltaTime;
                 }
-                else 
+                else
                 {
-                    m_mouth.Remove(this);
+                    Remove();
                 }
             }
         }
 
-        private Vector3 Circle 
-        {
-            get => m_circle.transform.localScale; 
-            set => m_circle.transform.localScale = value; 
-        }
+        public void Clear() => m_teeth.Clear();
 
-        public Direction Direction { get; }
+        private void Remove() => m_teeth.Remove();
+
+        private Vector3 Circle
+        {
+            get => m_circle.transform.localScale;
+            set => m_circle.transform.localScale = value;
+        }
     }
 }
