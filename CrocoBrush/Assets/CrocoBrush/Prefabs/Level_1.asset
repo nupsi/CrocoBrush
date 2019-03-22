@@ -1,0 +1,765 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7331506cb391bfc4d877596fe8cbd152, type: 3}
+  m_Name: Level_1
+  m_EditorClassIdentifier: 
+  Nodes:
+  - Direction: 0
+    Time: 0.027377725
+  - Direction: 0
+    Time: 0.85555565
+  - Direction: 0
+    Time: 1.6908258
+  - Direction: 0
+    Time: 2.2488189
+  - Direction: 0
+    Time: 3.0765152
+  - Direction: 0
+    Time: 3.906147
+  - Direction: 0
+    Time: 4.4719357
+  - Direction: 0
+    Time: 5.320647
+  - Direction: 0
+    Time: 6.148824
+  - Direction: 0
+    Time: 6.708985
+  - Direction: 0
+    Time: 7.5406747
+  - Direction: 0
+    Time: 8.370219
+  - Direction: 0
+    Time: 8.917774
+  - Direction: 0
+    Time: 9.756374
+  - Direction: 0
+    Time: 10.591475
+  - Direction: 0
+    Time: 11.139069
+  - Direction: 0
+    Time: 11.978661
+  - Direction: 0
+    Time: 12.806965
+  - Direction: 0
+    Time: 13.356574
+  - Direction: 0
+    Time: 14.189127
+  - Direction: 0
+    Time: 15.031523
+  - Direction: 0
+    Time: 15.581423
+  - Direction: 0
+    Time: 16.409933
+  - Direction: 0
+    Time: 16.966866
+  - Direction: 0
+    Time: 17.235083
+  - Direction: 0
+    Time: 17.799145
+  - Direction: 0
+    Time: 18.230978
+  - Direction: 0
+    Time: 18.645645
+  - Direction: 0
+    Time: 19.210125
+  - Direction: 0
+    Time: 19.479122
+  - Direction: 0
+    Time: 20.038021
+  - Direction: 0
+    Time: 20.43526
+  - Direction: 0
+    Time: 20.868635
+  - Direction: 0
+    Time: 21.42899
+  - Direction: 0
+    Time: 21.697721
+  - Direction: 0
+    Time: 22.25996
+  - Direction: 0
+    Time: 22.65839
+  - Direction: 0
+    Time: 23.086662
+  - Direction: 0
+    Time: 23.639467
+  - Direction: 0
+    Time: 23.918118
+  - Direction: 0
+    Time: 24.480892
+  - Direction: 0
+    Time: 24.901829
+  - Direction: 0
+    Time: 25.30696
+  - Direction: 0
+    Time: 25.741
+  - Direction: 0
+    Time: 25.859337
+  - Direction: 0
+    Time: 26.137396
+  - Direction: 0
+    Time: 26.700293
+  - Direction: 0
+    Time: 27.119146
+  - Direction: 0
+    Time: 27.531672
+  - Direction: 0
+    Time: 28.078756
+  - Direction: 0
+    Time: 28.360973
+  - Direction: 0
+    Time: 28.911434
+  - Direction: 0
+    Time: 29.337206
+  - Direction: 0
+    Time: 29.750027
+  - Direction: 0
+    Time: 30.298422
+  - Direction: 0
+    Time: 30.580599
+  - Direction: 0
+    Time: 31.130163
+  - Direction: 0
+    Time: 31.686026
+  - Direction: 0
+    Time: 32.25893
+  - Direction: 0
+    Time: 32.81504
+  - Direction: 0
+    Time: 33.370934
+  - Direction: 0
+    Time: 33.927628
+  - Direction: 0
+    Time: 34.475216
+  - Direction: 0
+    Time: 34.75821
+  - Direction: 0
+    Time: 35.040745
+  - Direction: 0
+    Time: 35.30973
+  - Direction: 0
+    Time: 35.58542
+  - Direction: 0
+    Time: 35.99794
+  - Direction: 0
+    Time: 36.420784
+  - Direction: 0
+    Time: 36.696312
+  - Direction: 0
+    Time: 37.10877
+  - Direction: 0
+    Time: 37.52799
+  - Direction: 0
+    Time: 37.810543
+  - Direction: 0
+    Time: 38.238304
+  - Direction: 0
+    Time: 38.6408
+  - Direction: 0
+    Time: 39.197056
+  - Direction: 0
+    Time: 39.466724
+  - Direction: 0
+    Time: 40.03013
+  - Direction: 0
+    Time: 40.461308
+  - Direction: 0
+    Time: 40.860287
+  - Direction: 0
+    Time: 41.137486
+  - Direction: 0
+    Time: 41.558113
+  - Direction: 0
+    Time: 41.96569
+  - Direction: 0
+    Time: 42.24679
+  - Direction: 0
+    Time: 42.66643
+  - Direction: 0
+    Time: 43.07908
+  - Direction: 0
+    Time: 43.361874
+  - Direction: 0
+    Time: 43.630913
+  - Direction: 0
+    Time: 43.90856
+  - Direction: 0
+    Time: 44.18753
+  - Direction: 0
+    Time: 44.47017
+  - Direction: 0
+    Time: 44.891888
+  - Direction: 0
+    Time: 45.318768
+  - Direction: 0
+    Time: 45.60172
+  - Direction: 0
+    Time: 45.997414
+  - Direction: 0
+    Time: 46.430843
+  - Direction: 0
+    Time: 46.7069
+  - Direction: 0
+    Time: 47.106674
+  - Direction: 0
+    Time: 47.54031
+  - Direction: 0
+    Time: 48.088036
+  - Direction: 0
+    Time: 48.364677
+  - Direction: 0
+    Time: 48.916725
+  - Direction: 0
+    Time: 49.33006
+  - Direction: 0
+    Time: 49.760178
+  - Direction: 0
+    Time: 50.029713
+  - Direction: 0
+    Time: 50.437603
+  - Direction: 0
+    Time: 50.87115
+  - Direction: 0
+    Time: 51.135204
+  - Direction: 0
+    Time: 51.565006
+  - Direction: 0
+    Time: 51.97832
+  - Direction: 0
+    Time: 52.39908
+  - Direction: 0
+    Time: 52.52481
+  - Direction: 0
+    Time: 52.679634
+  - Direction: 0
+    Time: 52.805252
+  - Direction: 0
+    Time: 53.07476
+  - Direction: 0
+    Time: 53.360863
+  - Direction: 0
+    Time: 53.787594
+  - Direction: 0
+    Time: 54.18716
+  - Direction: 0
+    Time: 54.47076
+  - Direction: 0
+    Time: 54.89805
+  - Direction: 0
+    Time: 55.300476
+  - Direction: 0
+    Time: 55.579395
+  - Direction: 0
+    Time: 56.011436
+  - Direction: 0
+    Time: 56.41072
+  - Direction: 0
+    Time: 56.96807
+  - Direction: 0
+    Time: 57.237392
+  - Direction: 0
+    Time: 57.801285
+  - Direction: 0
+    Time: 58.22969
+  - Direction: 0
+    Time: 58.646957
+  - Direction: 0
+    Time: 58.930862
+  - Direction: 0
+    Time: 59.341747
+  - Direction: 0
+    Time: 59.755783
+  - Direction: 0
+    Time: 60.040688
+  - Direction: 0
+    Time: 60.4392
+  - Direction: 0
+    Time: 60.871548
+  - Direction: 0
+    Time: 61.145893
+  - Direction: 0
+    Time: 61.42963
+  - Direction: 0
+    Time: 61.697426
+  - Direction: 0
+    Time: 61.981583
+  - Direction: 0
+    Time: 62.258717
+  - Direction: 0
+    Time: 62.655262
+  - Direction: 0
+    Time: 63.08923
+  - Direction: 0
+    Time: 63.366848
+  - Direction: 0
+    Time: 63.768093
+  - Direction: 0
+    Time: 64.19761
+  - Direction: 0
+    Time: 64.48189
+  - Direction: 0
+    Time: 64.902016
+  - Direction: 0
+    Time: 65.3072
+  - Direction: 0
+    Time: 65.86071
+  - Direction: 0
+    Time: 66.134735
+  - Direction: 0
+    Time: 66.69971
+  - Direction: 0
+    Time: 67.11689
+  - Direction: 0
+    Time: 67.52811
+  - Direction: 0
+    Time: 67.79514
+  - Direction: 0
+    Time: 68.23118
+  - Direction: 0
+    Time: 68.63726
+  - Direction: 0
+    Time: 68.90734
+  - Direction: 0
+    Time: 69.335365
+  - Direction: 0
+    Time: 69.747154
+  - Direction: 0
+    Time: 70.16739
+  - Direction: 0
+    Time: 70.29744
+  - Direction: 0
+    Time: 70.44788
+  - Direction: 0
+    Time: 70.58111
+  - Direction: 0
+    Time: 70.856804
+  - Direction: 0
+    Time: 71.12884
+  - Direction: 0
+    Time: 71.40638
+  - Direction: 0
+    Time: 71.989296
+  - Direction: 0
+    Time: 72.39067
+  - Direction: 0
+    Time: 72.6669
+  - Direction: 0
+    Time: 73.09642
+  - Direction: 0
+    Time: 73.368866
+  - Direction: 0
+    Time: 73.647934
+  - Direction: 0
+    Time: 74.20014
+  - Direction: 0
+    Time: 74.60944
+  - Direction: 0
+    Time: 74.89595
+  - Direction: 0
+    Time: 75.30733
+  - Direction: 0
+    Time: 75.58616
+  - Direction: 0
+    Time: 75.87149
+  - Direction: 0
+    Time: 76.416145
+  - Direction: 0
+    Time: 76.831184
+  - Direction: 0
+    Time: 77.1095
+  - Direction: 0
+    Time: 77.52498
+  - Direction: 0
+    Time: 77.80929
+  - Direction: 0
+    Time: 78.08665
+  - Direction: 0
+    Time: 78.640755
+  - Direction: 0
+    Time: 79.06532
+  - Direction: 0
+    Time: 79.46819
+  - Direction: 0
+    Time: 79.90199
+  - Direction: 0
+    Time: 80.02766
+  - Direction: 0
+    Time: 80.31127
+  - Direction: 0
+    Time: 80.858406
+  - Direction: 0
+    Time: 81.28795
+  - Direction: 0
+    Time: 81.55938
+  - Direction: 0
+    Time: 81.968796
+  - Direction: 0
+    Time: 82.24921
+  - Direction: 0
+    Time: 82.516106
+  - Direction: 0
+    Time: 83.07526
+  - Direction: 0
+    Time: 83.50712
+  - Direction: 0
+    Time: 83.77954
+  - Direction: 0
+    Time: 84.18785
+  - Direction: 0
+    Time: 84.469635
+  - Direction: 0
+    Time: 84.73959
+  - Direction: 0
+    Time: 85.31996
+  - Direction: 0
+    Time: 85.720215
+  - Direction: 0
+    Time: 85.999626
+  - Direction: 0
+    Time: 86.42598
+  - Direction: 0
+    Time: 86.71057
+  - Direction: 0
+    Time: 86.9747
+  - Direction: 0
+    Time: 87.25767
+  - Direction: 0
+    Time: 87.53527
+  - Direction: 0
+    Time: 87.93462
+  - Direction: 0
+    Time: 88.37011
+  - Direction: 0
+    Time: 88.49812
+  - Direction: 0
+    Time: 88.64591
+  - Direction: 0
+    Time: 88.91696
+  - Direction: 0
+    Time: 89.196434
+  - Direction: 0
+    Time: 89.97101
+  - Direction: 0
+    Time: 90.251625
+  - Direction: 0
+    Time: 90.67598
+  - Direction: 0
+    Time: 90.94688
+  - Direction: 0
+    Time: 91.228836
+  - Direction: 0
+    Time: 91.7919
+  - Direction: 0
+    Time: 92.20941
+  - Direction: 0
+    Time: 92.490036
+  - Direction: 0
+    Time: 92.88701
+  - Direction: 0
+    Time: 93.16526
+  - Direction: 0
+    Time: 93.44964
+  - Direction: 0
+    Time: 93.999054
+  - Direction: 0
+    Time: 94.42708
+  - Direction: 0
+    Time: 94.71026
+  - Direction: 0
+    Time: 95.10826
+  - Direction: 0
+    Time: 95.39144
+  - Direction: 0
+    Time: 95.666374
+  - Direction: 0
+    Time: 96.21616
+  - Direction: 0
+    Time: 96.64736
+  - Direction: 0
+    Time: 97.051186
+  - Direction: 0
+    Time: 97.47554
+  - Direction: 0
+    Time: 97.60558
+  - Direction: 0
+    Time: 97.88712
+  - Direction: 0
+    Time: 98.456665
+  - Direction: 0
+    Time: 98.87265
+  - Direction: 0
+    Time: 99.14607
+  - Direction: 0
+    Time: 99.56723
+  - Direction: 0
+    Time: 99.847855
+  - Direction: 0
+    Time: 100.12973
+  - Direction: 0
+    Time: 100.677284
+  - Direction: 0
+    Time: 101.088684
+  - Direction: 0
+    Time: 101.36017
+  - Direction: 0
+    Time: 101.79137
+  - Direction: 0
+    Time: 102.06515
+  - Direction: 0
+    Time: 102.35339
+  - Direction: 0
+    Time: 102.89902
+  - Direction: 0
+    Time: 103.308586
+  - Direction: 0
+    Time: 103.57682
+  - Direction: 0
+    Time: 104.00567
+  - Direction: 0
+    Time: 104.29131
+  - Direction: 0
+    Time: 104.556244
+  - Direction: 0
+    Time: 104.84127
+  - Direction: 0
+    Time: 105.11504
+  - Direction: 0
+    Time: 105.54948
+  - Direction: 0
+    Time: 105.94607
+  - Direction: 0
+    Time: 106.09665
+  - Direction: 0
+    Time: 106.22954
+  - Direction: 0
+    Time: 110.93989
+  - Direction: 0
+    Time: 111.22787
+  - Direction: 0
+    Time: 111.50253
+  - Direction: 0
+    Time: 111.79681
+  - Direction: 0
+    Time: 112.0687
+  - Direction: 0
+    Time: 112.34688
+  - Direction: 0
+    Time: 112.62996
+  - Direction: 0
+    Time: 112.75609
+  - Direction: 0
+    Time: 112.91186
+  - Direction: 0
+    Time: 113.185425
+  - Direction: 0
+    Time: 113.46041
+  - Direction: 0
+    Time: 113.74241
+  - Direction: 0
+    Time: 114.011116
+  - Direction: 0
+    Time: 114.29122
+  - Direction: 0
+    Time: 114.57058
+  - Direction: 0
+    Time: 114.69876
+  - Direction: 0
+    Time: 114.84908
+  - Direction: 0
+    Time: 115.1212
+  - Direction: 0
+    Time: 115.404594
+  - Direction: 0
+    Time: 115.68109
+  - Direction: 0
+    Time: 115.9596
+  - Direction: 0
+    Time: 116.23365
+  - Direction: 0
+    Time: 116.50834
+  - Direction: 0
+    Time: 116.790665
+  - Direction: 0
+    Time: 117.067986
+  - Direction: 0
+    Time: 117.18606
+  - Direction: 0
+    Time: 117.33665
+  - Direction: 0
+    Time: 117.46916
+  - Direction: 0
+    Time: 117.748245
+  - Direction: 0
+    Time: 118.047386
+  - Direction: 0
+    Time: 118.300354
+  - Direction: 0
+    Time: 118.57979
+  - Direction: 0
+    Time: 118.72717
+  - Direction: 0
+    Time: 119.011086
+  - Direction: 0
+    Time: 119.159195
+  - Direction: 0
+    Time: 119.28043
+  - Direction: 0
+    Time: 119.55853
+  - Direction: 0
+    Time: 119.84017
+  - Direction: 0
+    Time: 120.12128
+  - Direction: 0
+    Time: 120.38868
+  - Direction: 0
+    Time: 120.66967
+  - Direction: 0
+    Time: 120.94547
+  - Direction: 0
+    Time: 121.22984
+  - Direction: 0
+    Time: 121.498184
+  - Direction: 0
+    Time: 121.648026
+  - Direction: 0
+    Time: 121.77493
+  - Direction: 0
+    Time: 122.06106
+  - Direction: 0
+    Time: 122.33034
+  - Direction: 0
+    Time: 122.60795
+  - Direction: 0
+    Time: 122.886826
+  - Direction: 0
+    Time: 123.16883
+  - Direction: 0
+    Time: 123.43925
+  - Direction: 0
+    Time: 123.58882
+  - Direction: 0
+    Time: 123.72009
+  - Direction: 0
+    Time: 123.99485
+  - Direction: 0
+    Time: 124.27621
+  - Direction: 0
+    Time: 124.5498
+  - Direction: 0
+    Time: 124.8312
+  - Direction: 0
+    Time: 125.126915
+  - Direction: 0
+    Time: 125.40712
+  - Direction: 0
+    Time: 125.68138
+  - Direction: 0
+    Time: 125.96397
+  - Direction: 0
+    Time: 126.087654
+  - Direction: 0
+    Time: 126.24058
+  - Direction: 0
+    Time: 126.36883
+  - Direction: 0
+    Time: 126.63621
+  - Direction: 0
+    Time: 126.91767
+  - Direction: 0
+    Time: 127.197
+  - Direction: 0
+    Time: 127.47718
+  - Direction: 0
+    Time: 127.62522
+  - Direction: 0
+    Time: 127.90002
+  - Direction: 0
+    Time: 128.03217
+  - Direction: 0
+    Time: 128.18306
+  - Direction: 0
+    Time: 128.4562
+  - Direction: 0
+    Time: 129.0114
+  - Direction: 0
+    Time: 129.5717
+  - Direction: 0
+    Time: 130.11862
+  - Direction: 0
+    Time: 130.39932
+  - Direction: 0
+    Time: 130.67694
+  - Direction: 0
+    Time: 131.23045
+  - Direction: 0
+    Time: 131.78873
+  - Direction: 0
+    Time: 132.337
+  - Direction: 0
+    Time: 132.61507
+  - Direction: 0
+    Time: 132.88904
+  - Direction: 0
+    Time: 133.44875
+  - Direction: 0
+    Time: 133.9983
+  - Direction: 0
+    Time: 134.558
+  - Direction: 0
+    Time: 134.98749
+  - Direction: 0
+    Time: 135.26137
+  - Direction: 0
+    Time: 135.82005
+  - Direction: 0
+    Time: 136.49802
+  - Direction: 0
+    Time: 136.77426
+  - Direction: 0
+    Time: 137.3308
+  - Direction: 0
+    Time: 138.03902
+  - Direction: 0
+    Time: 138.458
+  - Direction: 0
+    Time: 139.15182
+  - Direction: 0
+    Time: 139.56566
+  - Direction: 0
+    Time: 140.24445
+  - Direction: 0
+    Time: 140.39938
+  - Direction: 0
+    Time: 140.6747
+  - Direction: 0
+    Time: 141.08725
+  - Direction: 0
+    Time: 141.6371
+  - Direction: 0
+    Time: 141.91934
+  - Direction: 0
+    Time: 142.46991
+  - Direction: 0
+    Time: 142.89763
+  - Direction: 0
+    Time: 143.57622
+  - Direction: 0
+    Time: 144.0101
+  - Direction: 0
+    Time: 144.55641
+  - Direction: 0
+    Time: 145.11525
+  - Direction: 0
+    Time: 145.66675
+  - Direction: 0
+    Time: 146.23099
+  - Direction: 0
+    Time: 146.37512

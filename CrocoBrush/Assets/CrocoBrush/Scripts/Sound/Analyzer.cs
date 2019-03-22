@@ -5,11 +5,11 @@ namespace Test.Sound
     [RequireComponent(typeof(AudioSource))]
     public class Analyzer : MonoBehaviour
     {
-        private AudioSource m_source;
-        private AudioSamples m_samples;
+        protected AudioSource m_source;
+        protected AudioSamples m_samples;
 
-        private float[] m_current;
-        private bool m_reset;
+        protected float[] m_current;
+        protected bool m_reset;
 
         private void Awake()
         {
@@ -38,7 +38,6 @@ namespace Test.Sound
 
         protected virtual void RequestInput()
         {
-
         }
     }
 }

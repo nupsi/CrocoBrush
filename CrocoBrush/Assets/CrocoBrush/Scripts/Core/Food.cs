@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
 namespace CrocoBrush
 {
@@ -16,6 +17,13 @@ namespace CrocoBrush
             m_circle.transform.localScale = Vector3.one * 2;
             m_initialized = true;
             transform.LookAt(Camera.main.transform);
+            m_circle.transform
+                .DOScale(Vector3.one, m_time)
+                .SetEase(Ease.Linear)
+                .OnComplete(() => m_circle.transform
+                    .DOScale(Vector3.one, 0.3f)
+                    .SetEase(Ease.Linear)
+                    .OnComplete(Remove));
         }
 
         private void Awake()
@@ -28,25 +36,6 @@ namespace CrocoBrush
             {
                 Debug.LogError("There is no child on Food object! (Add a child to represent the time left)");
                 Destroy(gameObject);
-            }
-        }
-
-        private void Update()
-        {
-            if(m_initialized)
-            {
-                if(m_time > 0)
-                {
-                    if(Circle.x > 1)
-                    {
-                        m_circle.transform.localScale -= Vector3.one * Time.deltaTime;
-                    }
-                    m_time -= Time.deltaTime;
-                }
-                else
-                {
-                    Remove();
-                }
             }
         }
 

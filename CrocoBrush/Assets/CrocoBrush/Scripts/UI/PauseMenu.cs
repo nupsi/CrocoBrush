@@ -9,7 +9,7 @@ namespace CrocoBrush.UI
         private GameObject m_menu;
 
         [SerializeField]
-        private MonoBehaviour[] m_components;
+        private Behaviour[] m_components;
 
         private bool m_running;
 
