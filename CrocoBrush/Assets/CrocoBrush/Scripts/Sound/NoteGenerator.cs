@@ -1,4 +1,5 @@
-﻿using CrocoBrush;
+﻿using System.Collections.Generic;
+using CrocoBrush;
 using UnityEngine;
 
 namespace Test.Sound
@@ -12,12 +13,13 @@ namespace Test.Sound
 
         protected override void RequestInput()
         {
-            m_songNotes.Nodes.Add(new SongNode(Direction.None, Time.time - m_startTime));
+            m_songNotes.Nodes.Add(new SongNode(Direction.None, m_source.time));
         }
 
         public void StartRecord()
         {
             m_startTime = Time.time;
+            m_songNotes.Nodes = new List<SongNode>();
             m_source.Play();
         }
     }

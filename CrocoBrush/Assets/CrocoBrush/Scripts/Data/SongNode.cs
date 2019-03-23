@@ -7,6 +7,7 @@ namespace CrocoBrush
     {
         public Direction Direction;
         public float Time;
+        public float Delay;
 
         public SongNode(Direction direction, float time)
         {

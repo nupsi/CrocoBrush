@@ -14,16 +14,16 @@ namespace Test.Sound
             switch(count)
             {
                 case 0:
-                    m_mout.Up();
+                    m_mout.Create(Direction.Up);
                     break;
                 case 1:
-                    m_mout.Right();
+                    m_mout.Create(Direction.Right);
                     break;
                 case 2:
-                    m_mout.Down();
+                    m_mout.Create(Direction.Down);
                     break;
                 case 3:
-                    m_mout.Left();
+                    m_mout.Create(Direction.Left);
                     count = -1;
                     break;
             }

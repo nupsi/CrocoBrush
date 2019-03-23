@@ -7,7 +7,7 @@ public class AudioDelay : MonoBehaviour
     [SerializeField]
     private float m_delay = 1f;
 
-    private void Start()
+    private void Awake()
     {
         StartCoroutine(Delay());
     }
