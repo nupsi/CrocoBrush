@@ -7,8 +7,6 @@ namespace CrocoBrush
     /// <summary>
     /// Controls Food placed on a Tooth.
     /// Use Initialize(Tooth, float) to place the Food on a Tooth.
-    /// Use Remove() to remove the Food from its current Tooth.
-    /// Use Clear() to mark the parent Tooth as a free Tooth.
     /// </summary>
     public class Food : MonoBehaviour
     {
@@ -80,7 +78,7 @@ namespace CrocoBrush
                     () => m_circle.transform
                         .DOScale(Vector3.one, 0.3f)
                         .SetEase(Ease.Linear)
-                        .OnComplete(Remove));
+                        .OnComplete(() => m_tooth?.Remove()));
         }
 
         /// <summary>
@@ -97,16 +95,6 @@ namespace CrocoBrush
             yield return new WaitForSeconds(0.29f);
             Quality = Quality.Bad;
         }
-
-        /// <summary>
-        /// Sends a clear request for the current parent Tooth.
-        /// </summary>
-        public void Clear() => m_tooth?.Clear();
-
-        /// <summary>
-        /// Sends a remove request for the current parent Tooth.
-        /// </summary>
-        private void Remove() => m_tooth?.Remove();
 
         /*
          * Accessors.

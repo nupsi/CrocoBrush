@@ -34,15 +34,17 @@ namespace CrocoBrush
         /// </summary>
         /// <param name="food">Food to place.</param>
         /// <param name="duration">Duration for how long the food lasts.</param>
-        public void PlaceFood(GameObject food, float duration)
+        public void PlaceFood(Food food, float duration)
         {
-            //Set the Foods position to the Tooth's position.
+            //Set the Food's game object active.
+            food.gameObject.SetActive(true);
+            //Set the Food's position to the Tooth's position.
             food.transform.position = transform.position;
             //Rotate the Food to face the camera.
             food.transform.LookAt(Camera.main.transform);
-            //Get the Food component from the game object.
-            m_current = food.GetComponent<Food>();
-            //Initialize the Food component.
+            //Set the current Food.
+            m_current = food;
+            //Initialize the current Food.
             m_current.Initialize(this, duration);
             //Mark the Food as taken.
             HasFood = true;
@@ -54,10 +56,15 @@ namespace CrocoBrush
         public void Remove() => Mouth.Remove(m_direction);
 
         /// <summary>
-        /// Clears the Tooth's food.
-        /// This allows the Tooth to take new Food.
+        /// Return the current Food object while clearing the Tooth.
         /// </summary>
-        public void Clear() => HasFood = false;
+        /// <returns>Current Food.</returns>
+        public Food Clear()
+        {
+            HasFood = false;
+            m_current.gameObject.SetActive(false);
+            return m_current;
+        }
 
         /*
          * Accessors.

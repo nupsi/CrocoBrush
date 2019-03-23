@@ -43,12 +43,12 @@ namespace CrocoBrush
         /// <summary>
         /// Dictionary to store current Food based on their parent tooth direction.
         /// </summary>
-        private Dictionary<Direction, Queue<Food>> m_notes;
+        private Dictionary<Direction, Queue<Tooth>> m_notes;
 
         /// <summary>
         /// Queue for pooling available Food.
         /// </summary>
-        private Queue<GameObject> m_available;
+        private Queue<Food> m_available;
 
         /*
          * Mono Behaviour Functions.
@@ -80,7 +80,7 @@ namespace CrocoBrush
         private void InitializeTeeth()
         {
             //Create new dictionary for the notes.
-            m_notes = new Dictionary<Direction, Queue<Food>>();
+            m_notes = new Dictionary<Direction, Queue<Tooth>>();
             //Create new dictionary for the teeth.
             m_teeth = new Dictionary<Direction, List<Tooth>>();
             //Get tooth components from the child objects.
@@ -94,7 +94,7 @@ namespace CrocoBrush
                     //Create new list for the current direction in the teeth dictionary.
                     m_teeth.Add(tooth.Direction, new List<Tooth> { tooth });
                     //Create new queue for the current direction in the notes dictionary.
-                    m_notes.Add(tooth.Direction, new Queue<Food>());
+                    m_notes.Add(tooth.Direction, new Queue<Tooth>());
                 }
                 else
                 {
@@ -110,7 +110,7 @@ namespace CrocoBrush
         private void CreatePool()
         {
             //Create new queue to pool the Food object.
-            m_available = new Queue<GameObject>();
+            m_available = new Queue<Food>();
             //Create empty pool game object.
             var root = new GameObject("Pool");
             //Place the pool under the Mouth (For cleaner scene hierarchy).
@@ -125,7 +125,7 @@ namespace CrocoBrush
                 //Deactive the current object.
                 current.SetActive(false);
                 //Add the object to the pool.
-                m_available.Enqueue(current);
+                m_available.Enqueue(current.GetComponent<Food>());
             }
         }
 
@@ -134,14 +134,10 @@ namespace CrocoBrush
         /// </summary>
         public void Remove(Direction direction)
         {
-            //Get the first object in the given direction.
-            var food = m_notes[direction].Dequeue();
-            //Send a Clear request.
-            food.Clear();
-            //Deactive the object.
-            food.gameObject.SetActive(false);
-            //Add the Food back to the object pool.
-            m_available.Enqueue(food.gameObject);
+            //Get the first Tooth in the direction.
+            var tooth = m_notes[direction].Dequeue();
+            //Add the Food back to object pool by clearing in from the Tooth.
+            m_available.Enqueue(tooth.Clear());
         }
 
         /// <summary>
@@ -177,14 +173,11 @@ namespace CrocoBrush
                 Debug.LogError("No room to place food!");
                 return;
             }
-            //Get a free Food object from a object pool.
-            var current = m_available.Dequeue();
-            //Set the Food active.
-            current.SetActive(true);
-            //Add the Food to the active queue in the given direction.
-            m_notes[direction].Enqueue(current.GetComponent<Food>());
+            var tooth = m_teeth[direction][index];
+            //Add the parent Tooth to the active queue in the given direction.
+            m_notes[direction].Enqueue(tooth);
             //Place the food on the free Tooth.
-            m_teeth[direction][index].PlaceFood(current, m_delay);
+            tooth.PlaceFood(m_available.Dequeue(), m_delay);
         }
 
         /// <summary>
