@@ -57,7 +57,7 @@ namespace CrocoBrush
         private void Awake()
         {
             //Make sure there is only one Instance.
-            if (Instance != null)
+            if(Instance != null)
             {
                 Debug.LogError("Multiple Mouth Instances", this.gameObject);
                 return;
@@ -86,10 +86,10 @@ namespace CrocoBrush
             //Get tooth components from the child objects.
             var teeth = GetComponentsInChildren<Tooth>();
             //Loop through the tooth.
-            foreach (var tooth in teeth)
+            foreach(var tooth in teeth)
             {
                 //Check if key for the direction exists.
-                if (!m_teeth.ContainsKey(tooth.Direction))
+                if(!m_teeth.ContainsKey(tooth.Direction))
                 {
                     //Create new list for the current direction in the teeth dictionary.
                     m_teeth.Add(tooth.Direction, new List<Tooth> { tooth });
@@ -116,7 +116,7 @@ namespace CrocoBrush
             //Place the pool under the Mouth (For cleaner scene hierarchy).
             root.transform.SetParent(transform);
             //Create the pool.
-            for (int i = 0; i < 8; i++)
+            for(int i = 0; i < 8; i++)
             {
                 //Instantiate the prefab.
                 var current = Instantiate(m_prefab);
@@ -136,8 +136,12 @@ namespace CrocoBrush
         {
             //Get the first Tooth in the direction.
             var tooth = m_notes[direction].Dequeue();
-            //Add the Food back to object pool by clearing in from the Tooth.
-            m_available.Enqueue(tooth.Clear());
+            //Get the current Food by clearing in from the Tooth
+            var food = tooth.Clear();
+            //Add score based on the Food's quality.
+            AddScore(food.Quality);
+            //Add the Food back to object pool.
+            m_available.Enqueue(food);
         }
 
         /// <summary>
@@ -147,15 +151,34 @@ namespace CrocoBrush
         public void PressDirection(Direction direction)
         {
             //Check if there is Food in the given Direction.
-            if (m_notes[direction].Count <= 0)
+            if(m_notes[direction].Count <= 0)
             {
                 print("No food to clean");
+                Crocodile.Instance.Annoy();
             }
             else
             {
                 print("There is food to clean (" + m_notes[direction].Count + ")");
                 //Remove the First Food in the given direction.
                 Remove(direction);
+            }
+        }
+
+        private void AddScore(Quality quality)
+        {
+            switch(quality)
+            {
+                case Quality.Bad:
+                    Crocodile.Instance.Annoy();
+                    break;
+
+                case Quality.Avarage:
+                    Crocodile.Instance.AddScore(1);
+                    break;
+
+                case Quality.Good:
+                    Crocodile.Instance.AddScore(2);
+                    break;
             }
         }
 
@@ -168,7 +191,7 @@ namespace CrocoBrush
             //Get index for a free Tooth.
             var index = GetFreeTooth(direction);
             //Check that we got a valid index.
-            if (index < 0)
+            if(index < 0)
             {
                 Debug.LogError("No room to place food!");
                 return;
@@ -189,7 +212,7 @@ namespace CrocoBrush
         private int GetFreeTooth(Direction direction)
         {
             //Check if the dictionary contains a key for the given direction.
-            if (!m_teeth.ContainsKey(direction)) return -1;
+            if(!m_teeth.ContainsKey(direction)) return -1;
             //Store the current Teeth list in a temporary variable.
             var teeth = m_teeth[direction];
             //Set the index to -1. This is the 'fail' state if no new index is found.
@@ -202,14 +225,14 @@ namespace CrocoBrush
             teeth.ForEach((tooth) =>
             {
                 //Add a space if the Teeth has no food.
-                if (!tooth.HasFood)
+                if(!tooth.HasFood)
                 {
                     space++;
                 }
             });
 
             //If there are Free Teeth available.
-            if (space > 0)
+            if(space > 0)
             {
                 //While loop to randomize the index until a free Tooth is found.
                 //Not the most optimized way if there are many Teeth.
@@ -217,7 +240,7 @@ namespace CrocoBrush
                 {
                     index = Random.Range(0, teeth.Count);
                 }
-                while (teeth[index].HasFood);
+                while(teeth[index].HasFood);
             }
 
             //Return the index for a free theet or -1 if there is no space available.

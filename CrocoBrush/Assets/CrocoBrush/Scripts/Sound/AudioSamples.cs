@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Test.Sound
+namespace CrocoBrush.Sound
 {
     public class AudioSamples
     {

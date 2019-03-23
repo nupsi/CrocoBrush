@@ -19,18 +19,13 @@ namespace CrocoBrush
         /// </summary>
         private GameObject m_circle;
 
-        /// <summary>
-        /// The parent Tooth for a Food.
-        /// </summary>
-        private Tooth m_tooth;
-
         /*
          * Mono Behaviour Functions.
          */
 
         private void Awake()
         {
-            if (transform.childCount > 0)
+            if(transform.childCount > 0)
             {
                 m_circle = transform.GetChild(0).gameObject;
             }
@@ -49,11 +44,6 @@ namespace CrocoBrush
             m_circle.transform.localScale = Vector3.one * 2;
         }
 
-        private void OnDisable()
-        {
-            m_tooth = null;
-        }
-
         /*
          * Functions.
          */
@@ -66,19 +56,22 @@ namespace CrocoBrush
         /// <param name="duration">Foods duration.</param>
         public void Initialize(Tooth tooth, float duration)
         {
-            //Set the current parent Tooth.
-            m_tooth = tooth;
             //Start modifying the Foods quality over time.
             StartCoroutine(Degrade(duration));
             //Start Tween to indicate the Foods lifespan.
             m_circle.transform
                 .DOScale(Vector3.one, duration)
                 .SetEase(Ease.Linear)
-                .OnComplete(
-                    () => m_circle.transform
-                        .DOScale(Vector3.one, 0.3f)
-                        .SetEase(Ease.Linear)
-                        .OnComplete(() => m_tooth?.Remove()));
+                .OnComplete(() =>
+                {
+                    if(gameObject.activeInHierarchy)
+                    {
+                        m_circle.transform
+                            .DOScale(Vector3.one, 0.3f)
+                            .SetEase(Ease.Linear)
+                            .OnComplete(() => tooth?.Remove());
+                    }
+                });
         }
 
         /// <summary>

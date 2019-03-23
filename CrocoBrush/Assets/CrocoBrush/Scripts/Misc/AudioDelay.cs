@@ -1,22 +1,22 @@
 ﻿using System.Collections;
 using UnityEngine;
-
-[RequireComponent(typeof(AudioSource))]
-public class AudioDelay : MonoBehaviour
+namespace CrocoBrush
 {
-    [SerializeField]
-    private float m_delay = 1f;
-
-    private void Awake()
+    [RequireComponent(typeof(AudioSource))]
+    public class AudioDelay : MonoBehaviour
     {
-        StartCoroutine(Delay());
+        [SerializeField]
+        private float m_delay = 1f;
+
+        private void Awake()
+        {
+            StartCoroutine(Delay());
+        }
+
+        private IEnumerator Delay()
+        {
+            yield return new WaitForSeconds(m_delay);
+            GetComponent<AudioSource>().Play();
+        }
     }
-
-    private IEnumerator Delay()
-    {
-        yield return new WaitForSeconds(m_delay);
-        GetComponent<AudioSource>().Play();
-    }
-
-
 }

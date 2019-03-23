@@ -1,7 +1,7 @@
 ﻿using CrocoBrush;
 using UnityEngine;
 
-namespace Test.Sound
+namespace CrocoBrush.Sound
 {
     public class AutoPlayer : Analyzer
     {

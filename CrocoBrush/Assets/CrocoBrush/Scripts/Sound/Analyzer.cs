@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Test.Sound
+namespace CrocoBrush.Sound
 {
     [RequireComponent(typeof(AudioSource))]
     public class Analyzer : MonoBehaviour

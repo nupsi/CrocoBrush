@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 
-public class LookAtCamera : MonoBehaviour
+namespace CrocoBrush
 {
-    private void Awake()
+    public class LookAtCamera : MonoBehaviour
     {
-        transform.LookAt(Camera.main.transform);
+        private void Awake()
+        {
+            transform.LookAt(Camera.main.transform);
+        }
     }
 }
