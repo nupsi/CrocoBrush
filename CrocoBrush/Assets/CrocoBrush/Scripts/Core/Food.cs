@@ -44,6 +44,12 @@ namespace CrocoBrush
             m_circle.transform.localScale = Vector3.one * 2;
         }
 
+        private void OnDisable()
+        {
+            //Make sure the active tween is killed.
+            DOTween.Kill(m_circle.transform);
+        }
+
         /*
          * Functions.
          */

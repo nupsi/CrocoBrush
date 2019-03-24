@@ -4,16 +4,38 @@ using TMPro;
 
 namespace CrocoBrush.UI
 {
+    /// <summary>
+    /// Automatically generated Text Mesh Pro Text Field to display text with tween.
+    /// Use DisplayText(DisplayQuality, string, float, Color) to display text.
+    /// </summary>
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class QualityText : MonoBehaviour
     {
-        private RectTransform m_transform;
-        private Vector3 m_position;
+        /*
+         * Variables.
+         */
+
+        /// <summary>
+        /// Cached Text mesh pro text field component.
+        /// </summary>
         private TextMeshProUGUI m_text;
+
+        /// <summary>
+        /// Components rect transform for tweening.
+        /// </summary>
+        private RectTransform m_transform;
+
+        /// <summary>
+        /// Parent object position for centering this object.
+        /// </summary>
+        private Vector3 m_position;
+
+        /*
+         * Mono Behaviour Functions.
+         */
 
         private void Awake()
         {
-            print("Awake");
             m_transform = GetComponent<RectTransform>();
             m_position = m_transform.position;
             m_text = GetComponent<TextMeshProUGUI>();
@@ -34,10 +56,23 @@ namespace CrocoBrush.UI
 
         private void OnDisable()
         {
+            DOTween.Kill(m_transform);
             m_transform.position = m_position;
             m_text.SetText("");
         }
 
+        /*
+         * Functions.
+         */
+
+        /// <summary>
+        /// Display given text with a tween lasting for a given duration with a given color.
+        /// Display Quality component is required for returning the quality text back to object pool.
+        /// </summary>
+        /// <param name="parent">Parent object for pooling.</param>
+        /// <param name="text">Text to display.</param>
+        /// <param name="duration">Duration for the tween.</param>
+        /// <param name="color">Color for the text.</param>
         public void DisplayText(DisplayQuality parent, string text, float duration, Color color)
         {
             m_position = parent.transform.position;
