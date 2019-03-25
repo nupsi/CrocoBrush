@@ -16,21 +16,26 @@ namespace CrocoBrush.UI
 
         /// <summary>
         /// Initial Scale for the Slider.
+        /// The scale is modified when the value is changed.
         /// </summary>
         private Vector3 m_initialScale;
 
         /// <summary>
         /// Initial position for the Slider.
+        /// The position is modified when the value is changed.
         /// </summary>
         private Vector3 m_initialPosition;
 
         /// <summary>
-        /// Slider to visualize Anger.
+        /// Slider to visualize the Anger.
         /// </summary>
-        private Slider m_progress;
+        private Slider m_slider;
 
         /// <summary>
         /// Previous Anger.
+        /// Used to track the change in the Crocodiles Anger.
+        /// Stored in a separate variable instead of using 
+        /// the slider's value, since the slider has a limited range.
         /// </summary>
         private int m_anger;
 
@@ -41,8 +46,11 @@ namespace CrocoBrush.UI
         protected override void Awake()
         {
             base.Awake();
-            m_progress = GetComponent<Slider>();
+            //Cache the Slider component.
+            m_slider = GetComponent<Slider>();
+            //Store initial scale.
             m_initialScale = m_rect.localScale;
+            //Store initial position.
             m_initialPosition = m_rect.position;
             UpdateFill();
         }
@@ -53,6 +61,7 @@ namespace CrocoBrush.UI
 
         public override void RequestUpdate()
         {
+            //Update the Slider if the Anger has changed.
             if(m_anger != CrocodileAnger)
             {
                 UpdateSlider();
@@ -64,27 +73,37 @@ namespace CrocoBrush.UI
         /// </summary>
         private void UpdateSlider()
         {
+            //Update the stored anger.
             m_anger = CrocodileAnger;
+            //Kill any active tween before resetting the position and scale.
             DOTween.Kill(transform);
             m_rect.localScale = m_initialScale;
             m_rect.position = m_initialPosition;
-            if(Crocodile.Instance.Anger <= m_progress.maxValue)
+            //Check if the Crocodile's Anger is in the range of the Slider. 
+            if(CrocodileAnger <= m_slider.maxValue)
             {
-                m_progress.value = CrocodileAnger;
+                //Update the slider to show the current anger.
+                m_slider.value = CrocodileAnger;
                 UpdateFill();
+                //Shake the Slider to visualize change.
                 transform.DOShakeScale(1);
                 transform.DOShakePosition(0.5f, 2);
             }
             else
             {
+                //Shake the Slider to visualize change.
                 transform.DOShakeScale(1f, 0.5f);
                 transform.DOShakePosition(2, 3);
             }
         }
 
+        /// <summary>
+        /// Update the visibility of the Slider's fill based on the Slider's current value.
+        /// </summary>
         private void UpdateFill()
         {
-            m_progress.fillRect.gameObject.SetActive((m_progress.value != 0));
+            //Hide the Fill if the progress is zero.
+            m_slider.fillRect.gameObject.SetActive((m_slider.value != 0));
         }
 
         /*
