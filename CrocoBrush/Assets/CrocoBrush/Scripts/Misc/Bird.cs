@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using DG.Tweening;
 
 namespace CrocoBrush
 {
@@ -13,22 +14,26 @@ namespace CrocoBrush
         {
             if(Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                transform.position = m_left.transform.position;
+                DOTween.Kill(transform.position);
+                transform.DOMove(m_left.transform.position, 0.5f);
             }
 
             if(Input.GetKeyDown(KeyCode.RightArrow))
             {
-                transform.position = m_right.transform.position;
+                DOTween.Kill(transform.position);
+                transform.DOMove(m_right.transform.position, 0.5f);
             }
 
             if(Input.GetKeyDown(KeyCode.DownArrow))
             {
-                transform.position = m_bottom.transform.position;
+                DOTween.Kill(transform.position);
+                transform.DOMove(m_bottom.transform.position, 0.5f);
             }
 
             if(Input.GetKeyDown(KeyCode.UpArrow))
             {
-                transform.position = m_top.transform.position;
+                DOTween.Kill(transform.position);
+                transform.DOMove(m_top.transform.position, 0.5f);
             }
         }
     }

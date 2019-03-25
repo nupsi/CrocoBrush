@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 
 namespace CrocoBrush.UI
 {
@@ -44,6 +44,7 @@ namespace CrocoBrush.UI
             m_progress = GetComponent<Slider>();
             m_initialScale = m_rect.localScale;
             m_initialPosition = m_rect.position;
+            UpdateFill();
         }
 
         /*
@@ -70,6 +71,7 @@ namespace CrocoBrush.UI
             if(Crocodile.Instance.Anger <= m_progress.maxValue)
             {
                 m_progress.value = CrocodileAnger;
+                UpdateFill();
                 transform.DOShakeScale(1);
                 transform.DOShakePosition(0.5f, 2);
             }
@@ -78,6 +80,11 @@ namespace CrocoBrush.UI
                 transform.DOShakeScale(1f, 0.5f);
                 transform.DOShakePosition(2, 3);
             }
+        }
+
+        private void UpdateFill()
+        {
+            m_progress.fillRect.gameObject.SetActive((m_progress.value != 0));
         }
 
         /*

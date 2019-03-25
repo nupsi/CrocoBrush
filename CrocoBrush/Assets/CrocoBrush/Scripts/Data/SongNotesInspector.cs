@@ -1,6 +1,7 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEditor;
 using UnityEditorInternal;
+using UnityEngine;
 
 namespace CrocoBrush
 {
@@ -52,9 +53,7 @@ namespace CrocoBrush
                 textRect.x += textRect.width;
                 EditorGUI.LabelField(textRect, new GUIContent($"Delay {m_target.Nodes[index].Delay}"));
             }
-
         }
-
 
         private Rect EnumRect(Rect rect)
         {
@@ -201,12 +200,16 @@ namespace CrocoBrush
                 {
                     case 0:
                         return Direction.Up;
+
                     case 1:
                         return Direction.Down;
+
                     case 2:
                         return Direction.Left;
+
                     case 3:
                         return Direction.Right;
+
                     default:
                         return Direction.None;
                 }
@@ -218,8 +221,8 @@ namespace CrocoBrush
             m_target.Nodes.ForEach((node) => node.Direction = Direction.None);
         }
 
-
         private SongNotes Target => (SongNotes)target;
         private bool UseSingleLine => !(EditorGUIUtility.currentViewWidth < 365);
     }
 }
+#endif

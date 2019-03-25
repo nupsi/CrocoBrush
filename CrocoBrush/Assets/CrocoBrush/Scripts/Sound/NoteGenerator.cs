@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using CrocoBrush;
 using UnityEngine;
 
 namespace CrocoBrush.Sound

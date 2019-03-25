@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace CrocoBrush.UI
 {
@@ -108,9 +108,11 @@ namespace CrocoBrush.UI
                 case Quality.Bad:
                     text.DisplayText(this, "Miss", m_duration, Color.red);
                     break;
+
                 case Quality.Avarage:
                     text.DisplayText(this, "Great", m_duration, Color.blue);
                     break;
+
                 case Quality.Good:
                     text.DisplayText(this, "Perfect", m_duration, Color.green);
                     break;

@@ -16,9 +16,9 @@ namespace CrocoBrush
          */
 
         /// <summary>
-        /// Mouth Instance. 
-        /// The instance is set on Awake. 
-        /// If you need to initialize something that requires this Instance, 
+        /// Mouth Instance.
+        /// The instance is set on Awake.
+        /// If you need to initialize something that requires this Instance,
         /// use Start() or setup custom srcipt execution order.
         /// </summary>
         public static Mouth Instance;

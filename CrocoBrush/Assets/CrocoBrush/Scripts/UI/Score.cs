@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using TMPro;
+﻿using TMPro;
+using UnityEngine;
 
 namespace CrocoBrush.UI
 {
@@ -14,7 +14,7 @@ namespace CrocoBrush.UI
          */
 
         /// <summary>
-        /// Cached Text Mesh Pro Text Field component. 
+        /// Cached Text Mesh Pro Text Field component.
         /// </summary>
         private TextMeshProUGUI m_text;
 

@@ -22,3 +22,9 @@ MonoBehaviour:
   - Direction: 3
     Time: 2
     Delay: 1.4
+  - Direction: 3
+    Time: 2.3
+    Delay: 0
+  - Direction: 3
+    Time: 2.6
+    Delay: 1

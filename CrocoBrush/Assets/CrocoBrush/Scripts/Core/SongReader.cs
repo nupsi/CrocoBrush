@@ -4,7 +4,7 @@ using UnityEngine;
 namespace CrocoBrush
 {
     /// <summary>
-    /// Reads Song Notes scriptable object data to create 
+    /// Reads Song Notes scriptable object data to create
     /// Food in Mouth in sync with the music.
     /// </summary>
     [RequireComponent(typeof(AudioSource))]
@@ -34,8 +34,8 @@ namespace CrocoBrush
         /*
          * Mono Behaviour Functions.
          */
-       
-        void Awake()
+
+        private void Awake()
         {
             //Cache audio source component.
             m_source = GetComponent<AudioSource>();
@@ -71,9 +71,9 @@ namespace CrocoBrush
 
         /// <summary>
         /// Loop to go through the Song Notes.
-        /// If the audio source time is smaller than the delay, 
+        /// If the audio source time is smaller than the delay,
         /// we use the Note delay for spawning Food.
-        /// If the audio source time is greater than the delay, 
+        /// If the audio source time is greater than the delay,
         /// we use audio sources time to spwan Food based on the Note time.
         /// </summary>
         private IEnumerator PlayNext()
@@ -91,7 +91,7 @@ namespace CrocoBrush
                 else
                 {
                     //Wait for the Note time match with audio sources time.
-                    if (CurrentTime >= m_song.Nodes[m_current].Time)
+                    if(CurrentTime >= m_song.Nodes[m_current].Time)
                     {
                         Mouth.Create(m_song.Nodes[m_current].Direction);
                         m_current++;
