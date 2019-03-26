@@ -1,22 +1,27 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using System.Collections;
+using UnityEngine;
 
 namespace CrocoBrush
 {
+    /// <summary>
+    /// Controls Food placed on a Tooth.
+    /// Use Initialize(Tooth, float) to place the Food on a Tooth.
+    /// </summary>
     public class Food : MonoBehaviour
     {
-        private GameObject m_circle;
-        private Teeth m_teeth;
-        private float m_time;
-        private bool m_initialized;
+        /*
+         * Variables.
+         */
 
-        public void Initialize(Teeth teeth, float time)
-        {
-            m_teeth = teeth;
-            m_time = time;
-            m_circle.transform.localScale = Vector3.one * 2;
-            m_initialized = true;
-            transform.LookAt(Camera.main.transform);
-        }
+        /// <summary>
+        /// Child object that displays the Foods 'age'.
+        /// </summary>
+        private GameObject m_circle;
+
+        /*
+         * Mono Behaviour Functions.
+         */
 
         private void Awake()
         {
@@ -31,33 +36,74 @@ namespace CrocoBrush
             }
         }
 
-        private void Update()
+        private void OnEnable()
         {
-            if(m_initialized)
-            {
-                if(m_time > 0)
+            //Reset the Foods quality.
+            Quality = Quality.Bad;
+            //Reset the time indicator scale.
+            m_circle.transform.localScale = Vector3.one * 2;
+        }
+
+        private void OnDisable()
+        {
+            //Make sure the active tween is killed.
+            DOTween.Kill(m_circle.transform);
+        }
+
+        /*
+         * Functions.
+         */
+
+        /// <summary>
+        /// Initialize the Food for a given Tooth with a given duration.
+        /// The Foods lasts a little longer than the given duration.
+        /// </summary>
+        /// <param name="tooth">Parent Tooth.</param>
+        /// <param name="duration">Foods duration.</param>
+        public void Initialize(Tooth tooth, float duration)
+        {
+            //Start modifying the Foods quality over time.
+            StartCoroutine(Degrade(duration));
+            //Start Tween to indicate the Foods lifespan.
+            m_circle.transform
+                .DOScale(Vector3.one, duration)
+                .SetEase(Ease.Linear)
+                .OnComplete(() =>
                 {
-                    if(Circle.x > 1)
+                    if(gameObject.activeInHierarchy)
                     {
-                        m_circle.transform.localScale -= Vector3.one * Time.deltaTime;
+                        m_circle.transform
+                            .DOScale(Vector3.one, 0.3f)
+                            .SetEase(Ease.Linear)
+                            .OnComplete(() => tooth?.Remove());
                     }
-                    m_time -= Time.deltaTime;
-                }
-                else
-                {
-                    Remove();
-                }
-            }
+                });
         }
 
-        public void Clear() => m_teeth.Clear();
-
-        private void Remove() => m_teeth.Remove();
-
-        private Vector3 Circle
+        /// <summary>
+        /// Modifies the Foods quality over time.
+        /// The Foods lasts a little longer than the given duration.
+        /// </summary>
+        /// <param name="duration">Foods duration.</param>
+        private IEnumerator Degrade(float duration)
         {
-            get => m_circle.transform.localScale;
-            set => m_circle.transform.localScale = value;
+            yield return new WaitForSeconds(duration * 0.4f);
+            Quality = Quality.Avarage;
+            yield return new WaitForSeconds(duration * 0.5f);
+            Quality = Quality.Good;
+            yield return new WaitForSeconds(0.29f);
+            Quality = Quality.Bad;
         }
+
+        /*
+         * Accessors.
+         */
+
+        /// <summary>
+        /// Stores the Foods quality.
+        /// Use Degrade(float) to change the Foods quality over time.
+        /// </summary>
+        /// <value>The Foods current quality.</value>
+        public Quality Quality { get; private set; }
     }
 }

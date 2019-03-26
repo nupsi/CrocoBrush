@@ -2,41 +2,46 @@
 
 namespace CrocoBrush
 {
-    [RequireComponent(typeof(Mouth))]
+    /// <summary>
+    /// Turns User input to Mouth Press Directions.
+    /// </summary>
     public class MouthInput : MonoBehaviour
     {
-        private Mouth m_mouth;
-        private KeyCode m_down = KeyCode.DownArrow;
-        private KeyCode m_up = KeyCode.UpArrow;
-        private KeyCode m_left = KeyCode.LeftArrow;
-        private KeyCode m_right = KeyCode.RightArrow;
-
-        private void Awake()
-        {
-            m_mouth = GetComponent<Mouth>();
-        }
+        /*
+         * Mono Behaviour Functions.
+         */
 
         private void Update()
         {
-            if(Input.GetKeyDown(m_left))
+            if(Input.GetButtonDown("Left"))
             {
-                m_mouth.PressDirection(Direction.Left);
+                Mouth.PressDirection(Direction.Left);
             }
 
-            if(Input.GetKeyDown(m_right))
+            if(Input.GetButtonDown("Right"))
             {
-                m_mouth.PressDirection(Direction.Right);
+                Mouth.PressDirection(Direction.Right);
             }
 
-            if(Input.GetKeyDown(m_down))
+            if(Input.GetButtonDown("Down"))
             {
-                m_mouth.PressDirection(Direction.Down);
+                Mouth.PressDirection(Direction.Down);
             }
 
-            if(Input.GetKeyDown(m_up))
+            if(Input.GetButtonDown("Up"))
             {
-                m_mouth.PressDirection(Direction.Up);
+                Mouth.PressDirection(Direction.Up);
             }
         }
+
+        /*
+         * Accessors.
+         */
+
+        /// <summary>
+        /// Current Mouth Instance.
+        /// </summary>
+        /// <value>Current Mouth Instance.</value>
+        private Mouth Mouth => Mouth.Instance;
     }
 }
