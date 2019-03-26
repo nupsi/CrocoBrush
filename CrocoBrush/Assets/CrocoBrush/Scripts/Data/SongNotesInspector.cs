@@ -1,4 +1,5 @@
 ﻿#if UNITY_EDITOR
+
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -225,4 +226,5 @@ namespace CrocoBrush
         private bool UseSingleLine => !(EditorGUIUtility.currentViewWidth < 365);
     }
 }
+
 #endif

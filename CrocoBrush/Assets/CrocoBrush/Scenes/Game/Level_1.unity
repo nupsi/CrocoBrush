@@ -860,56 +860,56 @@ PrefabInstance:
     - target: {fileID: 1841332553058795587, guid: faf86d727da70b146905252ab694b0c1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 1841332553058795587, guid: faf86d727da70b146905252ab694b0c1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0000009536743
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 1841332553058795587, guid: faf86d727da70b146905252ab694b0c1,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1841332553058795587, guid: faf86d727da70b146905252ab694b0c1,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 175
       objectReference: {fileID: 0}
     - target: {fileID: 1841332553058795587, guid: faf86d727da70b146905252ab694b0c1,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1841332553058795587, guid: faf86d727da70b146905252ab694b0c1,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1841332553058795587, guid: faf86d727da70b146905252ab694b0c1,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1841332553058795587, guid: faf86d727da70b146905252ab694b0c1,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1841332553058795587, guid: faf86d727da70b146905252ab694b0c1,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1841332553058795587, guid: faf86d727da70b146905252ab694b0c1,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1841332554545581076, guid: faf86d727da70b146905252ab694b0c1,
         type: 3}
-      propertyPath: m_AnchorMax.y
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1088,7 +1088,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: dec046348fe778e42aed7be98924a37e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7c4ecc722946050418340997f7bbce67, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

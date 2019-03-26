@@ -54,7 +54,7 @@ namespace CrocoBrush
         /// <summary>
         /// Update all registered components.
         /// </summary>
-        public void UpdateComponents() => m_components.ForEach((component) => component.RequestUpdate());
+        public void UpdateComponents() => m_components?.ForEach((component) => component.RequestUpdate());
 
         /*
          * Accessors.
