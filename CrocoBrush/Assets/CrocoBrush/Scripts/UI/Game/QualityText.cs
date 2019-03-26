@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CrocoBrush.UI
+namespace CrocoBrush.UI.Game
 {
     /// <summary>
     /// Automatically generated Text Mesh Pro Text Field to display text with tween.

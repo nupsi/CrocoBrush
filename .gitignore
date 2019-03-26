@@ -35,3 +35,9 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Custom
+*.blend1
+*.blend2
+*.blend3
+CrocoBrush/Assets/Local/

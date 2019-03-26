@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace CrocoBrush.UI
+namespace CrocoBrush.UI.Menu
 {
     /// <summary>
     /// Simple script to control pause menu.
@@ -77,7 +77,23 @@ namespace CrocoBrush.UI
             m_menu.SetActive(!running);
             foreach(var component in m_components)
             {
-                component.enabled = running;
+                if(component.GetType() == typeof(AudioSource))
+                {
+                    var source = (AudioSource)component;
+                    if(running)
+                    {
+                        source.UnPause();
+                    }
+                    else
+                    {
+                        source.Pause();
+                    }
+                }
+                else
+                {
+                    component.enabled = running;
+                }
+
             }
             Time.timeScale = running ? 1 : 0;
             m_running = running;

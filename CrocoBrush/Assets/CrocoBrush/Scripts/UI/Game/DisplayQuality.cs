@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace CrocoBrush.UI
+namespace CrocoBrush.UI.Game
 {
     /// <summary>
     /// Display latest score change quality.

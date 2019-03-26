@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace CrocoBrush.UI
+namespace CrocoBrush.UI.Game
 {
     /// <summary>
     /// GUI Component to display Crocodiles Score and Anger.

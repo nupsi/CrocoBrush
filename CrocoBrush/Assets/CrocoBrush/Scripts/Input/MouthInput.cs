@@ -8,51 +8,27 @@ namespace CrocoBrush
     public class MouthInput : MonoBehaviour
     {
         /*
-         * Variables.
-         */
-
-        /// <summary>
-        /// Key Code to press Down.
-        /// </summary>
-        private KeyCode m_down = KeyCode.DownArrow;
-
-        /// <summary>
-        /// Key Code to press Up.
-        /// </summary>
-        private KeyCode m_up = KeyCode.UpArrow;
-
-        /// <summary>
-        /// Key Code to press Left.
-        /// </summary>
-        private KeyCode m_left = KeyCode.LeftArrow;
-
-        /// <summary>
-        /// Key Code to press Right.
-        /// </summary>
-        private KeyCode m_right = KeyCode.RightArrow;
-
-        /*
          * Mono Behaviour Functions.
          */
 
         private void Update()
         {
-            if(Input.GetKeyDown(m_left))
+            if(Input.GetButtonDown("Left"))
             {
                 Mouth.PressDirection(Direction.Left);
             }
 
-            if(Input.GetKeyDown(m_right))
+            if(Input.GetButtonDown("Right"))
             {
                 Mouth.PressDirection(Direction.Right);
             }
 
-            if(Input.GetKeyDown(m_down))
+            if(Input.GetButtonDown("Down"))
             {
                 Mouth.PressDirection(Direction.Down);
             }
 
-            if(Input.GetKeyDown(m_up))
+            if(Input.GetButtonDown("Up"))
             {
                 Mouth.PressDirection(Direction.Up);
             }

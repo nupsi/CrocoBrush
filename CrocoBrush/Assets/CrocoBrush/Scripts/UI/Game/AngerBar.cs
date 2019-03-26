@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace CrocoBrush.UI
+namespace CrocoBrush.UI.Game
 {
     /// <summary>
     /// Progress bar to display Crocodiles Anger.
