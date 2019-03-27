@@ -7,17 +7,25 @@ namespace CrocoBrush.UI.Menu
     /// </summary>
     public class ChangeActive : MonoBehaviour
     {
+        /*
+         * Variables.
+         */
+
         /// <summary>
-        /// Object to deactivate on ActiveOther()
+        /// Game object to deactivate on ActiveOther()
         /// </summary>
         [SerializeField]
         private GameObject m_objectToDeactive;
 
         /// <summary>
-        /// Object to activate on ActiveOther()
+        /// Game object to activate on ActiveOther()
         /// </summary>
         [SerializeField]
         private GameObject m_objectToActive;
+
+        /*
+         * Functions.
+         */
 
         /// <summary>
         /// Set the other object active and deactive the current object.
@@ -27,5 +35,19 @@ namespace CrocoBrush.UI.Menu
             m_objectToActive.SetActive(true);
             m_objectToDeactive.SetActive(false);
         }
+
+        /*
+         * Accessors.
+         */
+
+        /// <summary>
+        /// Accessor for the game object to deactivate on ActiveOther()
+        /// </summary>
+        public GameObject ObjectToDeactive => m_objectToDeactive;
+
+        /// <summary>
+        ///  Accessor for the game object to activate on ActiveOther()
+        /// </summary>
+        public GameObject ObjectToActive => m_objectToActive;
     }
 }

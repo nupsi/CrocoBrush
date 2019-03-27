@@ -1,10 +1,8 @@
-﻿#if UNITY_EDITOR
-
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace CrocoBrush
+namespace CrocoBrush.Editors
 {
     [CustomEditor(typeof(SongNotes))]
     public class SongNotesInspector : Editor
@@ -226,5 +224,3 @@ namespace CrocoBrush
         private bool UseSingleLine => !(EditorGUIUtility.currentViewWidth < 365);
     }
 }
-
-#endif
