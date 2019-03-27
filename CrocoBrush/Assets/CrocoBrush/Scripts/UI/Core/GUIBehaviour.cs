@@ -13,8 +13,17 @@ namespace CrocoBrush.UI
 
         protected virtual void Awake()
         {
-            GUIController.Instance.RegisterComponent(this);
             m_rect = GetComponent<RectTransform>();
+        }
+
+        protected virtual void OnEnable()
+        {
+            GUIController.Instance.RegisterComponent(this);
+        }
+
+        protected virtual void OnDisable()
+        {
+            GUIController.Instance.RemoveComponent(this);
         }
 
         public abstract void RequestUpdate();

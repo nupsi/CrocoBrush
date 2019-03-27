@@ -93,7 +93,6 @@ namespace CrocoBrush.UI.Menu
                 {
                     component.enabled = running;
                 }
-
             }
             Time.timeScale = running ? 1 : 0;
             m_running = running;

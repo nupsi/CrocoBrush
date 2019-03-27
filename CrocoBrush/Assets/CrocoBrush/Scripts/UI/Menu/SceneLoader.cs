@@ -19,6 +19,23 @@ namespace CrocoBrush.UI.Menu
         /// Load scene with the given index.
         /// </summary>
         /// <param name="index">Scene Build Index</param>
-        public void LoadScene(int index) => SceneManager.LoadScene(index);
+        public void LoadScene(int index)
+        {
+            //Clear the current GUI Controller.
+            GUIController.Instance.Clear();
+            //Load Scene with the given index.
+            SceneManager.LoadScene(index);
+        }
+
+        /// <summary>
+        /// Reloads the current scene.
+        /// </summary>
+        public void ReloadCurrentScene()
+        {
+            //Clear the current GUI Controller.
+            GUIController.Instance.Clear();
+            //Reload the current scene.
+            LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }

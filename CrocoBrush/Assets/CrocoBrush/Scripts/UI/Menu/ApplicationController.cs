@@ -15,6 +15,13 @@ namespace CrocoBrush.UI.Menu
         /// <summary>
         /// Sends a request to quit (close) the application.
         /// </summary>
-        public void Quit() => Application.Quit();
+        public void Quit()
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
+        }
     }
 }

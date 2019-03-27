@@ -52,9 +52,26 @@ namespace CrocoBrush
         }
 
         /// <summary>
+        /// Removes given component from registered components.
+        /// </summary>
+        /// <param name="component">Component to remove.</param>
+        public void RemoveComponent(IGUI component)
+        {
+            m_components.Remove(component);
+        }
+
+        /// <summary>
         /// Update all registered components.
         /// </summary>
         public void UpdateComponents() => m_components?.ForEach((component) => component.RequestUpdate());
+
+        /// <summary>
+        /// Clears the current GUI Controller Instance.
+        /// It is safer to clear the instance, before loading a new scene to make sure that no
+        /// previous components are registered. Components should however register and remove
+        /// themselves on enable and disable.
+        /// </summary>
+        public void Clear() => m_instance = null;
 
         /*
          * Accessors.
