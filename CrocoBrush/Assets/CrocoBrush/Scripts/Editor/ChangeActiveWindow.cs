@@ -66,6 +66,12 @@ namespace CrocoBrush.Editors
                 EditorGUILayout.LabelField("Changes To:");
                 EditorGUILayout.ObjectField(component.ObjectToActive, typeof(GameObject), true);
                 EditorGUILayout.EndHorizontal();
+                EditorGUILayout.LabelField(
+                    string.Format("'{0}' under '{1}' changes from '{2}' to '{3}'",
+                        component.name,
+                        component.transform.parent.name,
+                        component.ObjectToDeactive.name,
+                        component.ObjectToActive.name));
                 EditorGUILayout.Space();
             }
             EditorGUILayout.EndScrollView();
