@@ -1738,8 +1738,9 @@ GameObject:
   m_Component:
   - component: {fileID: 978205016}
   - component: {fileID: 978205015}
-  - component: {fileID: 978205018}
+  - component: {fileID: 978205019}
   - component: {fileID: 978205017}
+  - component: {fileID: 978205018}
   m_Layer: 0
   m_Name: Crocodile Logic
   m_TagString: Untagged
@@ -1786,7 +1787,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 284904fd30eb62a4e8b650dc5a7a9b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_song: {fileID: 11400000, guid: 8f241ddd1032d4db29a4e93020efc54c, type: 2}
 --- !u!82 &978205018
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1884,6 +1884,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &978205019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978205014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41a7f50ed55d9d49ab1c05052ce35cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_current: {fileID: 11400000, guid: f00f049096acd9947aed5e41104594f1, type: 2}
 --- !u!1 &1072152793
 GameObject:
   m_ObjectHideFlags: 0

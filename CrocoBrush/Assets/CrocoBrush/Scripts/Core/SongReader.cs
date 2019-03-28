@@ -17,7 +17,6 @@ namespace CrocoBrush
         /// <summary>
         /// Current song notes to play.
         /// </summary>
-        [SerializeField]
         private SongNotes m_song;
 
         /// <summary>
@@ -41,12 +40,6 @@ namespace CrocoBrush
             m_source = GetComponent<AudioSource>();
         }
 
-        private void Start()
-        {
-            //Start spawning food and play the audio with delay.
-            StartSong();
-        }
-
         private void Reset()
         {
             //Automatically turn off the play on awake, when this script is attached to a game object.
@@ -67,6 +60,17 @@ namespace CrocoBrush
             StartCoroutine(PlayNext());
             //Start the audio with delay.
             StartCoroutine(PlaySong());
+        }
+
+        /// <summary>
+        /// Set the current song.
+        /// </summary>
+        /// <param name="audio">Audio for current song.</param>
+        /// <param name="notes">Notes for current song.</param>
+        public void SetSong(AudioClip audio, SongNotes notes)
+        {
+            m_source.clip = audio;
+            m_song = notes;
         }
 
         /// <summary>

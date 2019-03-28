@@ -30,12 +30,6 @@ namespace CrocoBrush
         private GameObject m_prefab;
 
         /// <summary>
-        /// The delay between spawning Food and playing sound.
-        /// </summary>
-        [SerializeField]
-        private float m_delay = 1.3f;
-
-        /// <summary>
         /// Dictionary to store the teeth based on their direction.
         /// </summary>
         private Dictionary<Direction, List<Tooth>> m_teeth;
@@ -200,7 +194,7 @@ namespace CrocoBrush
             //Add the parent Tooth to the active queue in the given direction.
             m_notes[direction].Enqueue(tooth);
             //Place the food on the free Tooth.
-            tooth.PlaceFood(m_available.Dequeue(), m_delay);
+            tooth.PlaceFood(m_available.Dequeue(), Delay);
         }
 
         /// <summary>
@@ -255,6 +249,6 @@ namespace CrocoBrush
         /// The delay between spawning Food and playing sound.
         /// </summary>
         /// <value>The delay.</value>
-        public float Delay => m_delay;
+        public float Delay { get; set; }
     }
 }
