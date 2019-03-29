@@ -88,9 +88,9 @@ namespace CrocoBrush
         private IEnumerator Degrade(float duration)
         {
             yield return new WaitForSeconds(duration * 0.4f);
-            Quality = Quality.Avarage;
-            yield return new WaitForSeconds(duration * 0.5f);
             Quality = Quality.Good;
+            yield return new WaitForSeconds(duration * 0.5f);
+            Quality = Quality.Perfect;
             yield return new WaitForSeconds(0.29f);
             Quality = Quality.Bad;
         }

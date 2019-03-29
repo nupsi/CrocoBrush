@@ -7,7 +7,7 @@ namespace CrocoBrush.UI.Game
     /// GUI Component to display Crocodiles Score and Anger.
     /// </summary>
     [RequireComponent(typeof(TextMeshProUGUI))]
-    public class Score : GUIBehaviour
+    public class Score : GUIGame
     {
         /*
          * Variables.
@@ -22,9 +22,8 @@ namespace CrocoBrush.UI.Game
          * Mono Behaviour Functions.
          */
 
-        protected override void Awake()
+        protected void Awake()
         {
-            base.Awake();
             m_text = GetComponent<TextMeshProUGUI>();
         }
 
@@ -32,12 +31,12 @@ namespace CrocoBrush.UI.Game
          * Functions.
          */
 
-        public override void RequestUpdate() => UpdateScore();
-
         /// <summary>
         /// Update Text Field component to display latest score and anger.
         /// </summary>
         public void UpdateScore() => m_text.SetText($"Score: {CurrentScore}\nAnger: {CurrentAnger}");
+
+        protected override void UpdateComponent() => UpdateScore();
 
         /*
          * Accessors.

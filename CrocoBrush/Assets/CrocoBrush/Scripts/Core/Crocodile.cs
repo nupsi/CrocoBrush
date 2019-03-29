@@ -18,13 +18,13 @@ namespace CrocoBrush
         public void AddScore(int score)
         {
             Score += score;
-            GUIController.Instance.UpdateComponents();
+            EventManager.Instance.TriggerEvent("UpdateGameUI");
         }
 
         public void Annoy()
         {
             Anger++;
-            GUIController.Instance.UpdateComponents();
+            EventManager.Instance.TriggerEvent("UpdateGameUI");
         }
 
         public int Score { get; private set; }

@@ -8,7 +8,7 @@ namespace CrocoBrush.UI.Menu
     /// Allows to control audio mixers groups volumes during runtime.
     /// </summary>
     [RequireComponent(typeof(Slider))]
-    public class VolumeController : MonoBehaviour
+    public class VolumeController : GUIMenu
     {
         /*
          * Variables.
@@ -17,17 +17,17 @@ namespace CrocoBrush.UI.Menu
         /// <summary>
         /// Sliders Max Value (Set on Reset()).
         /// </summary>
-        private readonly float MaxValue = 0;
+        private readonly float MaxValue = 1;
 
         /// <summary>
         /// Sliders Min Value (Set on Reset()).
         /// </summary>
-        private readonly float MinValue = -80;
+        private readonly float MinValue = 0.0001f;
 
         /// <summary>
         /// Sliders Default Value (Set on Reset()).
         /// </summary>
-        private readonly float DefaultValue = 0;
+        private readonly float DefaultValue = 1;
 
         /// <summary>
         /// Audio mixer that contains the modified group.
@@ -52,12 +52,12 @@ namespace CrocoBrush.UI.Menu
          * Mono Behaviour Functions.
          */
 
-        private void Awake()
+        protected void Awake()
         {
             m_slider = GetComponent<Slider>();
-            var volume = m_slider.value;
-            m_mixer.GetFloat(m_group, out volume);
-            m_slider.value = volume;
+            m_slider.value = PlayerPrefs.HasKey(m_group)
+                ? PlayerPrefs.GetFloat(m_group)
+                : DefaultValue;
         }
 
         private void Reset()
@@ -73,11 +73,30 @@ namespace CrocoBrush.UI.Menu
          */
 
         /// <summary>
-        /// Updates the group's volume to the current slider value.
+        /// Updates the group's volume to the given value.
         /// </summary>
-        public void UpdateVolume()
+        public void SetVolume(float volume)
         {
-            m_mixer.SetFloat(m_group, m_slider.value);
+            if(volume >= MinValue && volume <= MaxValue)
+            {
+                m_mixer.SetFloat(m_group, Mathf.Log10(volume) * 20);
+                PlayerPrefs.SetFloat(m_group, m_slider.value);
+            }
+            else
+            {
+                Debug.LogError($"The given volume ({volume}) is outside the given range ({MinValue} - {MaxValue})");
+            }
+        }
+
+        /// <summary>
+        /// Used to reset the value to the default value.
+        /// </summary>
+        protected override void UpdateComponent()
+        {
+            if(PlayerPrefs.HasKey(m_group))
+            {
+                SetVolume(DefaultValue);
+            }
         }
     }
 }

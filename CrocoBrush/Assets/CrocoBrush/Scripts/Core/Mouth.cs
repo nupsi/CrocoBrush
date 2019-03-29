@@ -166,11 +166,11 @@ namespace CrocoBrush
                     Crocodile.Instance.Annoy();
                     break;
 
-                case Quality.Avarage:
+                case Quality.Good:
                     Crocodile.Instance.AddScore(1);
                     break;
 
-                case Quality.Good:
+                case Quality.Perfect:
                     Crocodile.Instance.AddScore(2);
                     break;
             }
