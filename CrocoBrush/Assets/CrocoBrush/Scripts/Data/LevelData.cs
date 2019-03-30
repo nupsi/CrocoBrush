@@ -8,6 +8,7 @@ namespace CrocoBrush
         public string Name;
         public AudioClip Audio;
         public SongNotes Notes;
+        public SongNotes SpaceNotes;
         public float Delay;
     }
 }

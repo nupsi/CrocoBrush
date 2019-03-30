@@ -2,17 +2,20 @@
 
 namespace CrocoBrush
 {
-    [RequireComponent(typeof(SongReader))]
+    [RequireComponent(typeof(AudioSource))]
     public class LevelController : MonoBehaviour
     {
         [SerializeField]
         private LevelData m_current;
 
-        private SongReader m_reader;
+        private AudioSource m_source;
+
+        private SongReader m_noteReader;
+        private SongReader m_spaceReader;
 
         private void Awake()
         {
-            m_reader = GetComponent<SongReader>();
+            m_source = GetComponent<AudioSource>();
         }
 
         private void Start()
@@ -20,11 +23,21 @@ namespace CrocoBrush
             PlaySelectedLevel();
         }
 
+        private void Reset()
+        {
+            //Automatically turn off the play on awake, when this script is attached to a game object.
+            m_source = GetComponent<AudioSource>();
+            m_source.playOnAwake = false;
+        }
+
         public void PlaySelectedLevel()
         {
             Mouth.Instance.Delay = SelectedLevel.Delay;
-            m_reader.SetSong(SelectedLevel.Audio, SelectedLevel.Notes);
-            m_reader.StartSong();
+            m_source.clip = SelectedLevel.Audio;
+            m_noteReader = new SongReader(Mouth, m_source, SelectedLevel.Notes);
+            m_noteReader.StartSong();
+            m_spaceReader = new SongReader(Spacebar, m_source, SelectedLevel.SpaceNotes);
+            m_spaceReader.StartSong();
         }
 
         public LevelData SelectedLevel
@@ -32,5 +45,8 @@ namespace CrocoBrush
             get => m_current;
             set => m_current = value;
         }
+
+        private Mouth Mouth => Mouth.Instance;
+        private Spacebar Spacebar => Spacebar.Instance;
     }
 }

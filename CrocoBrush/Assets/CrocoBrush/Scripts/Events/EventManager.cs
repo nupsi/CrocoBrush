@@ -1,40 +1,40 @@
 ﻿using System.Collections.Generic;
-using UnityEngine.Events;
 
 namespace CrocoBrush
 {
     public class EventManager
     {
-        private Dictionary<string, UnityEvent> m_events;
+        private Dictionary<string, Action> m_events;
 
         private static EventManager m_instance;
 
         public EventManager()
         {
             m_instance = this;
-            m_events = new Dictionary<string, UnityEvent>();
+            m_events = new Dictionary<string, Action>();
         }
 
-        public void StartListening(string name, UnityAction listener)
+        public void StartListening(string name, Action listener)
         {
             if(m_events.TryGetValue(name, out var current))
             {
-                current.AddListener(listener);
+                current += listener;
+                m_events[name] += current;
             }
             else
             {
-                current = new UnityEvent();
-                current.AddListener(listener);
+                current += listener;
                 m_events.Add(name, current);
             }
         }
 
-        public void StopListening(string name, UnityAction listener)
+        public void StopListening(string name, Action listener)
         {
             if(m_instance == null) return;
             if(m_events.TryGetValue(name, out var current))
             {
-                current.RemoveListener(listener);
+                current -= listener;
+                m_events[name] = current;
             }
         }
 

@@ -9,7 +9,7 @@ namespace CrocoBrush
     /// Use Create(Direction) to add Food.
     /// Use PressDirection(Direction) to remove Food.
     /// </summary>
-    public class Mouth : MonoBehaviour
+    public class Mouth : MonoBehaviour, ICreator
     {
         /*
          * Variables.

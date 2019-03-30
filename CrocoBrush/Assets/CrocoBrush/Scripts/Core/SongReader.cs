@@ -7,8 +7,7 @@ namespace CrocoBrush
     /// Reads Song Notes scriptable object data to create
     /// Food in Mouth in sync with the music.
     /// </summary>
-    [RequireComponent(typeof(AudioSource))]
-    public class SongReader : MonoBehaviour
+    public class SongReader
     {
         /*
          * Variables.
@@ -30,26 +29,20 @@ namespace CrocoBrush
         /// </summary>
         private int m_current;
 
-        /*
-         * Mono Behaviour Functions.
-         */
+        private ICreator m_creator;
 
-        private void Awake()
-        {
-            //Cache audio source component.
-            m_source = GetComponent<AudioSource>();
-        }
-
-        private void Reset()
-        {
-            //Automatically turn off the play on awake, when this script is attached to a game object.
-            m_source = GetComponent<AudioSource>();
-            m_source.playOnAwake = false;
-        }
+        private float m_delay;
 
         /*
          * Functions.
          */
+
+        public SongReader(ICreator creator, AudioSource source, SongNotes notes)
+        {
+            m_source = source;
+            m_creator = creator;
+            m_song = notes;
+        }
 
         /// <summary>
         /// Starts the song by starting the process of spawning Food and playing audio with delay.
@@ -57,20 +50,9 @@ namespace CrocoBrush
         public void StartSong()
         {
             //Start the Food spwaning loop.
-            StartCoroutine(PlayNext());
+            Mouth.Instance.StartCoroutine(PlayNext());
             //Start the audio with delay.
-            StartCoroutine(PlaySong());
-        }
-
-        /// <summary>
-        /// Set the current song.
-        /// </summary>
-        /// <param name="audio">Audio for current song.</param>
-        /// <param name="notes">Notes for current song.</param>
-        public void SetSong(AudioClip audio, SongNotes notes)
-        {
-            m_source.clip = audio;
-            m_song = notes;
+            Mouth.Instance.StartCoroutine(PlaySong());
         }
 
         /// <summary>
@@ -86,18 +68,18 @@ namespace CrocoBrush
             while(m_current < m_song.Nodes.Count)
             {
                 //Decide between spawing with delay and time.
-                if(m_source.time < Delay)
+                if(m_source.time < m_delay)
                 {
                     //Wait for the delay time and spawn note.
                     yield return new WaitForSeconds(NoteDelay);
-                    Mouth.Create(m_song.Nodes[m_current].Direction);
+                    m_creator.Create(m_song.Nodes[m_current].Direction);
                 }
                 else
                 {
                     //Wait for the Note time match with audio sources time.
                     if(CurrentTime >= m_song.Nodes[m_current].Time)
                     {
-                        Mouth.Create(m_song.Nodes[m_current].Direction);
+                        m_creator.Create(m_song.Nodes[m_current].Direction);
                         m_current++;
                     }
                     yield return new WaitForEndOfFrame();
@@ -111,7 +93,7 @@ namespace CrocoBrush
         /// </summary>
         private IEnumerator PlaySong()
         {
-            yield return new WaitForSeconds(Delay);
+            yield return new WaitForSeconds(m_delay);
             m_source.Play();
         }
 
@@ -120,23 +102,11 @@ namespace CrocoBrush
          */
 
         /// <summary>
-        /// Shorter reference to the current Mouth.Instance.
-        /// </summary>
-        /// <value>The current Mouth Instance.</value>
-        private Mouth Mouth => Mouth.Instance;
-
-        /// <summary>
-        /// Current delay between spawning the Food and playing audio.
-        /// </summary>
-        /// <value>The delay between spawning and playin audio.</value>
-        private float Delay => Mouth.Delay;
-
-        /// <summary>
         /// Returns the current audio source time with the delay.
         /// Used to match the spawning of the Food with the audio.
         /// </summary>
         /// <value>The currnt audio souce time with the delay.</value>
-        private float CurrentTime => (m_source.time + Delay);
+        private float CurrentTime => (m_source.time + m_delay);
 
         /// <summary>
         /// Returns the delay time for current Note.
