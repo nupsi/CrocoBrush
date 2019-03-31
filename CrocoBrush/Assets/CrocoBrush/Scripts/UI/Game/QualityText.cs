@@ -69,9 +69,6 @@ namespace CrocoBrush.UI.Game
             DOTween.Kill(m_transform);
             //Reset the position to initial position.
             m_transform.position = m_position;
-            //Reset the text to none.
-            //Maybe this is causing the rebuild issue below?
-            m_text.SetText("");
         }
 
         /*
@@ -91,10 +88,14 @@ namespace CrocoBrush.UI.Game
             //Update the text color.
             m_text.color = color;
             //Update the displayed text.
-            m_text.SetText(text);
+            if(m_text.text != text)
+            {
+                m_text.SetText(text);
+                m_text.Rebuild(CanvasUpdate.PreRender);
+            }
             //For some reason the text gets blurry after the SetText on build, so a manual rebuild is required.
             //This might cause some performance issues or defeat the purpose of object pooling the texts.
-            m_text.Rebuild(CanvasUpdate.PreRender);
+            //
             //Tween the Size.
             m_transform
                 .DOScale(0.1f, 0.001f)

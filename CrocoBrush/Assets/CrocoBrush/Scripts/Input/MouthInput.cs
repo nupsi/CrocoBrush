@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace CrocoBrush
 {
@@ -7,41 +8,32 @@ namespace CrocoBrush
     /// </summary>
     public class MouthInput : MonoBehaviour
     {
+        private Dictionary<string, Direction> m_inputs;
+
         /*
          * Mono Behaviour Functions.
          */
 
-        private void Update()
+        private void Awake()
         {
-            if(Input.GetButtonDown("Left"))
+            m_inputs = new Dictionary<string, Direction>()
             {
-                Mouth.PressDirection(Direction.Left);
-            }
-
-            if(Input.GetButtonDown("Right"))
-            {
-                Mouth.PressDirection(Direction.Right);
-            }
-
-            if(Input.GetButtonDown("Down"))
-            {
-                Mouth.PressDirection(Direction.Down);
-            }
-
-            if(Input.GetButtonDown("Up"))
-            {
-                Mouth.PressDirection(Direction.Up);
-            }
+                { "Up", Direction.Up },
+                { "Down", Direction.Down },
+                { "Left", Direction.Left },
+                { "Right", Direction.Right }
+            };
         }
 
-        /*
-         * Accessors.
-         */
-
-        /// <summary>
-        /// Current Mouth Instance.
-        /// </summary>
-        /// <value>Current Mouth Instance.</value>
-        private Mouth Mouth => Mouth.Instance;
+        private void Update()
+        {
+            foreach(var set in m_inputs)
+            {
+                if(Input.GetButtonDown(set.Key))
+                {
+                    Mouth.Instance.PressDirection(set.Value);
+                }
+            }
+        }
     }
 }
