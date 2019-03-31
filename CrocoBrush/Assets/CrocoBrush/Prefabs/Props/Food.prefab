@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1688101098110789590}
   - component: {fileID: 5808732077758743275}
   - component: {fileID: 545647980598524225}
+  - component: {fileID: 9168408694209222311}
   m_Layer: 1
   m_Name: Food
   m_TagString: Untagged
@@ -77,6 +78,23 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &9168408694209222311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436447762067869475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f30266735da878e4483bd94fa64f5e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_materials:
+  - {fileID: 2100000, guid: eb15d4caaff4c744c911ca663b6322de, type: 2}
+  - {fileID: 2100000, guid: 4415ccc1452dab545a05215ac547c301, type: 2}
+  - {fileID: 2100000, guid: 53ac644b51f090a4cb96f2413282a3c8, type: 2}
+  - {fileID: 2100000, guid: 745077a9570ea0f41887a0dd7d8e857d, type: 2}
 --- !u!1 &1508160652703813941
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +183,7 @@ GameObject:
   - component: {fileID: 2937380356240057041}
   - component: {fileID: 8019424918962364235}
   - component: {fileID: 2918907035757860112}
+  - component: {fileID: 6092394769461840627}
   m_Layer: 1
   m_Name: Background
   m_TagString: Untagged
@@ -231,6 +250,27 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &6092394769461840627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3041989605815709747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cae0bf9c161458d43aa77e3a510b90ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_materials:
+  - Direction: 1
+    Material: {fileID: 2100000, guid: 7245fbf46c4464745b8949e1e4101f72, type: 2}
+  - Direction: 2
+    Material: {fileID: 2100000, guid: 4b06885cde67e1e4bb7c287c860c5ac1, type: 2}
+  - Direction: 3
+    Material: {fileID: 2100000, guid: 2531f3c7359e02a498a55cafd8902c88, type: 2}
+  - Direction: 4
+    Material: {fileID: 2100000, guid: 4e0854d2b8660e149b16676f7017440e, type: 2}
 --- !u!1 &7724725654469539120
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,6 +19,11 @@ namespace CrocoBrush
         /// </summary>
         private GameObject m_circle;
 
+        /// <summary>
+        /// Controller for changing background color to visualize current direction.
+        /// </summary>
+        private BackgroundColor m_background;
+
         /*
          * Mono Behaviour Functions.
          */
@@ -28,6 +33,7 @@ namespace CrocoBrush
             if(transform.childCount > 0)
             {
                 m_circle = transform.GetChild(0).gameObject;
+                m_background = GetComponentInChildren<BackgroundColor>();
             }
             else
             {
@@ -62,6 +68,7 @@ namespace CrocoBrush
         /// <param name="duration">Foods duration.</param>
         public void Initialize(Tooth tooth, float duration)
         {
+            m_background?.UpdateMaterial(tooth.Direction);
             //Start modifying the Foods quality over time.
             StartCoroutine(Degrade(duration));
             //Start Tween to indicate the Foods lifespan.

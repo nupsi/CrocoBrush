@@ -5,6 +5,8 @@ namespace CrocoBrush
     [RequireComponent(typeof(AudioSource))]
     public class LevelController : MonoBehaviour
     {
+        public static LevelController Instance;
+
         [SerializeField]
         private LevelData m_current;
 
@@ -15,12 +17,13 @@ namespace CrocoBrush
 
         private void Awake()
         {
+            if(Instance != null)
+            {
+                Debug.LogError("Multiple Level Controller Instances!");
+                return;
+            }
+            Instance = this;
             m_source = GetComponent<AudioSource>();
-        }
-
-        private void Start()
-        {
-            PlaySelectedLevel();
         }
 
         private void Reset()
