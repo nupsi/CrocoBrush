@@ -10,21 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7331506cb391bfc4d877596fe8cbd152, type: 3}
-  m_Name: SlowTest
+  m_Name: Test
   m_EditorClassIdentifier: 
-  Nodes:
-  - Direction: 3
-    Time: 0.3
-    Delay: 0.3
-  - Direction: 3
-    Time: 0.6
-    Delay: 0.3
-  - Direction: 3
-    Time: 2
-    Delay: 1.4
-  - Direction: 3
-    Time: 2.3
-    Delay: 0
-  - Direction: 3
-    Time: 2.6
-    Delay: 1
+  Nodes: []

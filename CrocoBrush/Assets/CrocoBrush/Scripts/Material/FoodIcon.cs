@@ -27,6 +27,6 @@ namespace CrocoBrush
             m_renderer.sharedMaterial = RandomMaterial;
         }
 
-        private Material RandomMaterial =>  m_materials[Random.Range(0, m_materials.Length)];
+        private Material RandomMaterial => m_materials[Random.Range(0, m_materials.Length)];
     }
 }

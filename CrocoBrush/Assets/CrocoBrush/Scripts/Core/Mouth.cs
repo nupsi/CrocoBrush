@@ -67,6 +67,7 @@ namespace CrocoBrush
         /*
          * Functions.
          */
+
         /// <summary>
         /// Adds Food on a Tooth on the given direction.
         /// </summary>
@@ -122,20 +123,24 @@ namespace CrocoBrush
             //Add the Food back to object pool.
             m_available.Enqueue(food);
         }
+
         private void AddScore(Quality quality)
         {
             switch(quality)
             {
                 case Quality.Bad:
                     Crocodile.Instance.Annoy();
+                    EventManager.Instance.TriggerEvent("Miss");
                     break;
 
                 case Quality.Good:
                     Crocodile.Instance.AddScore(1);
+                    EventManager.Instance.TriggerEvent("Hit");
                     break;
 
                 case Quality.Perfect:
                     Crocodile.Instance.AddScore(2);
+                    EventManager.Instance.TriggerEvent("Hit");
                     break;
             }
         }
@@ -238,6 +243,7 @@ namespace CrocoBrush
             //Return the index for a free theet or -1 if there is no space available.
             return index;
         }
+
         /*
          * Accessors.
          */
