@@ -12,7 +12,7 @@ namespace CrocoBrush
             m_source = GetComponent<AudioSource>();
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             if(m_source.time >= m_source.clip.length)
             {
