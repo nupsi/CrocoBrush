@@ -106,15 +106,15 @@ namespace CrocoBrush.UI.Game
             {
                 case Quality.Bad:
                     text.DisplayText(this, "Miss", m_duration, Color.red);
-                    break;
+                    return;
 
                 case Quality.Good:
                     text.DisplayText(this, "Great", m_duration, Color.blue);
-                    break;
+                    return;
 
                 case Quality.Perfect:
                     text.DisplayText(this, "Perfect", m_duration, Color.green);
-                    break;
+                    return;
             }
         }
 
