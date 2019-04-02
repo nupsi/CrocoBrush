@@ -29,9 +29,10 @@ namespace CrocoBrush
         /// </summary>
         private int m_current;
 
+        /// <summary>
+        /// The target object for creating objects from the current notes.
+        /// </summary>
         private ICreator m_creator;
-
-        private float m_delay;
 
         /*
          * Functions.
@@ -68,11 +69,14 @@ namespace CrocoBrush
             while(m_current < m_song.Nodes.Count)
             {
                 //Decide between spawing with delay and time.
-                if(m_source.time < m_delay)
+                if(m_source.time < Delay)
                 {
-                    //Wait for the delay time and spawn note.
-                    yield return new WaitForSeconds(NoteDelay);
-                    m_creator.Create(m_song.Nodes[m_current].Direction);
+                    if(m_song.Nodes[m_current].Delay < Delay)
+                    {
+                        //Wait for the delay time and spawn note.
+                        yield return new WaitForSeconds(NoteDelay);
+                        m_creator.Create(m_song.Nodes[m_current].Direction);
+                    }
                 }
                 else
                 {
@@ -82,8 +86,8 @@ namespace CrocoBrush
                         m_creator.Create(m_song.Nodes[m_current].Direction);
                         m_current++;
                     }
-                    yield return new WaitForEndOfFrame();
                 }
+                yield return new WaitForEndOfFrame();
             }
         }
 
@@ -93,7 +97,7 @@ namespace CrocoBrush
         /// </summary>
         private IEnumerator PlaySong()
         {
-            yield return new WaitForSeconds(m_delay);
+            yield return new WaitForSeconds(Delay);
             m_source.Play();
         }
 
@@ -106,7 +110,7 @@ namespace CrocoBrush
         /// Used to match the spawning of the Food with the audio.
         /// </summary>
         /// <value>The currnt audio souce time with the delay.</value>
-        private float CurrentTime => (m_source.time + m_delay);
+        private float CurrentTime => (m_source.time + Delay);
 
         /// <summary>
         /// Returns the delay time for current Note.
@@ -122,5 +126,11 @@ namespace CrocoBrush
                 return time;
             }
         }
+
+        /// <summary>
+        /// The delay between creating notes and the correct time hitting them.
+        /// </summary>
+        /// <value>The current delay.</value>
+        private float Delay => Mouth.Instance.Delay;
     }
 }
