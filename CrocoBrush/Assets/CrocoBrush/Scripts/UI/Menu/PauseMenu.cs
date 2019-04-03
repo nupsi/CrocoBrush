@@ -38,7 +38,6 @@ namespace CrocoBrush.UI.Menu
         private void Awake()
         {
             m_running = true;
-            m_menu.SetActive(false);
         }
 
         private void Update()
@@ -77,9 +76,8 @@ namespace CrocoBrush.UI.Menu
             m_menu.SetActive(!running);
             foreach(var component in m_components)
             {
-                if(component.GetType() == typeof(AudioSource))
+                if(component is AudioSource source)
                 {
-                    var source = (AudioSource)component;
                     if(running)
                     {
                         source.UnPause();

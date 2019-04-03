@@ -13,123 +13,123 @@ MonoBehaviour:
   m_Name: Level_1_Space
   m_EditorClassIdentifier: 
   Nodes:
-  - Direction: 0
+  - Direction: 3
     Time: 37.290657
     Delay: 37.291
-  - Direction: 0
+  - Direction: 4
     Time: 39.50932
     Delay: 2.219
-  - Direction: 0
+  - Direction: 1
     Time: 41.74932
     Delay: 2.24
-  - Direction: 0
+  - Direction: 4
     Time: 43.967983
     Delay: 2.219
-  - Direction: 0
+  - Direction: 1
     Time: 46.186646
     Delay: 2.219
-  - Direction: 0
+  - Direction: 4
     Time: 48.40533
     Delay: 2.219
-  - Direction: 0
+  - Direction: 2
     Time: 50.62399
     Delay: 2.219
-  - Direction: 0
+  - Direction: 3
     Time: 52.84265
     Delay: 2.219
-  - Direction: 0
+  - Direction: 1
     Time: 55.082653
     Delay: 2.24
-  - Direction: 0
+  - Direction: 3
     Time: 57.301315
     Delay: 2.219
-  - Direction: 0
+  - Direction: 1
     Time: 59.519978
     Delay: 2.219
-  - Direction: 0
+  - Direction: 4
     Time: 61.738663
     Delay: 2.219
-  - Direction: 0
+  - Direction: 1
     Time: 63.957325
     Delay: 2.219
-  - Direction: 0
+  - Direction: 3
     Time: 66.17599
     Delay: 2.219
-  - Direction: 0
+  - Direction: 4
     Time: 68.415985
     Delay: 2.24
-  - Direction: 0
+  - Direction: 3
     Time: 70.63465
     Delay: 2.219
-  - Direction: 0
+  - Direction: 4
     Time: 72.85331
     Delay: 2.219
-  - Direction: 0
+  - Direction: 3
     Time: 75.072
     Delay: 2.219
-  - Direction: 0
+  - Direction: 4
     Time: 77.29066
     Delay: 2.219
-  - Direction: 0
+  - Direction: 1
     Time: 79.50932
     Delay: 2.219
-  - Direction: 0
+  - Direction: 3
     Time: 81.74932
     Delay: 2.24
-  - Direction: 0
+  - Direction: 4
     Time: 83.96798
     Delay: 2.219
-  - Direction: 0
+  - Direction: 1
     Time: 86.186646
     Delay: 2.219
-  - Direction: 0
+  - Direction: 2
     Time: 88.40533
     Delay: 2.219
-  - Direction: 0
+  - Direction: 3
     Time: 90.62399
     Delay: 2.219
-  - Direction: 0
+  - Direction: 1
     Time: 92.84265
     Delay: 2.219
-  - Direction: 0
+  - Direction: 3
     Time: 95.08266
     Delay: 2.24
-  - Direction: 0
+  - Direction: 1
     Time: 97.301315
     Delay: 2.219
-  - Direction: 0
+  - Direction: 2
     Time: 99.51997
     Delay: 2.219
-  - Direction: 0
+  - Direction: 3
     Time: 101.73866
     Delay: 2.219
-  - Direction: 0
+  - Direction: 1
     Time: 103.95732
     Delay: 2.219
-  - Direction: 0
+  - Direction: 3
     Time: 106.17599
     Delay: 2.219
-  - Direction: 0
+  - Direction: 1
     Time: 111.18932
     Delay: 5.013
-  - Direction: 0
+  - Direction: 2
     Time: 113.40798
     Delay: 2.219
-  - Direction: 0
+  - Direction: 3
     Time: 115.62664
     Delay: 2.219
-  - Direction: 0
+  - Direction: 4
     Time: 117.84533
     Delay: 2.219
-  - Direction: 0
+  - Direction: 2
     Time: 120.06399
     Delay: 2.219
-  - Direction: 0
+  - Direction: 3
     Time: 122.30399
     Delay: 2.24
-  - Direction: 0
+  - Direction: 1
     Time: 124.52265
     Delay: 2.219
-  - Direction: 0
+  - Direction: 3
     Time: 126.74132
     Delay: 2.219
