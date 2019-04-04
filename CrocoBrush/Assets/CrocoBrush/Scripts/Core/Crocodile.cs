@@ -27,6 +27,15 @@ namespace CrocoBrush
             EventManager.Instance.TriggerEvent("UpdateGameUI");
         }
 
+        public void CalmDown()
+        {
+            if(Anger > 0)
+            {
+                Anger--;
+                EventManager.Instance.TriggerEvent("UpdateGameUI");
+            }
+        }
+
         public int Score { get; private set; }
         public int Anger { get; private set; }
     }

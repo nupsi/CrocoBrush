@@ -24,6 +24,8 @@ namespace CrocoBrush
         /// </summary>
         private BackgroundColor m_background;
 
+        private IEnumerator m_degrade;
+
         /*
          * Mono Behaviour Functions.
          */
@@ -70,7 +72,8 @@ namespace CrocoBrush
         {
             m_background?.UpdateMaterial(tooth.Direction);
             //Start modifying the Foods quality over time.
-            StartCoroutine(Degrade(duration));
+            m_degrade = Degrade(duration);
+            StartCoroutine(m_degrade);
             //Start Tween to indicate the Foods lifespan.
             m_circle.transform
                 .DOScale(Vector3.one, duration)
@@ -84,6 +87,21 @@ namespace CrocoBrush
                             .SetEase(Ease.Linear)
                             .OnComplete(() => tooth?.Remove());
                     }
+                });
+        }
+
+        /// <summary>
+        /// Deactive target food with tweening based on the food quality.
+        /// </summary>
+        public void Hide()
+        {
+            var size = TargetSize;
+            StopCoroutine(m_degrade);
+            transform.DOScale(size, 0.3f * size)
+                .SetEase(size < 1 ? Ease.InBack : Ease.OutBack)
+                .OnComplete(() => {
+                    transform.DOScale(1, 0);
+                    gameObject.SetActive(false);
                 });
         }
 
@@ -112,5 +130,19 @@ namespace CrocoBrush
         /// </summary>
         /// <value>The Foods current quality.</value>
         public Quality Quality { get; private set; }
+
+        private float TargetSize
+        {
+            get
+            {
+                switch(Quality)
+                {
+                    case Quality.Bad: return 0.5f;
+                    case Quality.Good: return 1.25f;
+                    case Quality.Perfect: return 1.5f;
+                    default: return 1f;
+                }
+            }
+        }
     }
 }

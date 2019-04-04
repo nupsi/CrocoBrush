@@ -34,6 +34,9 @@ namespace CrocoBrush
         /// </summary>
         private ICreator m_creator;
 
+        private WaitForSeconds m_nodeDelay;
+        private WaitForSeconds m_readDelay;
+
         /*
          * Functions.
          */
@@ -43,6 +46,8 @@ namespace CrocoBrush
             m_source = source;
             m_creator = creator;
             m_song = notes;
+            m_nodeDelay = new WaitForSeconds(NoteDelay);
+            m_readDelay = new WaitForSeconds(0.0001f);
         }
 
         /// <summary>
@@ -74,7 +79,7 @@ namespace CrocoBrush
                     if(m_song.Nodes[m_current].Delay < Delay)
                     {
                         //Wait for the delay time and spawn note.
-                        yield return new WaitForSeconds(NoteDelay);
+                        yield return m_nodeDelay;
                         m_creator.Create(m_song.Nodes[m_current].Direction);
                     }
                 }
@@ -87,7 +92,7 @@ namespace CrocoBrush
                         m_current++;
                     }
                 }
-                yield return new WaitForEndOfFrame();
+                yield return m_readDelay;
             }
         }
 

@@ -46,13 +46,21 @@ ModelImporter:
     400038: Cube
     400040: //RootNode
     2100000: Material_013
+    2100002: Crocodile
+    2100004: Mouth
+    2100006: Tooth
     4300000: Cube
     7400000: Open
     7400002: Walk
     7400004: Close
     9500000: //RootNode
     13700000: Cube
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Crocodile
+    second: {fileID: 2100000, guid: 54613b76da3d15c43b2ff56bf9d3b479, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
