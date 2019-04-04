@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace CrocoBrush
 {
+    /// <summary>
+    /// Input and animation controller for the bird flying inside the crocodile's mouth.
+    /// </summary>
     [RequireComponent(typeof(Animator))]
     public class Bird : MonoBehaviour
     {
@@ -97,12 +100,18 @@ namespace CrocoBrush
          */
 
         /// <summary>
-        /// Plays the birds eat animation.
+        /// Plays the bird's eat animation.
         /// </summary>
         public void PlayEatAnimation() => m_aimator.SetTrigger(Eat);
 
+        /// <summary>
+        /// Start the bird's wing block animation.
+        /// </summary>
         public void PlayBlockAnimation() => m_aimator.SetTrigger(Block);
 
+        /// <summary>
+        /// End the bird's wing block animation.
+        /// </summary>
         public void PlayUnblocAnimation() => m_aimator.SetTrigger(Unblock);
 
         /// <summary>

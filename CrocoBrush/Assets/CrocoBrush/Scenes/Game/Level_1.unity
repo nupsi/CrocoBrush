@@ -486,7 +486,7 @@ Light:
     m_Strength: 1
     m_Bias: 0.05
     m_NormalBias: 0.4
-    m_NearPlane: 0.2
+    m_NearPlane: 0.1
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
@@ -1182,6 +1182,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 64
       objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: 64dfc08f5a89e2e4ea50d6079491d79a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: 64dfc08f5a89e2e4ea50d6079491d79a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 64dfc08f5a89e2e4ea50d6079491d79a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1238,15 +1246,19 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 4.6036425
       objectReference: {fileID: 0}
+    - target: {fileID: 2300012, guid: 64dfc08f5a89e2e4ea50d6079491d79a, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300012, guid: 64dfc08f5a89e2e4ea50d6079491d79a, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300014, guid: 64dfc08f5a89e2e4ea50d6079491d79a, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 100012, guid: 64dfc08f5a89e2e4ea50d6079491d79a, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 100014, guid: 64dfc08f5a89e2e4ea50d6079491d79a, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 100016, guid: 64dfc08f5a89e2e4ea50d6079491d79a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 64
       objectReference: {fileID: 0}
@@ -2189,6 +2201,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crocodile Logic
       objectReference: {fileID: 0}
+    - target: {fileID: 975150143954454109, guid: de1fd8112040c76499de0195f8fcea8a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3025685121478805276, guid: de1fd8112040c76499de0195f8fcea8a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2423,11 +2440,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -8.702001
-      objectReference: {fileID: 0}
-    - target: {fileID: 975150143954454109, guid: de1fd8112040c76499de0195f8fcea8a,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de1fd8112040c76499de0195f8fcea8a, type: 3}
@@ -2886,6 +2898,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8108126258607425982, guid: 3d9e41b60ff061546b0b970fbc5ac370,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2776654606315500375, guid: 3d9e41b60ff061546b0b970fbc5ac370,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -2939,11 +2956,6 @@ PrefabInstance:
     - target: {fileID: 2776654606315500370, guid: 3d9e41b60ff061546b0b970fbc5ac370,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8108126258607425982, guid: 3d9e41b60ff061546b0b970fbc5ac370,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

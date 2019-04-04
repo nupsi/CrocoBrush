@@ -99,6 +99,7 @@ namespace CrocoBrush
             if(m_notes[direction].Count <= 0)
             {
                 //print("No food to clean");
+                EventManager.Instance.TriggerEvent("Miss");
                 Crocodile.Instance.Annoy();
             }
             else
@@ -124,6 +125,10 @@ namespace CrocoBrush
             m_available.Enqueue(food);
         }
 
+        /// <summary>
+        /// Add score to Crocodile based on the given quality.
+        /// </summary>
+        /// <param name="quality">Quality for given score.</param>
         private void AddScore(Quality quality)
         {
             switch(quality)

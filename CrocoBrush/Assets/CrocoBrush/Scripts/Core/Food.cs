@@ -24,6 +24,10 @@ namespace CrocoBrush
         /// </summary>
         private BackgroundColor m_background;
 
+        /// <summary>
+        /// Current degrade loop. 
+        /// Used to start and stop the degrading process.
+        /// </summary>
         private IEnumerator m_degrade;
 
         /*
@@ -78,16 +82,12 @@ namespace CrocoBrush
             m_circle.transform
                 .DOScale(Vector3.one, duration)
                 .SetEase(Ease.Linear)
-                .OnComplete(() =>
-                {
-                    if(gameObject.activeInHierarchy)
-                    {
-                        m_circle.transform
-                            .DOScale(Vector3.one, 0.3f)
-                            .SetEase(Ease.Linear)
-                            .OnComplete(() => tooth?.Remove());
-                    }
-                });
+                .OnComplete(
+                    () => m_circle.transform
+                        .DOScale(Vector3.one, 0.3f)
+                        .SetEase(Ease.Linear)
+                        .OnComplete(() => tooth?.Remove())
+                );
         }
 
         /// <summary>
@@ -95,11 +95,13 @@ namespace CrocoBrush
         /// </summary>
         public void Hide()
         {
+            DOTween.Kill(m_circle.transform);
             var size = TargetSize;
             StopCoroutine(m_degrade);
             transform.DOScale(size, 0.3f * size)
                 .SetEase(size < 1 ? Ease.InBack : Ease.OutBack)
-                .OnComplete(() => {
+                .OnComplete(() =>
+                {
                     transform.DOScale(1, 0);
                     gameObject.SetActive(false);
                 });
@@ -131,6 +133,10 @@ namespace CrocoBrush
         /// <value>The Foods current quality.</value>
         public Quality Quality { get; private set; }
 
+        /// <summary>
+        /// Target size for end tween based on the quality.
+        /// </summary>
+        /// <value>The target size.</value>
         private float TargetSize
         {
             get
