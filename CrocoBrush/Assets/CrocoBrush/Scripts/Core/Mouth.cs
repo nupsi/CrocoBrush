@@ -9,7 +9,7 @@ namespace CrocoBrush
     /// Use Create(Direction) to add Food.
     /// Use PressDirection(Direction) to remove Food.
     /// </summary>
-    public class Mouth : MonoBehaviour
+    public class Mouth : MonoBehaviour, ICreator
     {
         /*
          * Variables.
@@ -28,12 +28,6 @@ namespace CrocoBrush
         /// </summary>
         [SerializeField]
         private GameObject m_prefab;
-
-        /// <summary>
-        /// The delay between spawning Food and playing sound.
-        /// </summary>
-        [SerializeField]
-        private float m_delay = 1.3f;
 
         /// <summary>
         /// Dictionary to store the teeth based on their direction.
@@ -75,32 +69,84 @@ namespace CrocoBrush
          */
 
         /// <summary>
-        /// Caches Teeth components from child objects.
+        /// Adds Food on a Tooth on the given direction.
         /// </summary>
-        private void InitializeTeeth()
+        /// <param name="direction">Tooths Direction where the Food is placed.</param>
+        public void Create(Direction direction)
         {
-            //Create new dictionary for the notes.
-            m_notes = new Dictionary<Direction, Queue<Tooth>>();
-            //Create new dictionary for the teeth.
-            m_teeth = new Dictionary<Direction, List<Tooth>>();
-            //Get tooth components from the child objects.
-            var teeth = GetComponentsInChildren<Tooth>();
-            //Loop through the tooth.
-            foreach(var tooth in teeth)
+            //Get index for a free Tooth.
+            var index = GetFreeTooth(direction);
+            //Check that we got a valid index.
+            if(index < 0)
             {
-                //Check if key for the direction exists.
-                if(!m_teeth.ContainsKey(tooth.Direction))
-                {
-                    //Create new list for the current direction in the teeth dictionary.
-                    m_teeth.Add(tooth.Direction, new List<Tooth> { tooth });
-                    //Create new queue for the current direction in the notes dictionary.
-                    m_notes.Add(tooth.Direction, new Queue<Tooth>());
-                }
-                else
-                {
-                    //Add the tooth in the teeth list in the current direction.
-                    m_teeth[tooth.Direction].Add(tooth);
-                }
+                Debug.LogError("No room to place food!");
+                return;
+            }
+            var tooth = m_teeth[direction][index];
+            //Add the parent Tooth to the active queue in the given direction.
+            m_notes[direction].Enqueue(tooth);
+            //Place the food on the free Tooth.
+            tooth.PlaceFood(m_available.Dequeue(), Delay);
+        }
+
+        /// <summary>
+        /// Tries to clear Food from the given direction.
+        /// </summary>
+        /// <param name="direction">Direction to clear the Food from.</param>
+        public void PressDirection(Direction direction)
+        {
+            //Check if there is Food in the given Direction.
+            if(m_notes[direction].Count <= 0)
+            {
+                //print("No food to clean");
+                EventManager.Instance.TriggerEvent("Miss");
+                Crocodile.Instance.Annoy();
+            }
+            else
+            {
+                //print("There is food to clean (" + m_notes[direction].Count + ")");
+                //Remove the First Food in the given direction.
+                Remove(direction);
+            }
+        }
+
+        /// <summary>
+        /// Remove first Food from given Direction.
+        /// </summary>
+        public void Remove(Direction direction)
+        {
+            //Get the first Tooth in the direction.
+            var tooth = m_notes[direction].Dequeue();
+            //Get the current Food by clearing in from the Tooth
+            var food = tooth.Clear();
+            //Add score based on the Food's quality.
+            AddScore(food.Quality);
+            //Add the Food back to object pool.
+            m_available.Enqueue(food);
+        }
+
+        /// <summary>
+        /// Add score to Crocodile based on the given quality.
+        /// </summary>
+        /// <param name="quality">Quality for given score.</param>
+        private void AddScore(Quality quality)
+        {
+            switch(quality)
+            {
+                case Quality.Bad:
+                    Crocodile.Instance.Annoy();
+                    EventManager.Instance.TriggerEvent("Miss");
+                    break;
+
+                case Quality.Good:
+                    Crocodile.Instance.AddScore(1);
+                    EventManager.Instance.TriggerEvent("Hit");
+                    break;
+
+                case Quality.Perfect:
+                    Crocodile.Instance.AddScore(2);
+                    EventManager.Instance.TriggerEvent("Hit");
+                    break;
             }
         }
 
@@ -130,77 +176,33 @@ namespace CrocoBrush
         }
 
         /// <summary>
-        /// Remove first Food from given Direction.
+        /// Caches Teeth components from child objects.
         /// </summary>
-        public void Remove(Direction direction)
+        private void InitializeTeeth()
         {
-            //Get the first Tooth in the direction.
-            var tooth = m_notes[direction].Dequeue();
-            //Get the current Food by clearing in from the Tooth
-            var food = tooth.Clear();
-            //Add score based on the Food's quality.
-            AddScore(food.Quality);
-            //Add the Food back to object pool.
-            m_available.Enqueue(food);
-        }
-
-        /// <summary>
-        /// Tries to clear Food from the given direction.
-        /// </summary>
-        /// <param name="direction">Direction to clear the Food from.</param>
-        public void PressDirection(Direction direction)
-        {
-            //Check if there is Food in the given Direction.
-            if(m_notes[direction].Count <= 0)
+            //Create new dictionary for the notes.
+            m_notes = new Dictionary<Direction, Queue<Tooth>>();
+            //Create new dictionary for the teeth.
+            m_teeth = new Dictionary<Direction, List<Tooth>>();
+            //Get tooth components from the child objects.
+            var teeth = GetComponentsInChildren<Tooth>();
+            //Loop through the tooth.
+            foreach(var tooth in teeth)
             {
-                print("No food to clean");
-                Crocodile.Instance.Annoy();
+                //Check if key for the direction exists.
+                if(!m_teeth.ContainsKey(tooth.Direction))
+                {
+                    //Create new list for the current direction in the teeth dictionary.
+                    m_teeth.Add(tooth.Direction, new List<Tooth> { tooth });
+                    //Create new queue for the current direction in the notes dictionary.
+                    m_notes.Add(tooth.Direction, new Queue<Tooth>());
+                }
+                else
+                {
+                    //Add the tooth in the teeth list in the current direction.
+                    m_teeth[tooth.Direction].Add(tooth);
+                }
             }
-            else
-            {
-                print("There is food to clean (" + m_notes[direction].Count + ")");
-                //Remove the First Food in the given direction.
-                Remove(direction);
-            }
-        }
-
-        private void AddScore(Quality quality)
-        {
-            switch(quality)
-            {
-                case Quality.Bad:
-                    Crocodile.Instance.Annoy();
-                    break;
-
-                case Quality.Avarage:
-                    Crocodile.Instance.AddScore(1);
-                    break;
-
-                case Quality.Good:
-                    Crocodile.Instance.AddScore(2);
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// Adds Food on a Tooth on the given direction.
-        /// </summary>
-        /// <param name="direction">Tooths Direction where the Food is placed.</param>
-        public void Create(Direction direction)
-        {
-            //Get index for a free Tooth.
-            var index = GetFreeTooth(direction);
-            //Check that we got a valid index.
-            if(index < 0)
-            {
-                Debug.LogError("No room to place food!");
-                return;
-            }
-            var tooth = m_teeth[direction][index];
-            //Add the parent Tooth to the active queue in the given direction.
-            m_notes[direction].Enqueue(tooth);
-            //Place the food on the free Tooth.
-            tooth.PlaceFood(m_available.Dequeue(), m_delay);
         }
 
         /// <summary>
@@ -255,6 +257,6 @@ namespace CrocoBrush
         /// The delay between spawning Food and playing sound.
         /// </summary>
         /// <value>The delay.</value>
-        public float Delay => m_delay;
+        public float Delay { get; set; }
     }
 }

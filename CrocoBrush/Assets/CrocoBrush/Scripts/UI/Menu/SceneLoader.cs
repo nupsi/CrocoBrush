@@ -21,8 +21,8 @@ namespace CrocoBrush.UI.Menu
         /// <param name="index">Scene Build Index</param>
         public void LoadScene(int index)
         {
-            //Clear the current GUI Controller.
-            GUIController.Instance.Clear();
+            //Clear the current event manager.
+            EventManager.Instance.Clear();
             //Load Scene with the given index.
             SceneManager.LoadScene(index);
         }
@@ -32,8 +32,8 @@ namespace CrocoBrush.UI.Menu
         /// </summary>
         public void ReloadCurrentScene()
         {
-            //Clear the current GUI Controller.
-            GUIController.Instance.Clear();
+            //Clear the current event manager.
+            EventManager.Instance.Clear();
             //Reload the current scene.
             LoadScene(SceneManager.GetActiveScene().buildIndex);
         }

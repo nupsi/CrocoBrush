@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 450fadb2d79df5042a6df67c2f425ab5, type: 3}
+  m_Name: Test_Level
+  m_EditorClassIdentifier: 
+  Name: Test Level
+  Audio: {fileID: 8300000, guid: b96249f9fd67c6c40855e72753684083, type: 3}
+  Notes: {fileID: 11400000, guid: cb97d1266656841169959f82a2d417f9, type: 2}
+  SpaceNotes: {fileID: 11400000, guid: b6f5d9f83d72e4b4ba2b9100500351cd, type: 2}
+  Delay: 0.6

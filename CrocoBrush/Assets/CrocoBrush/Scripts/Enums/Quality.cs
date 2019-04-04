@@ -3,7 +3,7 @@
     public enum Quality
     {
         Bad,
-        Avarage,
-        Good
+        Good,
+        Perfect
     }
 }

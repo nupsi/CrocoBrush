@@ -7,17 +7,20 @@ namespace CrocoBrush
     /// Reads Song Notes scriptable object data to create
     /// Food in Mouth in sync with the music.
     /// </summary>
-    [RequireComponent(typeof(AudioSource))]
-    public class SongReader : MonoBehaviour
+    public class SongReader
     {
         /*
          * Variables.
          */
 
         /// <summary>
+        /// Delay between checking the song and next note in seconds.
+        /// </summary>
+        private readonly WaitForSeconds m_readDelay;
+
+        /// <summary>
         /// Current song notes to play.
         /// </summary>
-        [SerializeField]
         private SongNotes m_song;
 
         /// <summary>
@@ -31,32 +34,22 @@ namespace CrocoBrush
         /// </summary>
         private int m_current;
 
-        /*
-         * Mono Behaviour Functions.
-         */
-
-        private void Awake()
-        {
-            //Cache audio source component.
-            m_source = GetComponent<AudioSource>();
-        }
-
-        private void Start()
-        {
-            //Start spawning food and play the audio with delay.
-            StartSong();
-        }
-
-        private void Reset()
-        {
-            //Automatically turn off the play on awake, when this script is attached to a game object.
-            m_source = GetComponent<AudioSource>();
-            m_source.playOnAwake = false;
-        }
+        /// <summary>
+        /// The target object for creating objects from the current notes.
+        /// </summary>
+        private ICreator m_creator;
 
         /*
          * Functions.
          */
+
+        public SongReader(ICreator creator, AudioSource source, SongNotes notes)
+        {
+            m_source = source;
+            m_creator = creator;
+            m_song = notes;
+            m_readDelay = new WaitForSeconds(0.0001f);
+        }
 
         /// <summary>
         /// Starts the song by starting the process of spawning Food and playing audio with delay.
@@ -64,9 +57,9 @@ namespace CrocoBrush
         public void StartSong()
         {
             //Start the Food spwaning loop.
-            StartCoroutine(PlayNext());
+            Mouth.Instance.StartCoroutine(PlayNext());
             //Start the audio with delay.
-            StartCoroutine(PlaySong());
+            Mouth.Instance.StartCoroutine(PlaySong());
         }
 
         /// <summary>
@@ -84,20 +77,23 @@ namespace CrocoBrush
                 //Decide between spawing with delay and time.
                 if(m_source.time < Delay)
                 {
-                    //Wait for the delay time and spawn note.
-                    yield return new WaitForSeconds(NoteDelay);
-                    Mouth.Create(m_song.Nodes[m_current].Direction);
+                    if(m_song.Nodes[m_current].Delay < Delay)
+                    {
+                        //Wait for the delay time and spawn note.
+                        yield return new WaitForSeconds(NoteDelay);
+                        m_creator.Create(m_song.Nodes[m_current].Direction);
+                    }
                 }
                 else
                 {
                     //Wait for the Note time match with audio sources time.
                     if(CurrentTime >= m_song.Nodes[m_current].Time)
                     {
-                        Mouth.Create(m_song.Nodes[m_current].Direction);
+                        m_creator.Create(m_song.Nodes[m_current].Direction);
                         m_current++;
                     }
-                    yield return new WaitForEndOfFrame();
                 }
+                yield return m_readDelay;
             }
         }
 
@@ -114,18 +110,6 @@ namespace CrocoBrush
         /*
          * Accessors.
          */
-
-        /// <summary>
-        /// Shorter reference to the current Mouth.Instance.
-        /// </summary>
-        /// <value>The current Mouth Instance.</value>
-        private Mouth Mouth => Mouth.Instance;
-
-        /// <summary>
-        /// Current delay between spawning the Food and playing audio.
-        /// </summary>
-        /// <value>The delay between spawning and playin audio.</value>
-        private float Delay => Mouth.Delay;
 
         /// <summary>
         /// Returns the current audio source time with the delay.
@@ -148,5 +132,11 @@ namespace CrocoBrush
                 return time;
             }
         }
+
+        /// <summary>
+        /// The delay between creating notes and the correct time hitting them.
+        /// </summary>
+        /// <value>The current delay.</value>
+        private float Delay => Mouth.Instance.Delay;
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace CrocoBrush
 {
@@ -7,41 +8,43 @@ namespace CrocoBrush
     /// </summary>
     public class MouthInput : MonoBehaviour
     {
+        /// <summary>
+        /// Input names and corresponding directions for those inputs.
+        /// </summary>
+        private Dictionary<string, Direction> m_inputs;
+
         /*
          * Mono Behaviour Functions.
          */
 
-        private void Update()
+        private void Awake()
         {
-            if(Input.GetButtonDown("Left"))
+            //Create input dictionary.
+            //key = input name (in Unity's input system)
+            //value = input direction.
+            m_inputs = new Dictionary<string, Direction>()
             {
-                Mouth.PressDirection(Direction.Left);
-            }
-
-            if(Input.GetButtonDown("Right"))
-            {
-                Mouth.PressDirection(Direction.Right);
-            }
-
-            if(Input.GetButtonDown("Down"))
-            {
-                Mouth.PressDirection(Direction.Down);
-            }
-
-            if(Input.GetButtonDown("Up"))
-            {
-                Mouth.PressDirection(Direction.Up);
-            }
+                { "Up", Direction.Up },
+                { "Down", Direction.Down },
+                { "Left", Direction.Left },
+                { "Right", Direction.Right }
+            };
         }
 
-        /*
-         * Accessors.
-         */
-
-        /// <summary>
-        /// Current Mouth Instance.
-        /// </summary>
-        /// <value>Current Mouth Instance.</value>
-        private Mouth Mouth => Mouth.Instance;
+        private void Update()
+        {
+            //Go through all the inputs.
+            //set.key = input name.
+            //set.value = input direction.
+            foreach(var set in m_inputs)
+            {
+                //If the current input is down.
+                if(Input.GetButtonDown(set.Key))
+                {
+                    //Press to the direction of the current input.
+                    Mouth.Instance.PressDirection(set.Value);
+                }
+            }
+        }
     }
 }

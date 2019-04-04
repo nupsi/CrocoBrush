@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace CrocoBrush
 {
+    [Obsolete("This class should not be required. See SongReader for the lates song/note delay.", false)]
     [RequireComponent(typeof(AudioSource))]
     public class AudioDelay : MonoBehaviour
     {

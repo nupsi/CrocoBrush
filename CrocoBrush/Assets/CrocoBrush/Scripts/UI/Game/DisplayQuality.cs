@@ -6,7 +6,7 @@ namespace CrocoBrush.UI.Game
     /// <summary>
     /// Display latest score change quality.
     /// </summary>
-    public class DisplayQuality : GUIBehaviour
+    public class DisplayQuality : GUIGame
     {
         /*
          * Variables.
@@ -38,9 +38,8 @@ namespace CrocoBrush.UI.Game
          * Mono Behaviour Functions.
          */
 
-        protected override void Awake()
+        protected void Awake()
         {
-            base.Awake();
             CreateTextPool();
         }
 
@@ -48,7 +47,7 @@ namespace CrocoBrush.UI.Game
          * Functions.
          */
 
-        public override void RequestUpdate()
+        protected override void UpdateComponent()
         {
             //Check if the score has changed.
             if(Crocodile.Score != m_score)
@@ -107,15 +106,15 @@ namespace CrocoBrush.UI.Game
             {
                 case Quality.Bad:
                     text.DisplayText(this, "Miss", m_duration, Color.red);
-                    break;
-
-                case Quality.Avarage:
-                    text.DisplayText(this, "Great", m_duration, Color.blue);
-                    break;
+                    return;
 
                 case Quality.Good:
+                    text.DisplayText(this, "Great", m_duration, Color.blue);
+                    return;
+
+                case Quality.Perfect:
                     text.DisplayText(this, "Perfect", m_duration, Color.green);
-                    break;
+                    return;
             }
         }
 
@@ -125,7 +124,7 @@ namespace CrocoBrush.UI.Game
         /// <param name="ammount">Ammount to display.</param>
         private void DisplayScore(int ammount)
         {
-            DisplayText(ammount >= 2 ? Quality.Good : Quality.Avarage);
+            DisplayText(ammount >= 2 ? Quality.Perfect : Quality.Good);
         }
 
         /// <summary>

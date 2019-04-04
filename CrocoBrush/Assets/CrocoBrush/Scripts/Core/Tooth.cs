@@ -62,7 +62,7 @@ namespace CrocoBrush
         public Food Clear()
         {
             HasFood = false;
-            m_current.gameObject.SetActive(false);
+            m_current.Hide();
             return m_current;
         }
 
