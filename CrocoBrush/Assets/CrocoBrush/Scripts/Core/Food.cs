@@ -8,6 +8,7 @@ namespace CrocoBrush
     /// Controls Food placed on a Tooth.
     /// Use Initialize(Tooth, float) to place the Food on a Tooth.
     /// </summary>
+    [RequireComponent(typeof(BoxCollider))]
     public class Food : MonoBehaviour
     {
         /*
@@ -25,10 +26,21 @@ namespace CrocoBrush
         private BackgroundColor m_background;
 
         /// <summary>
-        /// Current degrade loop. 
+        /// Current degrade loop.
         /// Used to start and stop the degrading process.
         /// </summary>
         private IEnumerator m_degrade;
+
+        /// <summary>
+        /// Current parent Tooth.
+        /// </summary>
+        private Tooth m_tooth;
+
+        /// <summary>
+        /// Box collider for detecting click.
+        /// Enabled and disabled to prevent multiple clicks.
+        /// </summary>
+        private BoxCollider m_collider;
 
         /*
          * Mono Behaviour Functions.
@@ -40,6 +52,7 @@ namespace CrocoBrush
             {
                 m_circle = transform.GetChild(0).gameObject;
                 m_background = GetComponentInChildren<BackgroundColor>();
+                m_collider = GetComponent<BoxCollider>();
             }
             else
             {
@@ -50,16 +63,29 @@ namespace CrocoBrush
 
         private void OnEnable()
         {
+            m_circle.SetActive(true);
             //Reset the Foods quality.
             Quality = Quality.Bad;
             //Reset the time indicator scale.
             m_circle.transform.localScale = Vector3.one * 2;
+            //Enable collision.
+            m_collider.enabled = true;
         }
 
         private void OnDisable()
         {
             //Make sure the active tween is killed.
             DOTween.Kill(m_circle.transform);
+            //Make sure the current parent is cleared.
+            ClearParent();
+        }
+
+        private void OnMouseDown()
+        {
+            //Send request to remove the pressed Food.
+            RemoveFood();
+            //Disable collision to prevent clicking after first time.
+            m_collider.enabled = false;
         }
 
         /*
@@ -74,6 +100,7 @@ namespace CrocoBrush
         /// <param name="duration">Foods duration.</param>
         public void Initialize(Tooth tooth, float duration)
         {
+            m_tooth = tooth;
             m_background?.UpdateMaterial(tooth.Direction);
             //Start modifying the Foods quality over time.
             m_degrade = Degrade(duration);
@@ -86,7 +113,11 @@ namespace CrocoBrush
                     () => m_circle.transform
                         .DOScale(Vector3.one, 0.3f)
                         .SetEase(Ease.Linear)
-                        .OnComplete(() => tooth?.Remove())
+                        .OnComplete(() =>
+                        {
+                            Quality = Quality.Bad;
+                            RemoveFood();
+                        })
                 );
         }
 
@@ -95,9 +126,11 @@ namespace CrocoBrush
         /// </summary>
         public void Hide()
         {
+            ClearParent();
             DOTween.Kill(m_circle.transform);
             var size = TargetSize;
             StopCoroutine(m_degrade);
+            m_circle.SetActive(false);
             transform.DOScale(size, 0.3f * size)
                 .SetEase(size < 1 ? Ease.InBack : Ease.OutBack)
                 .OnComplete(() =>
@@ -114,13 +147,32 @@ namespace CrocoBrush
         /// <param name="duration">Foods duration.</param>
         private IEnumerator Degrade(float duration)
         {
-            yield return new WaitForSeconds(duration * 0.4f);
+            yield return new WaitForSeconds(duration * 0.5f);
             Quality = Quality.Good;
             yield return new WaitForSeconds(duration * 0.5f);
             Quality = Quality.Perfect;
-            yield return new WaitForSeconds(0.29f);
-            Quality = Quality.Bad;
         }
+
+        /// <summary>
+        /// Send a remove request to the current parent Tooth.
+        /// </summary>
+        private void RemoveFood()
+        {
+            if(m_tooth != null)
+            {
+                m_tooth.Remove();
+                ClearParent();
+            }
+            else
+            {
+                Debug.LogError("Trying to remove Food that no longer exists!");
+            }
+        }
+
+        /// <summary>
+        /// Clear the current parent Tooth.
+        /// </summary>
+        private void ClearParent() => m_tooth = null;
 
         /*
          * Accessors.

@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
 using TMPro;
-using DG.Tweening;
+using UnityEngine;
 
 namespace CrocoBrush.UI.Game
 {
@@ -26,7 +26,6 @@ namespace CrocoBrush.UI.Game
             EventManager.Instance.StopListening("Hit", OnHit);
             EventManager.Instance.StopListening("Miss", OnMiss);
         }
-
 
         private void OnHit()
         {
