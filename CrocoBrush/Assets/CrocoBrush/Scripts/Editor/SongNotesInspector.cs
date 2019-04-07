@@ -199,7 +199,7 @@ namespace CrocoBrush.Editors
                 }
             }
 
-            Debug.Log($"Total Stats: Delay(Sum: {total} Avg: {total/nodes.Count})");
+            Debug.Log($"Total Stats: Delay(Sum: {total} Avg: {total / nodes.Count})");
         }
 
         private void GenerateNoteDirections()
