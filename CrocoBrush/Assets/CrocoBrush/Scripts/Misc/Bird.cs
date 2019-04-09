@@ -93,6 +93,7 @@ namespace CrocoBrush
         private void Update()
         {
             UpdateInput();
+            //UpdateTouch();
         }
 
         /*
@@ -136,6 +137,18 @@ namespace CrocoBrush
             else if(Input.GetButtonUp(BlockInput))
             {
                 PlayUnblocAnimation();
+            }
+        }
+
+        private void UpdateTouch()
+        {
+            if(Input.touchCount > 0)
+            {
+                var touch = Input.touches[0];
+                if(touch.phase == TouchPhase.Began)
+                {
+                    Debug.Log(touch.position);
+                }
             }
         }
 
