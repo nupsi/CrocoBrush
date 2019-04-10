@@ -142,13 +142,59 @@ namespace CrocoBrush
 
         private void UpdateTouch()
         {
+#if UNITY_IPHONE || UNITY_ANDROID
+
             if(Input.touchCount > 0)
             {
                 var touch = Input.touches[0];
                 if(touch.phase == TouchPhase.Began)
                 {
-                    Debug.Log(touch.position);
+                    MoveToPoint(GetPosition(ScreenPointToDirection(touch.position)));
                 }
+            }
+#else
+            if(Input.GetMouseButtonDown(0))
+            {
+                MoveToPoint(GetPosition(ScreenPointToDirection(Input.mousePosition)));
+            }
+#endif
+        }
+
+        private Direction ScreenPointToDirection(Vector2 point)
+        {
+            var ratio = (float)Screen.width / Screen.height;
+            point.x /= ratio;
+            var x = Mathf.Clamp01(point.x / (Screen.width / ratio));
+            var y = Mathf.Clamp01(point.y / Screen.height);
+            var i = -(x - 1);
+            var j = -(y - 1);
+            return !(j < x || j < i)
+                ? Direction.Down
+                : (j < x && j < i)
+                    ? Direction.Up
+                    : (y < i)
+                        ? Direction.Left
+                        : Direction.Right;
+        }
+
+        private Transform GetPosition(Direction direction)
+        {
+            switch(direction)
+            {
+                case Direction.Down:
+                    return m_down.transform;
+
+                case Direction.Up:
+                    return m_up.transform;
+
+                case Direction.Left:
+                    return m_left.transform;
+
+                case Direction.Right:
+                    return m_right.transform;
+
+                default:
+                    return transform;
             }
         }
 
