@@ -6,11 +6,8 @@ namespace CrocoBrush.Events
     public class ClickEvent : MonoBehaviour
     {
         [SerializeField]
-        private CustomEvent m_event;
+        private CustomEvent m_onMouseUp;
 
-        private void OnMouseDown()
-        {
-            m_event.Invoke();
-        }
+        private void OnMouseUp() => m_onMouseUp.Invoke();
     }
 }

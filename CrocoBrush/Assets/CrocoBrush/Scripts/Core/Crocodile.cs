@@ -36,6 +36,14 @@ namespace CrocoBrush
             }
         }
 
+        public void Restart()
+        {
+            Mouth.Instance.Restart();
+            this.Score = 0;
+            this.Anger = 0;
+            EventManager.Instance.TriggerEvent("ResetGame");
+        }
+
         public int Score { get; private set; }
         public int Anger { get; private set; }
     }

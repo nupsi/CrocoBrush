@@ -34,9 +34,13 @@ namespace CrocoBrush
 
         public void PlaySelectedLevel()
         {
+            Crocodile.Instance.Restart();
             EventManager.Instance.TriggerEvent("LevelStart");
             Mouth.Instance.Delay = SelectedLevel.Delay;
+
+            m_source.Stop();
             m_source.clip = SelectedLevel.Audio;
+            m_source.time = 0;
 
             if(Mouth.Instance != null)
             {

@@ -226,7 +226,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1952130981}
         m_MethodName: set_enabled
@@ -1178,11 +1178,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 64
       objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: 64dfc08f5a89e2e4ea50d6079491d79a, type: 3}
+    - target: {fileID: 100016, guid: 64dfc08f5a89e2e4ea50d6079491d79a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 64
       objectReference: {fileID: 0}
-    - target: {fileID: 100016, guid: 64dfc08f5a89e2e4ea50d6079491d79a, type: 3}
+    - target: {fileID: 100006, guid: 64dfc08f5a89e2e4ea50d6079491d79a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 64
       objectReference: {fileID: 0}

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace CrocoBrush
@@ -124,6 +125,22 @@ namespace CrocoBrush
             ProcessFood(tooth.Clear());
         }
 
+        public void Restart()
+        {
+            Instance.StopAllCoroutines();
+            m_notes.Keys.ToList().ForEach((key) =>
+            {
+                m_notes[key].ForEach((tooth) =>
+                {
+                    var food = tooth.Clear();
+                    food.gameObject.SetActive(false);
+                    m_available.Enqueue(food);
+                });
+
+                m_notes[key] = new List<Tooth>();
+            });
+        }
+
         /// <summary>
         /// Process the given food.
         /// Processing the Food adds score based on its quality and adds the food back to object pool.
@@ -174,7 +191,7 @@ namespace CrocoBrush
             //Place the pool under the Mouth (For cleaner scene hierarchy).
             root.transform.SetParent(transform);
             //Create the pool.
-            for(int i = 0; i < 8; i++)
+            for(int i = 0; i < transform.childCount - 1; i++)
             {
                 //Instantiate the prefab.
                 var current = Instantiate(m_prefab);

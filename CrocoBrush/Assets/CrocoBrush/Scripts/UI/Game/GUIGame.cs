@@ -5,12 +5,22 @@
     /// </summary>
     public abstract class GUIGame : RegisteredBehaviour
     {
-        /// <summary>
-        /// Event name to listen to
-        /// </summary>
-        /// <value>Event name to listen to.</value>
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            EventManager.Instance.StartListening(ResetEvent, ResetComponent);
+        }
+
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            EventManager.Instance.StopListening(ResetEvent, ResetComponent);
+        }
+
         protected override string EventName => "UpdateGameUI";
+        protected string ResetEvent => "ResetGame";
 
         protected override abstract void UpdateComponent();
+        protected abstract void ResetComponent();
     }
 }

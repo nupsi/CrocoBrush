@@ -37,6 +37,7 @@ namespace CrocoBrush.UI.Game
         public void UpdateScore() => m_text.SetText($"Score: {CurrentScore}\nAnger: {CurrentAnger}");
 
         protected override void UpdateComponent() => UpdateScore();
+        protected override void ResetComponent() => UpdateScore();
 
         /*
          * Accessors.

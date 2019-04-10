@@ -19,12 +19,14 @@ namespace CrocoBrush.UI.Game
         {
             EventManager.Instance.StartListening("Hit", OnHit);
             EventManager.Instance.StartListening("Miss", OnMiss);
+            EventManager.Instance.StartListening("ResetGame", ResetComponent);
         }
 
         private void OnDisable()
         {
             EventManager.Instance.StopListening("Hit", OnHit);
             EventManager.Instance.StopListening("Miss", OnMiss);
+            EventManager.Instance.StartListening("ResetGame", ResetComponent);
         }
 
         private void OnHit()
@@ -52,6 +54,12 @@ namespace CrocoBrush.UI.Game
                 m_combo = 0;
                 UpdateText();
             }
+        }
+
+        private void ResetComponent()
+        {
+            m_combo = 0;
+            UpdateText();
         }
 
         private void UpdateText()

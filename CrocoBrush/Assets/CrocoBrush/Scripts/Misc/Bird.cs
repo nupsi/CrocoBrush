@@ -215,6 +215,11 @@ namespace CrocoBrush
                         : Direction.Right;
         }
 
+        /// <summary>
+        /// Turns given direction into a corresponding transform.
+        /// </summary>
+        /// <param name="direction">Direction for transform.</param>
+        /// <returns>Transform for direction.</returns>
         private Transform GetPosition(Direction direction)
         {
             switch(direction)

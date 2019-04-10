@@ -49,6 +49,11 @@ namespace CrocoBrush.UI.Game
             }
         }
 
+        protected override void ResetComponent()
+        {
+            UpdateSlider();
+        }
+
         /// <summary>
         /// Update Slider to display latest Anger.
         /// </summary>
