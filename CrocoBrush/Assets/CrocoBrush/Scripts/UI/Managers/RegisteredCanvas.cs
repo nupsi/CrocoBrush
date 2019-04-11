@@ -17,27 +17,17 @@ namespace CrocoBrush.UI
 
         public void OnEnable()
         {
-            CanvasManager.Instance.RegisterCanvas(this);
+            CanvasManager.Instance.RegisterComponent(this);
         }
 
         public void OnDisable()
         {
-            CanvasManager.Instance.RemoveCanvas(this);
+            CanvasManager.Instance.RemoveComponent(this);
         }
 
         public void Show(bool show)
         {
             m_canvas.enabled = show;
-            ShowChild(show);
-        }
-
-        private void ShowChild(bool show)
-        {
-            foreach(Transform child in transform)
-            {
-                print(child);
-                child.gameObject.SetActive(show);
-            }
         }
 
         public string Name => m_name;

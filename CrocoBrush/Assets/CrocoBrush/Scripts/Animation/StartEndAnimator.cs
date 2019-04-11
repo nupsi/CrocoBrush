@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace CrocoBrush.Animation
 {
     [RequireComponent(typeof(Animator))]
-    public abstract class StartEndAnimator : MonoBehaviour
+    public abstract class StartEndAnimator : RegisteredBehaviour
     {
         protected Animator m_animator;
 
@@ -12,20 +13,16 @@ namespace CrocoBrush.Animation
             m_animator = GetComponent<Animator>();
         }
 
-        private void OnEnable()
-        {
-            EventManager.Instance.StartListening("LevelStart", LevelStart);
-            EventManager.Instance.StartListening("LevelEnd", LevelEnd);
-        }
-
-        private void OnDisable()
-        {
-            EventManager.Instance.StopListening("LevelStart", LevelStart);
-            EventManager.Instance.StopListening("LevelEnd", LevelEnd);
-        }
-
         protected abstract void LevelStart();
 
         protected abstract void LevelEnd();
+
+        protected override Dictionary<string, Action> Actions =>
+            m_actions ??
+            (m_actions = new Dictionary<string, Action>
+            {
+                { "LevelStart", LevelStart },
+                { "LevelEnd", LevelEnd }
+            });
     }
 }

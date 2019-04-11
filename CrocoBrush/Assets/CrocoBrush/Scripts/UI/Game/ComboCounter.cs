@@ -1,11 +1,12 @@
 ﻿using DG.Tweening;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 namespace CrocoBrush.UI.Game
 {
     [RequireComponent(typeof(TextMeshProUGUI))]
-    public class ComboCounter : MonoBehaviour
+    public class ComboCounter : RegisteredBehaviour
     {
         private TextMeshProUGUI m_text;
         private int m_combo;
@@ -13,20 +14,6 @@ namespace CrocoBrush.UI.Game
         private void Awake()
         {
             m_text = GetComponent<TextMeshProUGUI>();
-        }
-
-        private void OnEnable()
-        {
-            EventManager.Instance.StartListening("Hit", OnHit);
-            EventManager.Instance.StartListening("Miss", OnMiss);
-            EventManager.Instance.StartListening("ResetGame", ResetComponent);
-        }
-
-        private void OnDisable()
-        {
-            EventManager.Instance.StopListening("Hit", OnHit);
-            EventManager.Instance.StopListening("Miss", OnMiss);
-            EventManager.Instance.StartListening("ResetGame", ResetComponent);
         }
 
         private void OnHit()
@@ -66,5 +53,14 @@ namespace CrocoBrush.UI.Game
         {
             m_text.SetText($"Combo x {m_combo}");
         }
+
+        protected override Dictionary<string, Action> Actions =>
+            m_actions ??
+            (m_actions = new Dictionary<string, Action>
+            {
+                { "Hit", OnHit },
+                { "Miss", OnMiss },
+                { "ResetGame", ResetComponent }
+            });
     }
 }

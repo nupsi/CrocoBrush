@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace CrocoBrush
 {
@@ -21,11 +22,16 @@ namespace CrocoBrush
             m_source.playOnAwake = false;
         }
 
-        protected override void UpdateComponent()
+        protected void UpdateComponent()
         {
             m_source.Play();
         }
 
-        protected override string EventName => m_eventName;
+        protected override Dictionary<string, Action> Actions =>
+            m_actions ??
+            (m_actions = new Dictionary<string, Action>
+            {
+                { m_eventName, UpdateComponent }
+            });
     }
 }
