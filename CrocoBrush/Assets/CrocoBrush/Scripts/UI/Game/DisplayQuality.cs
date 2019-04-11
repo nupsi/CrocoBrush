@@ -34,6 +34,9 @@ namespace CrocoBrush.UI.Game
         /// </summary>
         private Queue<QualityText> m_texts;
 
+        /// <summary>
+        /// Queue for active texts.
+        /// </summary>
         private Queue<QualityText> m_active;
 
         /*
