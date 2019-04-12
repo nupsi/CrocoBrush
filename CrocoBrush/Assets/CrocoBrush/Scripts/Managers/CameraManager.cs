@@ -17,6 +17,12 @@ namespace CrocoBrush
         /// </summary>
         private static CameraManager m_instance;
 
+        /// <summary>
+        /// Stack of previous activate calls.
+        /// This is used to go back.
+        /// </summary>
+        private Stack<string> m_history;
+
         /*
          * Functions.
          */
@@ -30,6 +36,7 @@ namespace CrocoBrush
             }
             m_instance = this;
             m_components = new List<CameraPosition>();
+            m_history = new Stack<string>();
         }
 
         /// <summary>
@@ -38,6 +45,7 @@ namespace CrocoBrush
         /// <param name="name">Target position name.</param>
         public void MoveToPosition(string name)
         {
+            m_history.Push(name);
             m_components.ForEach((c) =>
             {
                 if(c.Name == name)
@@ -46,6 +54,15 @@ namespace CrocoBrush
                     return;
                 }
             });
+        }
+
+        /// <summary>
+        /// Move to the previous position.
+        /// </summary>
+        public void Back()
+        {
+            m_history.Pop();
+            MoveToPosition(m_history.Pop());
         }
 
         /*

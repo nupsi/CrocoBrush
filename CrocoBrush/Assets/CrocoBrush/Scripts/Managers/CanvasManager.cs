@@ -6,7 +6,7 @@ namespace CrocoBrush.UI
     /// <summary>
     /// Manger to active and deactive different canvases by name.
     /// Add RegisteredCanvas to a game object with Canvas component
-    /// to add it to the Canvas Manager. 
+    /// to add it to the Canvas Manager.
     /// Use Activate(name) to active canvas.
     /// Active the previous canvas with Back().
     /// </summary>
@@ -58,7 +58,6 @@ namespace CrocoBrush.UI
         {
             m_history.Push(name);
             m_components.ForEach((c) => c.Show(c.Name == name));
-            CameraManager.Instance.MoveToPosition(name);
         }
 
         /// <summary>

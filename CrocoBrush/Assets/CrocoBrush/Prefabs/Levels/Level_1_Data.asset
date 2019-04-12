@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Level_1_Data
   m_EditorClassIdentifier: 
   Name: Level 1
+  Difficulty: Easy
   Audio: {fileID: 8300000, guid: dec046348fe778e42aed7be98924a37e, type: 3}
   Notes: {fileID: 11400000, guid: 8f241ddd1032d4db29a4e93020efc54c, type: 2}
   SpaceNotes: {fileID: 11400000, guid: 2e77fa117902b3b428f14cd3d3386b0c, type: 2}

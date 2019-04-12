@@ -60,7 +60,7 @@ namespace CrocoBrush.UI.Game
                 y = m_position.y + Random.Range(-range, range)
             };
             //Set the starting position.
-            m_transform.position = offset;
+            m_transform.position = transform.parent.position + offset;
         }
 
         private void OnDisable()

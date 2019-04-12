@@ -10,7 +10,6 @@ namespace CrocoBrush.Events
 
         private void OnMouseUp()
         {
-            Debug.Log("Click");
             m_onMouseUp.Invoke();
         }
     }

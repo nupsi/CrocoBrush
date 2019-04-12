@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Test_Level
   m_EditorClassIdentifier: 
   Name: Test Level
+  Difficulty: Hard
   Audio: {fileID: 8300000, guid: b96249f9fd67c6c40855e72753684083, type: 3}
   Notes: {fileID: 11400000, guid: cb97d1266656841169959f82a2d417f9, type: 2}
   SpaceNotes: {fileID: 11400000, guid: b6f5d9f83d72e4b4ba2b9100500351cd, type: 2}
