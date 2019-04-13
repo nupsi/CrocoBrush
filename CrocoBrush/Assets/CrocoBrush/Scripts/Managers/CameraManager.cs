@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CrocoBrush
 {
@@ -17,17 +16,11 @@ namespace CrocoBrush
         /// </summary>
         private static CameraManager m_instance;
 
-        /// <summary>
-        /// Stack of previous activate calls.
-        /// This is used to go back.
-        /// </summary>
-        private Stack<string> m_history;
-
         /*
          * Functions.
          */
 
-        public CameraManager()
+        public CameraManager() : base()
         {
             if(m_instance != null)
             {
@@ -35,34 +28,18 @@ namespace CrocoBrush
                 return;
             }
             m_instance = this;
-            m_components = new List<CameraPosition>();
-            m_history = new Stack<string>();
         }
 
-        /// <summary>
-        /// Move the camera to a position with the given name.
-        /// </summary>
-        /// <param name="name">Target position name.</param>
-        public void MoveToPosition(string name)
+        protected override void ProcessComponents(string name)
         {
-            m_history.Push(name);
-            m_components.ForEach((c) =>
+            m_components.ForEach((component) =>
             {
-                if(c.Name == name)
+                if(component.Name == name)
                 {
-                    c.SetCamera(Camera.main);
+                    component.SetCamera(Camera.main);
                     return;
                 }
             });
-        }
-
-        /// <summary>
-        /// Move to the previous position.
-        /// </summary>
-        public void Back()
-        {
-            m_history.Pop();
-            MoveToPosition(m_history.Pop());
         }
 
         /*

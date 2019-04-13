@@ -15,6 +15,17 @@ namespace CrocoBrush
         protected List<T> m_components;
 
         /// <summary>
+        /// Show history.
+        /// </summary>
+        protected Stack<string> m_history;
+
+        public GenericManager()
+        {
+            m_components = new List<T>();
+            m_history = new Stack<string>();
+        }
+
+        /// <summary>
         /// Register component.
         /// </summary>
         /// <param name="component">Component to register.</param>
@@ -25,5 +36,32 @@ namespace CrocoBrush
         /// </summary>
         /// <param name="component">Component to remove.</param>
         public virtual void RemoveComponent(T component) => m_components.Remove(component);
+
+        /// <summary>
+        /// Calls process components with the given name and adds
+        /// it the given name to the history so it can be called
+        /// again with Back().
+        /// </summary>
+        /// <param name="name">Target name to process.</param>
+        public virtual void Show(string name)
+        {
+            m_history.Push(name);
+            ProcessComponents(name);
+        }
+
+        /// <summary>
+        /// Process the previous name.
+        /// </summary>
+        public virtual void Back()
+        {
+            m_history.Pop();
+            Show(m_history.Pop());
+        }
+
+        /// <summary>
+        /// Process components stored in m_components.
+        /// </summary>
+        /// <param name="name">Target component name.</param>
+        protected abstract void ProcessComponents(string name);
     }
 }

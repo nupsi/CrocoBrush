@@ -19,6 +19,7 @@ namespace CrocoBrush
 
         public void AddScore(Quality quality)
         {
+            HitCounts[quality]++;
             if(quality <= 0)
             {
                 Annoy();
@@ -51,6 +52,7 @@ namespace CrocoBrush
 
         private void Annoy()
         {
+            Streak = 0;
             Anger++;
         }
 
@@ -58,15 +60,19 @@ namespace CrocoBrush
         {
             Score += (int)quality;
             Streak++;
-            HitCounts[quality]++;
+            if(Streak > BestStreak)
+            {
+                BestStreak = Streak;
+            }
         }
 
         private void InitializeValues()
         {
-            this.Score = 0;
-            this.Anger = 0;
-            this.Streak = 0;
-            this.HitCounts = new Dictionary<Quality, int>()
+            Score = 0;
+            Anger = 0;
+            Streak = 0;
+            BestStreak = 0;
+            HitCounts = new Dictionary<Quality, int>()
             {
                 { Quality.Bad, 0 },
                 { Quality.Good, 0  },
@@ -76,6 +82,7 @@ namespace CrocoBrush
 
         public int Score { get; private set; }
         public int Streak { get; private set; }
+        public int BestStreak { get; private set; }
         public int Anger { get; private set; }
         public Dictionary<Quality, int> HitCounts { get; private set; }
     }

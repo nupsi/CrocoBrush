@@ -1,4 +1,5 @@
-﻿using CrocoBrush.UI;
+﻿using CrocoBrush.Managers;
+using CrocoBrush.UI;
 using UnityEngine;
 
 namespace CrocoBrush
@@ -19,23 +20,10 @@ namespace CrocoBrush
 
         public void Activate()
         {
-            ShowCanvas();
-            MoveTo();
+            CanvasManager.Instance.Show(m_separate ? m_canvas : m_name);
+            CameraManager.Instance.Show(m_separate ? m_position : m_name);
+            SceneManager.Instance.Show(m_separate ? m_canvas : m_name);
         }
-
-        /// <summary>
-        /// Show canvas with the given name.
-        /// </summary>
-        /// <param name="name">Target canvas name.</param>
-        public void ShowCanvas() =>
-            CanvasManager.Instance.ShowCanvas(m_separate ? m_canvas : m_name);
-
-        /// <summary>
-        /// Move camera to a point with the given name.
-        /// </summary>
-        /// <param name="name">Target position name.</param>
-        public void MoveTo() =>
-            CameraManager.Instance.MoveToPosition(m_separate ? m_position : m_name);
 
         /// <summary>
         /// Go back to the previous state.
@@ -44,6 +32,7 @@ namespace CrocoBrush
         {
             CanvasManager.Instance.Back();
             CameraManager.Instance.Back();
+            SceneManager.Instance.Back();
         }
     }
 }

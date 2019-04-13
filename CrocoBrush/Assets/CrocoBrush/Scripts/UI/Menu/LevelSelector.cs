@@ -11,7 +11,6 @@ namespace CrocoBrush.UI.Menu
         {
             if(m_data != null)
             {
-                Debug.Log("Select Level ");
                 Controller.SelectedLevel = m_data;
                 EventManager.Instance.TriggerEvent("ChangeLevel");
             }

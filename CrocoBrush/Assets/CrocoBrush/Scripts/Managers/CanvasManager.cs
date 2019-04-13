@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CrocoBrush.UI
 {
@@ -21,17 +20,11 @@ namespace CrocoBrush.UI
         /// </summary>
         private static CanvasManager m_instance;
 
-        /// <summary>
-        /// Stack of previous activate calls.
-        /// This is used to go back.
-        /// </summary>
-        private Stack<string> m_history;
-
         /*
          * Functions.
          */
 
-        public CanvasManager()
+        public CanvasManager() : base()
         {
             if(m_instance != null)
             {
@@ -39,8 +32,6 @@ namespace CrocoBrush.UI
                 return;
             }
             m_instance = this;
-            m_components = new List<RegisteredCanvas>();
-            m_history = new Stack<string>();
         }
 
         public override void RegisterComponent(RegisteredCanvas component)
@@ -50,23 +41,10 @@ namespace CrocoBrush.UI
             component.Show(false);
         }
 
-        /// <summary>
-        /// Show canvases that have the given name.
-        /// </summary>
-        /// <param name="name">Name to display.</param>
-        public void ShowCanvas(string name)
+        protected override void ProcessComponents(string name)
         {
-            m_history.Push(name);
-            m_components.ForEach((c) => c.Show(c.Name == name));
-        }
-
-        /// <summary>
-        /// Active the previous active canvas.
-        /// </summary>
-        public void Back()
-        {
-            m_history.Pop();
-            ShowCanvas(m_history.Pop());
+            m_components.ForEach((component) => 
+                component.Show(component.Name == name));
         }
 
         /*
