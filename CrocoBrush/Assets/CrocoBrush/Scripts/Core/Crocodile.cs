@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace CrocoBrush
 {
@@ -13,17 +14,22 @@ namespace CrocoBrush
                 Debug.LogError("Multiple Crocodile Instances");
             }
             Instance = this;
+            InitializeValues();
         }
 
-        public void AddScore(int score)
+        public void AddScore(Quality quality)
         {
-            Score += score;
-            EventManager.Instance.TriggerEvent("UpdateGameUI");
-        }
+            if(quality <= 0)
+            {
+                Annoy();
+                EventManager.Instance.TriggerEvent("Miss");
+            }
+            else
+            {
+                ProcessQuality(quality);
+                EventManager.Instance.TriggerEvent("Hit");
+            }
 
-        public void Annoy()
-        {
-            Anger++;
             EventManager.Instance.TriggerEvent("UpdateGameUI");
         }
 
@@ -39,12 +45,38 @@ namespace CrocoBrush
         public void Restart()
         {
             Mouth.Instance.Restart();
-            this.Score = 0;
-            this.Anger = 0;
+            InitializeValues();
             EventManager.Instance.TriggerEvent("ResetGame");
         }
 
+        private void Annoy()
+        {
+            Anger++;
+        }
+
+        private void ProcessQuality(Quality quality)
+        {
+            Score += (int)quality;
+            Streak++;
+            HitCounts[quality]++;
+        }
+
+        private void InitializeValues()
+        {
+            this.Score = 0;
+            this.Anger = 0;
+            this.Streak = 0;
+            this.HitCounts = new Dictionary<Quality, int>()
+            {
+                { Quality.Bad, 0 },
+                { Quality.Good, 0  },
+                { Quality.Perfect, 0 }
+            };
+        }
+
         public int Score { get; private set; }
+        public int Streak { get; private set; }
         public int Anger { get; private set; }
+        public Dictionary<Quality, int> HitCounts { get; private set; }
     }
 }

@@ -100,7 +100,7 @@ namespace CrocoBrush
             if(m_notes[direction].Count <= 0)
             {
                 //Nothing to clear.
-                Crocodile.Instance.Annoy();
+                Crocodile.Instance.AddScore(Quality.Bad);
             }
             else
             {
@@ -149,34 +149,9 @@ namespace CrocoBrush
         private void ProcessFood(Food food)
         {
             //Add score based on the Food's quality.
-            AddScore(food.Quality);
+            Crocodile.Instance.AddScore(food.Quality);
             //Add the Food back to object pool.
             m_available.Enqueue(food);
-        }
-
-        /// <summary>
-        /// Add score to Crocodile based on a given quality.
-        /// </summary>
-        /// <param name="quality">Quality for the score.</param>
-        private void AddScore(Quality quality)
-        {
-            switch(quality)
-            {
-                case Quality.Bad:
-                    Crocodile.Instance.Annoy();
-                    EventManager.Instance.TriggerEvent("Miss");
-                    break;
-
-                case Quality.Good:
-                    Crocodile.Instance.AddScore(1);
-                    EventManager.Instance.TriggerEvent("Hit");
-                    break;
-
-                case Quality.Perfect:
-                    Crocodile.Instance.AddScore(2);
-                    EventManager.Instance.TriggerEvent("Hit");
-                    break;
-            }
         }
 
         /// <summary>

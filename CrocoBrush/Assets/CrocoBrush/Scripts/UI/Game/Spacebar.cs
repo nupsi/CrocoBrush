@@ -61,23 +61,7 @@ namespace CrocoBrush
         {
             DOTween.Kill(m_graphics.transform);
             m_graphics.SetActive(false);
-            switch(Quality)
-            {
-                case Quality.Bad:
-                    Crocodile.Instance.Annoy();
-                    EventManager.Instance.TriggerEvent("Miss");
-                    break;
-
-                case Quality.Good:
-                    Crocodile.Instance.AddScore(1);
-                    EventManager.Instance.TriggerEvent("SpaceHit");
-                    break;
-
-                case Quality.Perfect:
-                    Crocodile.Instance.AddScore(2);
-                    EventManager.Instance.TriggerEvent("SpaceHit");
-                    break;
-            }
+            Crocodile.Instance.AddScore(Quality);
         }
 
         private IEnumerator Degrade(float duration)

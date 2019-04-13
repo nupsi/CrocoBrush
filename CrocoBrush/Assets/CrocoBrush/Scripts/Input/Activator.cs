@@ -27,14 +27,14 @@ namespace CrocoBrush
         /// Show canvas with the given name.
         /// </summary>
         /// <param name="name">Target canvas name.</param>
-        public void ShowCanvas() => 
+        public void ShowCanvas() =>
             CanvasManager.Instance.ShowCanvas(m_separate ? m_canvas : m_name);
 
         /// <summary>
         /// Move camera to a point with the given name.
         /// </summary>
         /// <param name="name">Target position name.</param>
-        public void MoveTo() => 
+        public void MoveTo() =>
             CameraManager.Instance.MoveToPosition(m_separate ? m_position : m_name);
 
         /// <summary>

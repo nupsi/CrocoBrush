@@ -2,8 +2,8 @@
 {
     public enum Quality
     {
-        Bad,
-        Good,
-        Perfect
+        Bad = 0,
+        Good = 1,
+        Perfect = 2
     }
 }

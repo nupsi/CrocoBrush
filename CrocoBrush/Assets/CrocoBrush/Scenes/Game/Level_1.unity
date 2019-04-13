@@ -250,6 +250,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 59904527}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &59904529
@@ -1484,8 +1495,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465059428}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -534.5, y: -394, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1922432989}
@@ -1699,6 +1710,7 @@ GameObject:
   - component: {fileID: 1922432988}
   - component: {fileID: 1922432987}
   - component: {fileID: 1922432990}
+  - component: {fileID: 1922432991}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -1822,6 +1834,28 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: CrocoBrush.Events.CustomEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &1922432991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922432986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1280, y: 720}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
 --- !u!4 &1944776443 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400040, guid: 01548430902dca14898b385ba49c4b2e,
@@ -2319,6 +2353,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause
       objectReference: {fileID: 0}
+    - target: {fileID: 4652744082565910595, guid: 432b4236085bf4e418e1e3550638db0c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4652744084647669851, guid: 432b4236085bf4e418e1e3550638db0c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2449,11 +2488,6 @@ PrefabInstance:
       propertyPath: m_components.Array.data[3]
       value: 
       objectReference: {fileID: 391760105}
-    - target: {fileID: 4652744082565910595, guid: 432b4236085bf4e418e1e3550638db0c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4652744083787888660, guid: 432b4236085bf4e418e1e3550638db0c,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -2807,6 +2841,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8108126258607425982, guid: 3d9e41b60ff061546b0b970fbc5ac370,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8108126258607425981, guid: 3d9e41b60ff061546b0b970fbc5ac370,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -2852,11 +2891,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8108126258607425982, guid: 3d9e41b60ff061546b0b970fbc5ac370,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8108126260041235430, guid: 3d9e41b60ff061546b0b970fbc5ac370,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -2866,6 +2900,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300766565782590200, guid: 3d9e41b60ff061546b0b970fbc5ac370,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300766565782590200, guid: 3d9e41b60ff061546b0b970fbc5ac370,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300766565782590200, guid: 3d9e41b60ff061546b0b970fbc5ac370,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300766565782590200, guid: 3d9e41b60ff061546b0b970fbc5ac370,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300766565782590200, guid: 3d9e41b60ff061546b0b970fbc5ac370,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300766565782590200, guid: 3d9e41b60ff061546b0b970fbc5ac370,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300766565782590200, guid: 3d9e41b60ff061546b0b970fbc5ac370,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300766565782590200, guid: 3d9e41b60ff061546b0b970fbc5ac370,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300766565782590200, guid: 3d9e41b60ff061546b0b970fbc5ac370,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d9e41b60ff061546b0b970fbc5ac370, type: 3}

@@ -187,16 +187,16 @@ namespace CrocoBrush
             // |  /\  | left  right   | /|\ |
             // | /  \ |               |/ | \| bottom left  bottom right
             // |/    \|    down       +--+--+ x - y        i - y
-            // +------+               
+            // +------+
 
-            //Calculate the aspect ratio. 
+            //Calculate the aspect ratio.
             var ratio = (float)Screen.width / Screen.height;
             //Convert the mouseposition to follow the ratio.
             point.x /= ratio;
-            //Convert the mouse x position from screen point to 0-1 value, 
+            //Convert the mouse x position from screen point to 0-1 value,
             //where 0 is bottom left and 1 is bottom right
             var x = Mathf.Clamp01(point.x / (Screen.width / ratio));
-            //Convert the mouse y position from screen point to 0-1 value, 
+            //Convert the mouse y position from screen point to 0-1 value,
             //where 0 is bottom left and 1 is top left
             var y = Mathf.Clamp01(point.y / Screen.height);
             //Calculate the x to use, when x > 0.5f, this is so that comparing x to y is easier.

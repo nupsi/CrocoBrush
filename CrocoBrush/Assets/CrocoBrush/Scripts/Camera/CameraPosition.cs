@@ -19,14 +19,6 @@ namespace CrocoBrush
         [Tooltip("Tweening Time.")]
         private float m_time = 1f;
 
-        [SerializeField]
-        [Tooltip("Movement Tweening type.")]
-        private Ease m_moveEase = Ease.Linear;
-
-        [SerializeField]
-        [Tooltip("Rotation Tweening type.")]
-        private Ease m_rotationEase = Ease.Linear;
-
         public void OnEnable()
         {
             CameraManager.Instance.RegisterComponent(this);
@@ -49,11 +41,11 @@ namespace CrocoBrush
 
             camera.transform
                 .DOMove(transform.position, m_time)
-                .SetEase(m_moveEase);
+                .SetEase(Ease.Linear);
 
             camera.transform
                 .DORotate(transform.rotation.eulerAngles, m_time)
-                .SetEase(m_rotationEase);
+                .SetEase(Ease.Linear);
         }
 
         public string Name => m_name;

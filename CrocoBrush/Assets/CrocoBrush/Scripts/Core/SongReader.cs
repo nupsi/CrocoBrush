@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace CrocoBrush
@@ -34,7 +33,7 @@ namespace CrocoBrush
         /// Current Note index.
         /// </summary>
         private int m_current;
-        
+
         /// <summary>
         /// The target object for creating objects from the current notes.
         /// </summary>

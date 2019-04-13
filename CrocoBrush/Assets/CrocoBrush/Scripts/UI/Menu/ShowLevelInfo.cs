@@ -22,7 +22,7 @@ namespace CrocoBrush.UI.Menu
             m_actions ??
             (m_actions = new Dictionary<string, Action>
             {
-                        { "ChangeLevel", UpdateLevelInfo }
+                { "ChangeLevel", UpdateLevelInfo }
             });
     }
 }
