@@ -89,6 +89,7 @@ namespace CrocoBrush.UI.Game
             m_transform
                 .DOScale(0.1f, 0.001f)
                 .SetEase(Ease.Linear)
+                .SetRecyclable(true)
                 .OnComplete(
                     () => m_transform
                     .DOScale(1, duration)
@@ -97,6 +98,7 @@ namespace CrocoBrush.UI.Game
             m_transform
                 .DOLocalMoveY(m_transform.localPosition.y + 100, duration)
                 .SetEase(Ease.Linear)
+                .SetRecyclable(true)
                 .OnComplete(() => parent.AddToPool(this));
         }
     }

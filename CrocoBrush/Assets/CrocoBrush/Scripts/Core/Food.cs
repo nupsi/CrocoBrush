@@ -109,10 +109,12 @@ namespace CrocoBrush
             m_circle.transform
                 .DOScale(Vector3.one, duration)
                 .SetEase(Ease.Linear)
+                .SetRecyclable(true)
                 .OnComplete(
                     () => m_circle.transform
                         .DOScale(Vector3.one, 0.3f)
                         .SetEase(Ease.Linear)
+                        .SetRecyclable(true)
                         .OnComplete(() =>
                         {
                             Quality = Quality.Bad;
@@ -131,7 +133,8 @@ namespace CrocoBrush
             var size = TargetSize;
             StopCoroutine(m_degrade);
             m_circle.SetActive(false);
-            transform.DOScale(size, 0.3f * size)
+            transform
+                .DOScale(size, 0.3f * size)
                 .SetEase(size < 1 ? Ease.InBack : Ease.OutBack)
                 .OnComplete(() =>
                 {
@@ -163,10 +166,10 @@ namespace CrocoBrush
                 m_tooth.Remove();
                 ClearParent();
             }
-            else
-            {
-                Debug.LogError("Trying to remove Food that no longer exists!");
-            }
+            //else
+            //{
+            //    Debug.LogError("Trying to remove Food that no longer exists!");
+            //}
         }
 
         /// <summary>
