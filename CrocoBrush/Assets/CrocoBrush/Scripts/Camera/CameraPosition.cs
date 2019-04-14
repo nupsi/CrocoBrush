@@ -7,16 +7,13 @@ namespace CrocoBrush
     public class CameraPosition : MonoBehaviour
     {
         [SerializeField]
-        [Tooltip("Positions name.")]
         private string m_name = "None";
 
         [SerializeField]
         [Range(0, 179)]
-        [Tooltip("Target Field of View. If 0 tweening disabled")]
         private float m_fieldOfView = 0f;
 
         [SerializeField]
-        [Tooltip("Tweening Time.")]
         private float m_time = 1f;
 
         public void OnEnable()
@@ -36,18 +33,20 @@ namespace CrocoBrush
 
             if(m_fieldOfView > 0)
             {
-                camera.DOFieldOfView(m_fieldOfView, m_time);
+                camera.DOFieldOfView(m_fieldOfView, TweenTime);
             }
 
             camera.transform
-                .DOMove(transform.position, m_time)
+                .DOMove(transform.position, TweenTime)
                 .SetEase(Ease.Linear);
 
             camera.transform
-                .DORotate(transform.rotation.eulerAngles, m_time)
+                .DORotate(transform.rotation.eulerAngles, TweenTime)
                 .SetEase(Ease.Linear);
         }
 
         public string Name => m_name;
+
+        private float TweenTime => Time.time == 0 ? 0f : m_time;
     }
 }

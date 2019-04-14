@@ -36,14 +36,16 @@ namespace CrocoBrush.UI.Game
         /// </summary>
         public void UpdateScore()
         {
-            var text =
-                $"Score: {CurrentScore}\n" +
-                $"Anger: {Anger}\n" +
-                $"Streak: {Streak}\n" +
-                $"Best Streak: {BestStreak}\n" +
-                $"Perfect: {Perfect}\n" +
-                $"Good: {Good}\n" +
-                $"Miss: {Bad}";
+            var text = string.Format(
+                "Score: {0}\nAnger: {1}\nStreak: {2}\nBest Streak: {3}\nPerfect: {4}\nGood: {5}\nBad: {6}", 
+                CurrentScore, 
+                Anger, 
+                Streak, 
+                BestStreak, 
+                Perfect, 
+                Good, 
+                Bad
+            );
             m_text.SetText(text);
         }
 

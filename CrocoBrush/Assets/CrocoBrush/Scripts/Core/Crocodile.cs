@@ -64,6 +64,11 @@ namespace CrocoBrush
             {
                 BestStreak = Streak;
             }
+
+            if(Streak % 10 == 0)
+            {
+                CalmDown();
+            }
         }
 
         private void InitializeValues()
