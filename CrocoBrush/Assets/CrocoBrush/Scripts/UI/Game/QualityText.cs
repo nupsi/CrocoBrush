@@ -26,6 +26,8 @@ namespace CrocoBrush.UI.Game
         /// </summary>
         private RectTransform m_transform;
 
+        private Sequence m_sequence;
+
         /*
          * Mono Behaviour Functions.
          */
@@ -57,7 +59,7 @@ namespace CrocoBrush.UI.Game
         private void OnDisable()
         {
             //Kill any possible tweens running on the transform.
-            DOTween.Kill(m_transform);
+            m_sequence.Kill();
         }
 
         /*
@@ -80,26 +82,17 @@ namespace CrocoBrush.UI.Game
             if(m_text.text != text)
             {
                 m_text.SetText(text);
+                //For some reason the text gets blurry after the SetText on build, so a manual rebuild is required.
+                //This might cause some performance issues or defeat the purpose of object pooling the texts.
                 m_text.Rebuild(CanvasUpdate.PreRender);
             }
-            //For some reason the text gets blurry after the SetText on build, so a manual rebuild is required.
-            //This might cause some performance issues or defeat the purpose of object pooling the texts.
-            //
-            //Tween the Size.
-            m_transform
-                .DOScale(0.1f, 0.001f)
-                .SetEase(Ease.Linear)
-                .SetRecyclable(true)
-                .OnComplete(
-                    () => m_transform
-                    .DOScale(1, duration)
-                    .SetEase(Ease.OutBack));
-            //Tween the position upwards.
-            m_transform
-                .DOLocalMoveY(m_transform.localPosition.y + 100, duration)
-                .SetEase(Ease.Linear)
-                .SetRecyclable(true)
-                .OnComplete(() => parent.AddToPool(this));
+
+            m_sequence = DOTween.Sequence()
+                .Append(m_transform.DOScale(0.1f, 0))
+                .Append(m_transform.DOScale(1, duration).SetEase(Ease.OutBack))
+                .Join(m_transform.DOLocalMoveY(m_transform.localPosition.y + 100, duration).SetEase(Ease.Linear))
+                .OnComplete(() => parent.AddToPool(this))
+                .Play();
         }
     }
 }
