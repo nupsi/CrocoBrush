@@ -46,6 +46,9 @@ ModelImporter:
     400038: Cube
     400040: //RootNode
     2100000: Material_013
+    2100002: Crocodile
+    2100004: Crocodile_Mouth
+    2100006: Crocodile_Tooth
     4300000: Cube
     7400000: Open
     7400002: ArmatureAction_002

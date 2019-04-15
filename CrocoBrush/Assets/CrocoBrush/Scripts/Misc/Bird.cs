@@ -7,7 +7,6 @@ namespace CrocoBrush
     /// <summary>
     /// Input and animation controller for the bird flying inside the crocodile's mouth.
     /// </summary>
-    [RequireComponent(typeof(Animator))]
     public class Bird : MonoBehaviour
     {
         /*
@@ -60,7 +59,7 @@ namespace CrocoBrush
 
         private void Awake()
         {
-            m_aimator = GetComponent<Animator>();
+            m_aimator = GetComponentInChildren<Animator>();
             //Create dictionary containing all the direction inputs and corresponding positions.
             m_directions = new Dictionary<string, Direction>()
             {
@@ -223,8 +222,11 @@ namespace CrocoBrush
         {
             DOTween.Kill(transform.position);
             var time = (transform.position == target.position) ? 0 : 0.5f;
-            transform.DOMove(target.transform.position, time)
-                     .OnComplete(PlayEatAnimation);
+            DOTween.Sequence()
+                .Append(transform.DOMove(target.transform.position, time))
+                .Join(transform.DORotate(target.transform.rotation.eulerAngles, time))
+                .OnComplete(()=>PlayEatAnimation())
+                .Play();
         }
     }
 }

@@ -1344,7 +1344,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_bird
       value: 
-      objectReference: {fileID: 956586823}
+      objectReference: {fileID: 1054717093919657274}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72f9248b99c931942b582f780b4cb2a5, type: 3}
 --- !u!1 &355185942
@@ -3248,7 +3248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: Game
   m_behaviour:
-  - {fileID: 956586823}
+  - {fileID: 1054717093919657274}
   m_gameObjects: []
 --- !u!1 &897212987
 GameObject:
@@ -3601,18 +3601,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5296dc0b3eebb643933d693fa572d7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &956586823 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7012999161944109656, guid: 4451bc94c7ace2e41aeddcad23448b54,
-    type: 3}
-  m_PrefabInstance: {fileID: 1054717093919657273}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c2a3021c1d475b4d9f2efc913061f1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &975192215 stripped
@@ -9325,6 +9313,18 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 0b963389e4ff9448db32390b3f51bfb8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4451bc94c7ace2e41aeddcad23448b54, type: 3}
+--- !u!114 &1054717093919657274 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 113418975915149065, guid: 4451bc94c7ace2e41aeddcad23448b54,
+    type: 3}
+  m_PrefabInstance: {fileID: 1054717093919657273}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c2a3021c1d475b4d9f2efc913061f1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3638493050094644847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9551,7 +9551,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_bird
       value: 
-      objectReference: {fileID: 956586823}
+      objectReference: {fileID: 1054717093919657274}
+    - target: {fileID: 1682268781908480330, guid: 72f9248b99c931942b582f780b4cb2a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: db46a1ead0049254ab446481fe3d9379, type: 2}
+    - target: {fileID: 1682268781908480330, guid: 72f9248b99c931942b582f780b4cb2a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: c5e307ff26d6fa2429fc37f831f795a3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72f9248b99c931942b582f780b4cb2a5, type: 3}
 --- !u!4 &4537401613761422059 stripped

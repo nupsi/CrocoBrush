@@ -211,7 +211,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Mouth
       takeName: Armature|ArmatureAction.002
-      firstFrame: 218
+      firstFrame: 221
       lastFrame: 537
       wrapMode: 0
       orientationOffsetY: 0
