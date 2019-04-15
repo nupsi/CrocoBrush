@@ -35,30 +35,6 @@ namespace CrocoBrush
         private readonly string BlockInput = "Jump";
 
         /// <summary>
-        /// Position for the down position in the mouth.
-        /// </summary>
-        [SerializeField]
-        private GameObject m_down;
-
-        /// <summary>
-        /// Position for the up position in the mouth.
-        /// </summary>
-        [SerializeField]
-        private GameObject m_up;
-
-        /// <summary>
-        /// Position for the left position in the mouth.
-        /// </summary>
-        [SerializeField]
-        private GameObject m_left;
-
-        /// <summary>
-        /// Position for the right position in the mouth.
-        /// </summary>
-        [SerializeField]
-        private GameObject m_right;
-
-        /// <summary>
         /// The bird's Animator component.
         /// Used when triggering differend animations.
         /// <see cref="Eat"/>
@@ -71,7 +47,12 @@ namespace CrocoBrush
         /// string: Input's name in Unity's Input System. (Edit/Project Settings/Input)
         /// Transform: Target position for the Input.
         /// </summary>
-        private Dictionary<string, Transform> m_directions;
+        private Dictionary<string, Direction> m_directions;
+
+        /// <summary>
+        /// Bird data containing moving positions.
+        /// </summary>
+        private BirdData m_data;
 
         /*
          * Mono Behaviour Functions.
@@ -81,12 +62,12 @@ namespace CrocoBrush
         {
             m_aimator = GetComponent<Animator>();
             //Create dictionary containing all the direction inputs and corresponding positions.
-            m_directions = new Dictionary<string, Transform>()
+            m_directions = new Dictionary<string, Direction>()
             {
-                { "Up", m_up.transform },
-                { "Down", m_down.transform },
-                { "Left", m_left.transform },
-                { "Right", m_right.transform }
+                { "Up", Direction.Up },
+                { "Down", Direction.Down },
+                { "Left", Direction.Left },
+                { "Right", Direction.Right }
             };
         }
 
@@ -116,6 +97,15 @@ namespace CrocoBrush
         public void PlayUnblocAnimation() => m_aimator.SetTrigger(Unblock);
 
         /// <summary>
+        /// Set bird data containing target positions for movement.
+        /// </summary>
+        /// <param name="data">Bird data containing target positions.</param>
+        public void SetData(BirdData data)
+        {
+            m_data = data;
+        }
+
+        /// <summary>
         /// Update the current inputs.
         /// </summary>
         private void UpdateInput()
@@ -126,7 +116,7 @@ namespace CrocoBrush
             {
                 if(Input.GetButtonDown(set.Key))
                 {
-                    MoveToPoint(set.Value);
+                    MoveToPoint(GetPosition(set.Value));
                 }
             }
 
@@ -222,23 +212,7 @@ namespace CrocoBrush
         /// <returns>Transform for direction.</returns>
         private Transform GetPosition(Direction direction)
         {
-            switch(direction)
-            {
-                case Direction.Down:
-                    return m_down.transform;
-
-                case Direction.Up:
-                    return m_up.transform;
-
-                case Direction.Left:
-                    return m_left.transform;
-
-                case Direction.Right:
-                    return m_right.transform;
-
-                default:
-                    return transform;
-            }
+            return m_data?.GetDirection(direction) ?? transform;
         }
 
         /// <summary>

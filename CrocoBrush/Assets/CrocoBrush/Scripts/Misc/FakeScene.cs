@@ -8,7 +8,10 @@ namespace CrocoBrush.Managers
         private string m_name = "None";
 
         [SerializeField]
-        private Behaviour[] m_scene;
+        private Behaviour[] m_behaviour;
+
+        [SerializeField]
+        private GameObject[] m_gameObjects;
 
         private bool m_current = true;
 
@@ -24,17 +27,16 @@ namespace CrocoBrush.Managers
                 return;
             }
 
-            foreach(var behaviour in m_scene)
+            foreach(var behaviour in m_behaviour)
             {
-                if(behaviour is MonoBehaviour)
-                {
-                    behaviour.gameObject.SetActive(isTarget);
-                }
-                else
-                {
-                    behaviour.enabled = isTarget;
-                }
+                behaviour.enabled = isTarget;
             }
+
+            foreach(var gameObject in m_gameObjects)
+            {
+                gameObject.SetActive(isTarget);
+            }
+
             m_current = isTarget;
         }
     }
