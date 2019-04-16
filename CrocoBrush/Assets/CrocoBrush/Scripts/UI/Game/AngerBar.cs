@@ -7,6 +7,7 @@ namespace CrocoBrush.UI.Game
     /// Progress bar to display Crocodiles Anger.
     /// </summary>
     [RequireComponent(typeof(Slider))]
+    [RequireComponent(typeof(Activator))]
     public class AngerBar : GUIGame
     {
         /*
@@ -26,6 +27,8 @@ namespace CrocoBrush.UI.Game
         /// </summary>
         private int m_anger;
 
+        private Activator m_activator;
+
         /*
          * Mono Behaviour Functions.
          */
@@ -33,6 +36,7 @@ namespace CrocoBrush.UI.Game
         protected void Awake()
         {
             m_slider = GetComponent<Slider>();
+            m_activator = GetComponent<Activator>();
             UpdateFill();
         }
 
@@ -67,6 +71,13 @@ namespace CrocoBrush.UI.Game
                 //Update the slider to show the current anger.
                 m_slider.value = CrocodileAnger;
                 UpdateFill();
+            }
+            else
+            {
+                Debug.Log("Lose game");
+                EventManager.Instance.TriggerEvent("LevelEnd");
+                EventManager.Instance.TriggerEvent("LevelLose");
+                m_activator.Activate();
             }
         }
 
