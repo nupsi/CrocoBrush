@@ -1895,6 +1895,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 765107816}
     m_Modifications:
+    - target: {fileID: 3104564628885000503, guid: 8e3de6914a617452985662b088d15a45,
+        type: 3}
+      propertyPath: m_Name
+      value: Sliders
+      objectReference: {fileID: 0}
     - target: {fileID: 3104564628885000500, guid: 8e3de6914a617452985662b088d15a45,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1999,11 +2004,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3104564628885000503, guid: 8e3de6914a617452985662b088d15a45,
-        type: 3}
-      propertyPath: m_Name
-      value: Sliders
       objectReference: {fileID: 0}
     - target: {fileID: 3104564629575201857, guid: 8e3de6914a617452985662b088d15a45,
         type: 3}
@@ -3429,7 +3429,8 @@ MonoBehaviour:
   m_behaviour:
   - {fileID: 1054717093919657274}
   - {fileID: 296955359}
-  m_gameObjects: []
+  m_gameObjects:
+  - {fileID: 1065623618}
 --- !u!1 &897212987
 GameObject:
   m_ObjectHideFlags: 0
@@ -4327,6 +4328,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1043877458}
   m_CullTransparentMesh: 0
+--- !u!1 &1065623618 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 200876700803466003, guid: 9fbdc37a264054245ae9055e4bc9d0c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1648347074}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1065961321
 GameObject:
   m_ObjectHideFlags: 0

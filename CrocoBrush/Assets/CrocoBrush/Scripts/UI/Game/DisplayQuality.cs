@@ -76,6 +76,7 @@ namespace CrocoBrush.UI.Game
         protected override void ResetComponent()
         {
             m_score = Crocodile.Score;
+            m_anger = Crocodile.Anger;
             for(int i = 0; i < m_active.Count; i++)
             {
                 var text = m_active.Dequeue();
