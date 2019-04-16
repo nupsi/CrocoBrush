@@ -74,7 +74,7 @@ namespace CrocoBrush.UI.Game
             }
             else
             {
-                Debug.Log("Lose game");
+                LevelController.Instance.Stop();
                 EventManager.Instance.TriggerEvent("LevelEnd");
                 EventManager.Instance.TriggerEvent("LevelLose");
                 m_activator.Activate();

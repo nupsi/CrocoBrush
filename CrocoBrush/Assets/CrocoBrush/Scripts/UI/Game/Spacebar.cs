@@ -10,6 +10,10 @@ namespace CrocoBrush
 
         private GameObject m_graphics;
 
+        private Sequence m_tween;
+
+        private bool m_visible;
+
         private void Awake()
         {
             if(Instance != null)
@@ -26,42 +30,36 @@ namespace CrocoBrush
         {
             if(Input.GetButtonDown("Jump"))
             {
-                ClearSpace();
+                if(m_visible)
+                {
+                    ClearSpace();
+                }
+                else
+                {
+                    Crocodile.Instance.AddScore(Quality.Bad);
+                }
             }
         }
 
         public void Create(Direction direction)
         {
-            //"Reset" the spacebar.
-            m_graphics.SetActive(true);
+            Show(true);
             Quality = Quality.Bad;
-
-            //Start the spacebar logic.
             StartCoroutine(Degrade(Mouth.Instance.Delay));
-            m_graphics.transform
-                .DOScale(0.1f, 0.01f)
-                .OnComplete(
-                    () => m_graphics.transform
-                    .DOScale(1f, Mouth.Instance.Delay)
-                    .SetEase(Ease.Linear)
-                    .OnComplete(
-                        () => m_graphics.transform
-                        .DOScale(1f, 0.3f)
-                        .SetEase(Ease.Linear)
-                        .OnComplete(() =>
-                            {
-                                Quality = Quality.Bad;
-                                ClearSpace();
-                            })
-                    )
-                );
+            m_tween = DOTween.Sequence()
+                .Append(Graphics.DOScale(0.1f, 0f))
+                .Append(Graphics.DOScale(1f, Mouth.Instance.Delay).SetEase(Ease.Linear))
+                .Append(Graphics.DOScale(1f, 0.3f).SetEase(Ease.Linear))
+                .Play();
         }
 
         public void ClearSpace()
         {
-            DOTween.Kill(m_graphics.transform);
-            m_graphics.SetActive(false);
-            Crocodile.Instance.AddScore(Quality);
+            if(m_visible)
+            {
+                Show(false);
+                Crocodile.Instance.AddScore(Quality);
+            }
         }
 
         private IEnumerator Degrade(float duration)
@@ -72,8 +70,17 @@ namespace CrocoBrush
             Quality = Quality.Perfect;
             yield return new WaitForSeconds(0.29f);
             Quality = Quality.Bad;
+            ClearSpace();
+        }
+
+        private void Show(bool show)
+        {
+            m_graphics.SetActive(show);
+            m_visible = show;
         }
 
         public Quality Quality { get; private set; }
+
+        private Transform Graphics => m_graphics.transform;
     }
 }

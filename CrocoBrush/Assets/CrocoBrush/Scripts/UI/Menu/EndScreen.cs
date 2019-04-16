@@ -8,8 +8,6 @@ namespace CrocoBrush.UI.Menu
     public class EndScreen : RegisteredBehaviour
     {
         [Header("Text Fields")]
-        [SerializeField]
-        private TextMeshProUGUI m_label;
 
         [SerializeField]
         private TextMeshProUGUI m_combo;
@@ -38,14 +36,12 @@ namespace CrocoBrush.UI.Menu
 
         private void Win()
         {
-            m_label.SetText("SUCCESS!");
             m_image.sprite = m_win;
             UpdateEndInfo();
         }
 
         private void Lose()
         {
-            m_label.SetText("FAIL...");
             m_image.sprite = m_lose;
             UpdateEndInfo();
         }

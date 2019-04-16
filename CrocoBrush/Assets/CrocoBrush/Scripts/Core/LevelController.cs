@@ -55,6 +55,12 @@ namespace CrocoBrush
             }
         }
 
+        public void Stop()
+        {
+            Crocodile.Instance.StopGame();
+            m_source.Stop();
+        }
+
         public LevelData SelectedLevel
         {
             get => m_current;

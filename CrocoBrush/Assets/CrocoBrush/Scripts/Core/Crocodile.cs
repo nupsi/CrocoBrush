@@ -17,6 +17,8 @@ namespace CrocoBrush
             InitializeValues();
         }
 
+        public void StopGame() => Mouth.Instance.Restart();
+
         public void AddScore(Quality quality)
         {
             HitCounts[quality]++;
