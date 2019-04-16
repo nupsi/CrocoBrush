@@ -1175,7 +1175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1797,7 +1797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2996,7 +2996,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -3086,11 +3086,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 58233190}
     m_Modifications:
-    - target: {fileID: 1841332553058795612, guid: faf86d727da70b146905252ab694b0c1,
-        type: 3}
-      propertyPath: m_Name
-      value: AngerBar
-      objectReference: {fileID: 0}
     - target: {fileID: 1841332553058795587, guid: faf86d727da70b146905252ab694b0c1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3195,6 +3190,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841332553058795612, guid: faf86d727da70b146905252ab694b0c1,
+        type: 3}
+      propertyPath: m_Name
+      value: AngerBar
       objectReference: {fileID: 0}
     - target: {fileID: 1841332554545581076, guid: faf86d727da70b146905252ab694b0c1,
         type: 3}
@@ -4217,7 +4217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -5582,11 +5582,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 58233190}
     m_Modifications:
-    - target: {fileID: 6200737026128491653, guid: 002000509bb1e974b8ab9f8fe2ad8bc9,
-        type: 3}
-      propertyPath: m_Name
-      value: Score
-      objectReference: {fileID: 0}
     - target: {fileID: 6200737026128491654, guid: 002000509bb1e974b8ab9f8fe2ad8bc9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5691,6 +5686,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200737026128491653, guid: 002000509bb1e974b8ab9f8fe2ad8bc9,
+        type: 3}
+      propertyPath: m_Name
+      value: Score
       objectReference: {fileID: 0}
     - target: {fileID: 6200737026128491648, guid: 002000509bb1e974b8ab9f8fe2ad8bc9,
         type: 3}
@@ -5907,7 +5907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -6978,11 +6978,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 58233190}
     m_Modifications:
-    - target: {fileID: 200876700803466003, guid: 9fbdc37a264054245ae9055e4bc9d0c1,
-        type: 3}
-      propertyPath: m_Name
-      value: Spacebar
-      objectReference: {fileID: 0}
     - target: {fileID: 200876700803466002, guid: 9fbdc37a264054245ae9055e4bc9d0c1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7088,6 +7083,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 200876700803466003, guid: 9fbdc37a264054245ae9055e4bc9d0c1,
+        type: 3}
+      propertyPath: m_Name
+      value: Spacebar
+      objectReference: {fileID: 0}
     - target: {fileID: 200876702339772745, guid: 9fbdc37a264054245ae9055e4bc9d0c1,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -7097,6 +7097,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 200876702339772747, guid: 9fbdc37a264054245ae9055e4bc9d0c1,
+        type: 3}
+      propertyPath: m_Name
+      value: Text
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fbdc37a264054245ae9055e4bc9d0c1, type: 3}
@@ -7870,11 +7875,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 58233190}
     m_Modifications:
-    - target: {fileID: 8027717874160205407, guid: 019e801027cf2a04b9f1eb44f8dbbdd1,
-        type: 3}
-      propertyPath: m_Name
-      value: HitOrMiss
-      objectReference: {fileID: 0}
     - target: {fileID: 8027717874160205400, guid: 019e801027cf2a04b9f1eb44f8dbbdd1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7979,6 +7979,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8027717874160205407, guid: 019e801027cf2a04b9f1eb44f8dbbdd1,
+        type: 3}
+      propertyPath: m_Name
+      value: HitOrMiss
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 019e801027cf2a04b9f1eb44f8dbbdd1, type: 3}
@@ -8302,7 +8307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -8619,7 +8624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -9065,7 +9070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
