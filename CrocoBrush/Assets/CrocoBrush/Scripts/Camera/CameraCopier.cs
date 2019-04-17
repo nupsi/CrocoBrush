@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CrocoBrush.Misc
+namespace CrocoBrush.Editors
 {
     [RequireComponent(typeof(Camera))]
     public class CameraCopier : MonoBehaviour

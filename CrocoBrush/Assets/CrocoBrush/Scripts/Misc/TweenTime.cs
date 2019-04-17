@@ -1,7 +1,7 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
-namespace CrocoBrush
+namespace CrocoBrush.Tweening
 {
     public class TweenTime : MonoBehaviour
     {

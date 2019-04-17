@@ -81,13 +81,11 @@ namespace CrocoBrush
         /// <summary>
         /// Tooth's Position in the Mouth.
         /// </summary>
-        /// <value>The direction in the Mouth.</value>
         public Direction Direction => m_direction;
 
         /// <summary>
         /// Current Mouth Instance.
         /// </summary>
-        /// <value>Current Mouth Instance.</value>
         private Mouth Mouth => Mouth.Instance;
     }
 }

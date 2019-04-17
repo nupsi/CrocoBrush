@@ -36,10 +36,26 @@ namespace CrocoBrush
                 camera.DOFieldOfView(m_fieldOfView, TweenTime);
             }
 
+            ActiveChild();
+
             DOTween.Sequence()
                 .Append(camera.transform.DOMove(transform.position, TweenTime))
                 .Join(camera.transform.DORotate(transform.rotation.eulerAngles, TweenTime))
                 .Play();
+        }
+
+        private void ActiveChild()
+        {
+            if(transform.childCount == 0)
+            {
+                return;
+            }
+
+            foreach(Transform child in transform)
+            {
+                child.gameObject.SetActive(false);
+                child.gameObject.SetActive(true);
+            }
         }
 
         public string Name => m_name;

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CrocoBrush
+namespace CrocoBrush.Audio
 {
     [RequireComponent(typeof(AudioSource))]
     [RequireComponent(typeof(Activator))]

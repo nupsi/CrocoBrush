@@ -2,17 +2,16 @@
 
 namespace CrocoBrush
 {
+    /// <summary>
+    /// Contains Mouth's movement positions.
+    /// Used to control positions for different levels.
+    /// Call Select() to assign positions to bird.
+    /// </summary>
     public class BirdPositions : MonoBehaviour
     {
         /*
          * Variables.
          */
-
-        /// <summary>
-        /// Target bird;
-        /// </summary>
-        [SerializeField]
-        private Bird m_bird;
 
         /// <summary>
         /// Position for the up position in the mouth.
@@ -61,7 +60,7 @@ namespace CrocoBrush
         /// </summary>
         public void Select()
         {
-            m_bird.SetData(m_data);
+            Bird.Instance.SetData(m_data);
         }
     }
 }

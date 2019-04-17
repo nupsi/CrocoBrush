@@ -8,7 +8,6 @@ namespace CrocoBrush.UI.Menu
     public class EndScreen : RegisteredBehaviour
     {
         [Header("Text Fields")]
-
         [SerializeField]
         private TextMeshProUGUI m_combo;
 

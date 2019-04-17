@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace CrocoBrush
+namespace CrocoBrush.Audio
 {
     [RequireComponent(typeof(AudioSource))]
     public class SoundPlayer : RegisteredBehaviour
