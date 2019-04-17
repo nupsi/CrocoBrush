@@ -64,13 +64,12 @@ namespace CrocoBrush.UI.Game
             }
 
             //Check if the anger has changed.
-            if(Crocodile.Anger != m_anger)
+            if(m_anger < Crocodile.Anger)
             {
                 //Display miss text.
                 DisplayMiss();
-                //Update the stored anger.
-                m_anger = Crocodile.Anger;
-            }
+            } 
+            m_anger = Crocodile.Anger;
         }
 
         protected override void ResetComponent()

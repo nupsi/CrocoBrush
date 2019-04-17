@@ -26,21 +26,6 @@ namespace CrocoBrush
             m_graphics.SetActive(false);
         }
 
-        private void Update()
-        {
-            if(Input.GetButtonDown("Jump"))
-            {
-                if(m_visible)
-                {
-                    ClearSpace();
-                }
-                else
-                {
-                    Crocodile.Instance.AddScore(Quality.Bad);
-                }
-            }
-        }
-
         public void Create(Direction direction)
         {
             Show(true);
@@ -81,6 +66,8 @@ namespace CrocoBrush
         }
 
         public Quality Quality { get; private set; }
+
+        public bool Visible => m_visible;
 
         private Transform Graphics => m_graphics.transform;
     }

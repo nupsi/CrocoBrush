@@ -42,13 +42,13 @@ namespace CrocoBrush
             m_source.clip = SelectedLevel.Audio;
             m_source.time = 0;
 
-            if(Mouth.Instance != null)
+            if(Mouth != null)
             {
                 m_noteReader = new SongReader(Mouth, m_source, SelectedLevel.Notes);
                 m_noteReader.StartSong();
             }
 
-            if(Spacebar.Instance != null)
+            if(Spacebar != null)
             {
                 m_spaceReader = new SongReader(Spacebar, m_source, SelectedLevel.SpaceNotes);
                 m_spaceReader.StartSong();

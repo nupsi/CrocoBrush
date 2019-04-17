@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 200876702339772744}
   - component: {fileID: 200876702339772745}
   m_Layer: 0
-  m_Name: TextMeshPro Text
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
