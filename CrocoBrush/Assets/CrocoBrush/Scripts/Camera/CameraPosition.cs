@@ -33,16 +33,15 @@ namespace CrocoBrush
 
             if(m_fieldOfView > 0)
             {
-                camera.DOFieldOfView(m_fieldOfView, TweenTime);
+                camera.DOFieldOfView(m_fieldOfView, TweenTime)
+                .SetUpdate(UpdateType.Manual, true);
             }
 
-            camera.transform
-                .DOMove(transform.position, TweenTime)
-                .SetEase(Ease.Linear);
-
-            camera.transform
-                .DORotate(transform.rotation.eulerAngles, TweenTime)
-                .SetEase(Ease.Linear);
+            DOTween.Sequence()
+                .SetUpdate(UpdateType.Manual, true)
+                .Append(camera.transform.DOMove(transform.position, TweenTime))
+                .Join(camera.transform.DORotate(transform.rotation.eulerAngles, TweenTime))
+                .Play();
         }
 
         public string Name => m_name;

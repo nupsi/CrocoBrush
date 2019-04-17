@@ -55,6 +55,10 @@ namespace CrocoBrush
             }
         }
 
+        public void Pause() => m_source.Pause();
+
+        public void UnPause() => m_source.UnPause();
+
         public void Stop()
         {
             Crocodile.Instance.StopGame();

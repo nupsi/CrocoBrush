@@ -45,7 +45,7 @@ namespace CrocoBrush
         /// <param name="name">Target name to process.</param>
         public virtual void Show(string name)
         {
-            m_history.Push(name);
+            m_history.Push((name == string.Empty) ? m_history.Peek() : name);
             ProcessComponents(name);
         }
 
