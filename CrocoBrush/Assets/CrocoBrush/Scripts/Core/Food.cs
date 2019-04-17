@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace CrocoBrush
 {
@@ -80,10 +81,13 @@ namespace CrocoBrush
 
         private void OnMouseDown()
         {
-            //Send request to remove the pressed Food.
-            RemoveFood();
-            //Disable collision to prevent clicking after first time.
-            m_collider.enabled = false;
+            if(!EventSystem.current.IsPointerOverGameObject())
+            {
+                //Send request to remove the pressed Food.
+                RemoveFood();
+                //Disable collision to prevent clicking after first time.
+                m_collider.enabled = false;
+            }
         }
 
         /*
@@ -112,6 +116,7 @@ namespace CrocoBrush
                     Quality = Quality.Bad;
                     RemoveFood();
                 })
+                .SetUpdate(UpdateType.Manual)
                 .Play();
         }
 
@@ -128,6 +133,7 @@ namespace CrocoBrush
                 .Append(transform.DOScale(0.5f, 0.2f).SetEase(Ease.InBack))
                 .Append(transform.DOScale(1, 0))
                 .OnComplete(() => gameObject.SetActive(false))
+                .SetUpdate(UpdateType.Manual)
                 .Play();
         }
 

@@ -53,7 +53,10 @@ namespace CrocoBrush.UI
         /// <param name="show">Enable the target canvas.</param>
         public void Show(bool show)
         {
-            m_canvas.enabled = show;
+            if(m_canvas.enabled != show)
+            {
+                m_canvas.enabled = show;
+            }
         }
 
         /*

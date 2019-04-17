@@ -55,9 +55,21 @@ namespace CrocoBrush
             }
         }
 
-        public void Pause() => m_source.Pause();
+        public void Pause()
+        {
+            if(m_source != null)
+            {
+                m_source.Pause();
+            }
+        }
 
-        public void UnPause() => m_source.UnPause();
+        public void UnPause()
+        {
+            if(m_source != null)
+            {
+                m_source.UnPause();
+            }
+        }
 
         public void Stop()
         {

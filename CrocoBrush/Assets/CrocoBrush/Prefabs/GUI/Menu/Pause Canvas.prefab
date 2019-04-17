@@ -1233,11 +1233,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8006623117047223965, guid: 21c2a7e2976a0c446a73e93bfd9ce41b,
-        type: 3}
-      propertyPath: m_name
-      value: Pause
-      objectReference: {fileID: 0}
     - target: {fileID: 3638493049271132157, guid: 21c2a7e2976a0c446a73e93bfd9ce41b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1347,6 +1342,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8006623117047223965, guid: 21c2a7e2976a0c446a73e93bfd9ce41b,
+        type: 3}
+      propertyPath: m_name
+      value: Pause
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21c2a7e2976a0c446a73e93bfd9ce41b, type: 3}

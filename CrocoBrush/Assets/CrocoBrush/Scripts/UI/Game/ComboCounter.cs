@@ -36,16 +36,22 @@ namespace CrocoBrush.UI.Game
         private void OnHit()
         {
             DOTween.Kill(transform);
-            transform.DOScale(1f, 0);
-            transform.DOScale(1.5f, 0.4f).SetEase(Ease.OutBack).OnComplete(
-                () => transform.DOScale(1f, 0.2f).SetEase(Ease.OutBack));
+            DOTween.Sequence()
+                .Append(transform.DOScale(1f, 0))
+                .Append(transform.DOScale(1.5f, 0.4f).SetEase(Ease.OutBack))
+                .Append(transform.DOScale(1f, 0.2f).SetEase(Ease.OutBack))
+                .SetUpdate(UpdateType.Manual)
+                .Play();
         }
 
         private void OnMiss()
         {
             DOTween.Kill(transform);
-            transform.DOScale(1f, 0);
-            transform.DOShakeScale(1, 2);
+            DOTween.Sequence()
+                .Append(transform.DOScale(1f, 0))
+                .Join(transform.DOShakeScale(1, 2))
+                .SetUpdate(UpdateType.Manual)
+                .Play();
         }
 
         protected override void ResetComponent()

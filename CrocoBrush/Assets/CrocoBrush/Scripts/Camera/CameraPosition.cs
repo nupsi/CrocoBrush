@@ -33,12 +33,10 @@ namespace CrocoBrush
 
             if(m_fieldOfView > 0)
             {
-                camera.DOFieldOfView(m_fieldOfView, TweenTime)
-                .SetUpdate(UpdateType.Manual, true);
+                camera.DOFieldOfView(m_fieldOfView, TweenTime);
             }
 
             DOTween.Sequence()
-                .SetUpdate(UpdateType.Manual, true)
                 .Append(camera.transform.DOMove(transform.position, TweenTime))
                 .Join(camera.transform.DORotate(transform.rotation.eulerAngles, TweenTime))
                 .Play();

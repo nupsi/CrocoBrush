@@ -50,6 +50,7 @@ namespace CrocoBrush
                 .Append(Graphics.DOScale(0.1f, 0f))
                 .Append(Graphics.DOScale(1f, Mouth.Instance.Delay).SetEase(Ease.Linear))
                 .Append(Graphics.DOScale(1f, 0.3f).SetEase(Ease.Linear))
+                .SetUpdate(UpdateType.Manual)
                 .Play();
         }
 

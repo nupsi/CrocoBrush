@@ -43,8 +43,7 @@ namespace CrocoBrush.UI
 
         protected override void ProcessComponents(string name)
         {
-            m_components.ForEach((component) => 
-                component.Show(component.Name == name));
+            m_components.ForEach((component) => component.Show(component.Name == name));
         }
 
         /*

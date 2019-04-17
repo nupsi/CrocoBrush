@@ -92,6 +92,7 @@ namespace CrocoBrush.UI.Game
                 .Append(m_transform.DOScale(1, duration).SetEase(Ease.OutBack))
                 .Join(m_transform.DOLocalMoveY(m_transform.localPosition.y + 100, duration).SetEase(Ease.Linear))
                 .OnComplete(() => parent.AddToPool(this))
+                .SetUpdate(UpdateType.Manual)
                 .Play();
         }
     }
