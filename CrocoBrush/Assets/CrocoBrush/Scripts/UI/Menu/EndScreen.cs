@@ -47,11 +47,11 @@ namespace CrocoBrush.UI.Menu
 
         private void UpdateEndInfo()
         {
-            m_combo.SetText(Crocodile.Instance.BestStreak.ToString());
-            m_perfect.SetText(Crocodile.Instance.HitCounts[Quality.Perfect].ToString());
-            m_great.SetText(Crocodile.Instance.HitCounts[Quality.Good].ToString());
-            m_miss.SetText(Crocodile.Instance.HitCounts[Quality.Bad].ToString());
-            m_score.SetText(Crocodile.Instance.BestStreak.ToString());
+            m_combo.SetText(Crocodile.BestStreak.ToString());
+            m_perfect.SetText(Crocodile.HitCounts[Quality.Perfect].ToString());
+            m_great.SetText(Crocodile.HitCounts[Quality.Good].ToString());
+            m_miss.SetText(Crocodile.HitCounts[Quality.Bad].ToString());
+            m_score.SetText(Crocodile.Score.ToString());
         }
 
         protected override Dictionary<string, Action> Actions =>
@@ -61,5 +61,7 @@ namespace CrocoBrush.UI.Menu
                 { "LevelWin", Win },
                 { "LevelLose", Lose }
             });
+
+        private Crocodile Crocodile => Crocodile.Instance;
     }
 }
