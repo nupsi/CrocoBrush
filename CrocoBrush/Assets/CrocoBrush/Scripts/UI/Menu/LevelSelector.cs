@@ -9,7 +9,15 @@ namespace CrocoBrush.UI.Menu
 
         public void Select()
         {
-            Controller.SelectedLevel = m_data;
+            if(m_data != null)
+            {
+                Controller.SelectedLevel = m_data;
+                EventManager.Instance.TriggerEvent("ChangeLevel");
+            }
+        }
+
+        public void Play()
+        {
             Controller.PlaySelectedLevel();
         }
 

@@ -1,63 +1,69 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
 using TMPro;
-using DG.Tweening;
+using UnityEngine;
 
 namespace CrocoBrush.UI.Game
 {
     [RequireComponent(typeof(TextMeshProUGUI))]
-    public class ComboCounter : MonoBehaviour
+    public class ComboCounter : GUIGame
     {
         private TextMeshProUGUI m_text;
-        private int m_combo;
+        private int m_streak;
 
         private void Awake()
         {
             m_text = GetComponent<TextMeshProUGUI>();
         }
 
-        private void OnEnable()
+        protected override void UpdateComponent()
         {
-            EventManager.Instance.StartListening("Hit", OnHit);
-            EventManager.Instance.StartListening("Miss", OnMiss);
-        }
+            if(m_streak != Streak)
+            {
+                if(m_streak < Streak)
+                {
+                    OnHit();
+                }
+                else
+                {
+                    OnMiss();
+                }
+                m_streak = Streak;
+            }
 
-        private void OnDisable()
-        {
-            EventManager.Instance.StopListening("Hit", OnHit);
-            EventManager.Instance.StopListening("Miss", OnMiss);
+            UpdateText();
         }
-
 
         private void OnHit()
         {
             DOTween.Kill(transform);
-            transform.DOScale(1f, 0);
-            m_combo++;
-            transform.DOScale(1.5f, 0.4f).SetEase(Ease.OutBack).OnComplete(
-                () => transform.DOScale(1f, 0.2f).SetEase(Ease.OutBack));
-            UpdateText();
-
-            if(m_combo % 10 == 0)
-            {
-                Crocodile.Instance.CalmDown();
-            }
+            DOTween.Sequence()
+                .Append(transform.DOScale(1f, 0))
+                .Append(transform.DOScale(1.5f, 0.4f).SetEase(Ease.OutBack))
+                .Append(transform.DOScale(1f, 0.2f).SetEase(Ease.OutBack))
+                .SetUpdate(UpdateType.Manual)
+                .Play();
         }
 
         private void OnMiss()
         {
-            if(m_combo > 0)
-            {
-                DOTween.Kill(transform);
-                transform.DOScale(1f, 0);
-                transform.DOShakeScale(1, 2);
-                m_combo = 0;
-                UpdateText();
-            }
+            DOTween.Kill(transform);
+            DOTween.Sequence()
+                .Append(transform.DOScale(1f, 0))
+                .Join(transform.DOShakeScale(1, 2))
+                .SetUpdate(UpdateType.Manual)
+                .Play();
+        }
+
+        protected override void ResetComponent()
+        {
+            UpdateText();
         }
 
         private void UpdateText()
         {
-            m_text.SetText($"Combo x {m_combo}");
+            m_text.SetText($"Combo x {Streak}");
         }
+
+        private int Streak => Crocodile.Instance.Streak;
     }
 }

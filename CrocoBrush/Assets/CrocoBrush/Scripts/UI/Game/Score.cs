@@ -32,26 +32,43 @@ namespace CrocoBrush.UI.Game
          */
 
         /// <summary>
-        /// Update Text Field component to display latest score and anger.
+        /// Update Text Field component to display the latest properties.
         /// </summary>
-        public void UpdateScore() => m_text.SetText($"Score: {CurrentScore}\nAnger: {CurrentAnger}");
+        public void UpdateScore()
+        {
+            var text = string.Format(
+                "Score: {0}\nAnger: {1}\nStreak: {2}\nBest Streak: {3}\nPerfect: {4}\nGreat: {5}\nBad: {6}",
+                CurrentScore,
+                Anger,
+                Streak,
+                BestStreak,
+                Perfect,
+                Good,
+                Bad
+            );
+            m_text.SetText(text);
+        }
 
         protected override void UpdateComponent() => UpdateScore();
+
+        protected override void ResetComponent() => UpdateScore();
 
         /*
          * Accessors.
          */
 
-        /// <summary>
-        /// Accessor to get the Score from Crocodiles singleton.
-        /// </summary>
-        /// <value>The current Score.</value>
         private int CurrentScore => Crocodile.Instance.Score;
 
-        /// <summary>
-        /// Accessor to get the Anger from Crocodiles singleton.
-        /// </summary>
-        /// <value>The current Anger.</value>
-        private int CurrentAnger => Crocodile.Instance.Anger;
+        private int Anger => Crocodile.Instance.Anger;
+
+        private int Streak => Crocodile.Instance.Streak;
+
+        private int BestStreak => Crocodile.Instance.BestStreak;
+
+        private int Perfect => Crocodile.Instance.HitCounts[Quality.Perfect];
+
+        private int Good => Crocodile.Instance.HitCounts[Quality.Good];
+
+        private int Bad => Crocodile.Instance.HitCounts[Quality.Bad];
     }
 }

@@ -5,7 +5,6 @@ namespace CrocoBrush
 {
     /// <summary>
     /// Reads Song Notes scriptable object data to create
-    /// Food in Mouth in sync with the music.
     /// </summary>
     public class SongReader
     {

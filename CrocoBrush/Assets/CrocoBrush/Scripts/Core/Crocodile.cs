@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace CrocoBrush
 {
@@ -13,17 +14,25 @@ namespace CrocoBrush
                 Debug.LogError("Multiple Crocodile Instances");
             }
             Instance = this;
+            InitializeValues();
         }
 
-        public void AddScore(int score)
-        {
-            Score += score;
-            EventManager.Instance.TriggerEvent("UpdateGameUI");
-        }
+        public void StopGame() => Mouth.Instance.Restart();
 
-        public void Annoy()
+        public void AddScore(Quality quality)
         {
-            Anger++;
+            HitCounts[quality]++;
+            if(quality <= 0)
+            {
+                Annoy();
+                EventManager.Instance.TriggerEvent("Miss");
+            }
+            else
+            {
+                ProcessQuality(quality);
+                EventManager.Instance.TriggerEvent("Hit");
+            }
+
             EventManager.Instance.TriggerEvent("UpdateGameUI");
         }
 
@@ -36,7 +45,52 @@ namespace CrocoBrush
             }
         }
 
+        public void Restart()
+        {
+            Mouth.Instance.Restart();
+            InitializeValues();
+            EventManager.Instance.TriggerEvent("ResetGame");
+        }
+
+        private void Annoy()
+        {
+            Streak = 0;
+            Anger++;
+        }
+
+        private void ProcessQuality(Quality quality)
+        {
+            Score += (int)quality;
+            Streak++;
+            if(Streak > BestStreak)
+            {
+                BestStreak = Streak;
+            }
+
+            if(Streak % 10 == 0)
+            {
+                CalmDown();
+            }
+        }
+
+        private void InitializeValues()
+        {
+            Score = 0;
+            Anger = 0;
+            Streak = 0;
+            BestStreak = 0;
+            HitCounts = new Dictionary<Quality, int>()
+            {
+                { Quality.Bad, 0 },
+                { Quality.Good, 0  },
+                { Quality.Perfect, 0 }
+            };
+        }
+
         public int Score { get; private set; }
+        public int Streak { get; private set; }
+        public int BestStreak { get; private set; }
         public int Anger { get; private set; }
+        public Dictionary<Quality, int> HitCounts { get; private set; }
     }
 }

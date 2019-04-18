@@ -51,9 +51,9 @@ namespace CrocoBrush
         }
 
         /// <summary>
-        /// Sends the Mouth a remove request for the Tooth's direction.
+        /// Sends the Mouth a remove request for the Tooth.
         /// </summary>
-        public void Remove() => Mouth.Remove(m_direction);
+        public void Remove() => Mouth.Remove(this);
 
         /// <summary>
         /// Return the current Food object while clearing the Tooth.
@@ -81,13 +81,11 @@ namespace CrocoBrush
         /// <summary>
         /// Tooth's Position in the Mouth.
         /// </summary>
-        /// <value>The direction in the Mouth.</value>
         public Direction Direction => m_direction;
 
         /// <summary>
         /// Current Mouth Instance.
         /// </summary>
-        /// <value>Current Mouth Instance.</value>
         private Mouth Mouth => Mouth.Instance;
     }
 }

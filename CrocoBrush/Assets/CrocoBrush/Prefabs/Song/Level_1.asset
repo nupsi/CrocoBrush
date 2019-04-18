@@ -13,768 +13,756 @@ MonoBehaviour:
   m_Name: Level_1
   m_EditorClassIdentifier: 
   Nodes:
-  - Direction: 3
-    Time: 0.04265306
-    Delay: 0.043
   - Direction: 2
-    Time: 0.8746485
+    Time: 0.06399093
+    Delay: 0.064
+  - Direction: 4
+    Time: 0.8959864
     Delay: 0.832
-  - Direction: 1
-    Time: 1.7066439
+  - Direction: 2
+    Time: 1.7279818
+    Delay: 0.832
+  - Direction: 3
+    Time: 2.282653
+    Delay: 0.555
+  - Direction: 4
+    Time: 3.1146486
+    Delay: 0.832
+  - Direction: 3
+    Time: 3.946644
     Delay: 0.832
   - Direction: 4
-    Time: 2.261315
+    Time: 4.501315
     Delay: 0.555
   - Direction: 3
-    Time: 3.0933106
-    Delay: 0.832
-  - Direction: 2
-    Time: 3.9253287
-    Delay: 0.832
-  - Direction: 3
-    Time: 4.479977
-    Delay: 0.555
-  - Direction: 2
-    Time: 5.3119955
-    Delay: 0.832
-  - Direction: 3
-    Time: 6.143991
-    Delay: 0.832
-  - Direction: 4
-    Time: 6.6986623
-    Delay: 0.555
-  - Direction: 2
-    Time: 7.530658
-    Delay: 0.832
-  - Direction: 3
-    Time: 8.362653
+    Time: 5.3333106
     Delay: 0.832
   - Direction: 1
-    Time: 8.917324
+    Time: 6.186644
+    Delay: 0.853
+  - Direction: 3
+    Time: 6.7413154
     Delay: 0.555
   - Direction: 2
-    Time: 9.770658
+    Time: 7.573311
+    Delay: 0.832
+  - Direction: 3
+    Time: 8.405329
+    Delay: 0.832
+  - Direction: 4
+    Time: 8.959977
+    Delay: 0.555
+  - Direction: 1
+    Time: 9.791995
+    Delay: 0.832
+  - Direction: 3
+    Time: 10.623991
+    Delay: 0.832
+  - Direction: 4
+    Time: 11.178662
+    Delay: 0.555
+  - Direction: 3
+    Time: 12.010657
+    Delay: 0.832
+  - Direction: 1
+    Time: 12.842653
+    Delay: 0.832
+  - Direction: 4
+    Time: 13.397325
+    Delay: 0.555
+  - Direction: 1
+    Time: 14.22932
+    Delay: 0.832
+  - Direction: 2
+    Time: 15.061316
+    Delay: 0.832
+  - Direction: 4
+    Time: 15.615987
+    Delay: 0.555
+  - Direction: 1
+    Time: 16.447983
+    Delay: 0.832
+  - Direction: 4
+    Time: 17.279978
+    Delay: 0.832
+  - Direction: 3
+    Time: 17.834648
+    Delay: 0.555
+  - Direction: 4
+    Time: 18.666643
+    Delay: 0.832
+  - Direction: 1
+    Time: 19.519978
     Delay: 0.853
   - Direction: 4
-    Time: 10.6026535
-    Delay: 0.832
-  - Direction: 2
-    Time: 11.157324
-    Delay: 0.555
-  - Direction: 4
-    Time: 11.98932
-    Delay: 0.832
-  - Direction: 1
-    Time: 12.821315
-    Delay: 0.832
-  - Direction: 3
-    Time: 13.375986
+    Time: 20.074648
     Delay: 0.555
   - Direction: 1
-    Time: 14.207982
-    Delay: 0.832
-  - Direction: 4
-    Time: 15.039977
-    Delay: 0.832
-  - Direction: 2
-    Time: 15.594648
-    Delay: 0.555
-  - Direction: 4
-    Time: 16.426643
-    Delay: 0.832
-  - Direction: 2
-    Time: 17.258661
+    Time: 20.906645
     Delay: 0.832
   - Direction: 3
-    Time: 17.81331
-    Delay: 0.555
+    Time: 21.738663
+    Delay: 0.832
   - Direction: 4
-    Time: 18.645329
+    Time: 22.29331
+    Delay: 0.555
+  - Direction: 1
+    Time: 23.125328
+    Delay: 0.832
+  - Direction: 4
+    Time: 23.957325
     Delay: 0.832
   - Direction: 3
-    Time: 19.477324
-    Delay: 0.832
-  - Direction: 4
-    Time: 20.031996
+    Time: 24.511995
     Delay: 0.555
-  - Direction: 2
-    Time: 20.86399
+  - Direction: 1
+    Time: 25.34399
     Delay: 0.832
-  - Direction: 4
-    Time: 21.695986
+  - Direction: 2
+    Time: 26.175987
     Delay: 0.832
   - Direction: 1
-    Time: 22.250658
+    Time: 26.730658
     Delay: 0.555
   - Direction: 4
-    Time: 23.10399
+    Time: 27.562653
+    Delay: 0.832
+  - Direction: 3
+    Time: 28.394648
+    Delay: 0.832
+  - Direction: 1
+    Time: 28.94932
+    Delay: 0.555
+  - Direction: 4
+    Time: 29.781315
+    Delay: 0.832
+  - Direction: 2
+    Time: 30.61331
+    Delay: 0.832
+  - Direction: 3
+    Time: 31.167982
+    Delay: 0.555
+  - Direction: 1
+    Time: 31.999977
+    Delay: 0.832
+  - Direction: 2
+    Time: 32.85331
     Delay: 0.853
+  - Direction: 3
+    Time: 33.40798
+    Delay: 0.555
   - Direction: 1
-    Time: 23.935986
-    Delay: 0.832
-  - Direction: 2
-    Time: 24.490658
+    Time: 33.962654
     Delay: 0.555
   - Direction: 3
-    Time: 25.322653
-    Delay: 0.832
-  - Direction: 1
-    Time: 26.154648
-    Delay: 0.832
-  - Direction: 2
-    Time: 26.70932
+    Time: 34.517323
     Delay: 0.555
-  - Direction: 1
-    Time: 27.541315
-    Delay: 0.832
-  - Direction: 2
-    Time: 28.37331
-    Delay: 0.832
   - Direction: 4
-    Time: 28.927982
+    Time: 35.071995
     Delay: 0.555
   - Direction: 2
-    Time: 29.759977
-    Delay: 0.832
-  - Direction: 4
-    Time: 30.591995
-    Delay: 0.832
-  - Direction: 1
-    Time: 31.146645
+    Time: 35.626644
     Delay: 0.555
   - Direction: 3
-    Time: 31.978662
-    Delay: 0.832
-  - Direction: 3
-    Time: 32.085327
-    Delay: 0.107
-  - Direction: 1
-    Time: 32.810658
-    Delay: 0.725
-  - Direction: 4
-    Time: 33.36533
-    Delay: 0.555
-  - Direction: 1
-    Time: 33.91998
-    Delay: 0.555
-  - Direction: 3
-    Time: 34.474648
+    Time: 36.181316
     Delay: 0.555
   - Direction: 4
-    Time: 35.02932
-    Delay: 0.555
-  - Direction: 1
-    Time: 35.583992
+    Time: 36.735985
     Delay: 0.555
   - Direction: 3
-    Time: 36.159977
-    Delay: 0.576
-  - Direction: 1
-    Time: 36.71465
-    Delay: 0.555
-  - Direction: 4
-    Time: 37.26932
-    Delay: 0.555
-  - Direction: 3
-    Time: 37.82399
+    Time: 37.290657
     Delay: 0.555
   - Direction: 2
-    Time: 38.378662
+    Time: 37.84533
+    Delay: 0.555
+  - Direction: 4
+    Time: 38.39998
     Delay: 0.555
   - Direction: 3
-    Time: 38.93331
+    Time: 38.954647
     Delay: 0.555
   - Direction: 3
-    Time: 39.21066
-    Delay: 0.277
-  - Direction: 4
-    Time: 40.042652
-    Delay: 0.832
-  - Direction: 1
-    Time: 40.597324
-    Delay: 0.555
-  - Direction: 2
-    Time: 41.151997
-    Delay: 0.555
-  - Direction: 3
-    Time: 41.706642
-    Delay: 0.555
-  - Direction: 1
-    Time: 42.261314
-    Delay: 0.555
-  - Direction: 3
-    Time: 42.815987
-    Delay: 0.555
-  - Direction: 4
-    Time: 43.37066
-    Delay: 0.555
-  - Direction: 4
-    Time: 43.647984
-    Delay: 0.277
-  - Direction: 2
-    Time: 44.479977
-    Delay: 0.832
-  - Direction: 1
-    Time: 45.03465
-    Delay: 0.555
-  - Direction: 4
-    Time: 45.58932
-    Delay: 0.555
-  - Direction: 2
-    Time: 46.14399
-    Delay: 0.555
-  - Direction: 3
-    Time: 46.69866
-    Delay: 0.555
-  - Direction: 1
-    Time: 47.25331
-    Delay: 0.555
-  - Direction: 4
-    Time: 47.807983
-    Delay: 0.555
-  - Direction: 4
-    Time: 48.085327
+    Time: 39.231995
     Delay: 0.277
   - Direction: 1
-    Time: 48.917324
+    Time: 40.06399
     Delay: 0.832
+  - Direction: 3
+    Time: 40.618664
+    Delay: 0.555
+  - Direction: 1
+    Time: 41.17331
+    Delay: 0.555
+  - Direction: 4
+    Time: 41.72798
+    Delay: 0.555
+  - Direction: 3
+    Time: 42.282654
+    Delay: 0.555
   - Direction: 2
-    Time: 49.49331
+    Time: 42.837326
+    Delay: 0.555
+  - Direction: 3
+    Time: 43.391994
+    Delay: 0.555
+  - Direction: 3
+    Time: 43.66932
+    Delay: 0.277
+  - Direction: 4
+    Time: 44.501316
+    Delay: 0.832
+  - Direction: 1
+    Time: 45.055984
+    Delay: 0.555
+  - Direction: 3
+    Time: 45.610657
+    Delay: 0.555
+  - Direction: 2
+    Time: 46.186646
     Delay: 0.576
   - Direction: 4
-    Time: 50.04798
-    Delay: 0.555
-  - Direction: 1
-    Time: 50.602654
+    Time: 46.741314
     Delay: 0.555
   - Direction: 3
-    Time: 51.157326
+    Time: 47.295986
     Delay: 0.555
   - Direction: 1
-    Time: 51.711994
-    Delay: 0.555
-  - Direction: 2
-    Time: 52.266644
-    Delay: 0.555
-  - Direction: 2
-    Time: 52.54399
-    Delay: 0.277
-  - Direction: 1
-    Time: 53.375988
-    Delay: 0.832
-  - Direction: 2
-    Time: 53.930656
-    Delay: 0.555
-  - Direction: 4
-    Time: 54.48533
-    Delay: 0.555
-  - Direction: 3
-    Time: 55.039978
-    Delay: 0.555
-  - Direction: 2
-    Time: 55.59465
-    Delay: 0.555
-  - Direction: 4
-    Time: 56.14932
+    Time: 47.85066
     Delay: 0.555
   - Direction: 1
-    Time: 56.70399
-    Delay: 0.555
-  - Direction: 1
-    Time: 56.981316
+    Time: 48.127983
     Delay: 0.277
   - Direction: 4
-    Time: 57.813313
+    Time: 48.959976
     Delay: 0.832
-  - Direction: 3
-    Time: 58.36798
+  - Direction: 2
+    Time: 49.51465
+    Delay: 0.555
+  - Direction: 1
+    Time: 50.06932
+    Delay: 0.555
+  - Direction: 2
+    Time: 50.62399
+    Delay: 0.555
+  - Direction: 1
+    Time: 51.17866
+    Delay: 0.555
+  - Direction: 2
+    Time: 51.73331
     Delay: 0.555
   - Direction: 4
-    Time: 58.922653
-    Delay: 0.555
-  - Direction: 2
-    Time: 59.477325
-    Delay: 0.555
-  - Direction: 3
-    Time: 60.031994
+    Time: 52.287983
     Delay: 0.555
   - Direction: 4
-    Time: 60.586643
-    Delay: 0.555
-  - Direction: 2
-    Time: 61.141315
-    Delay: 0.555
-  - Direction: 2
-    Time: 61.418663
+    Time: 52.56533
     Delay: 0.277
+  - Direction: 3
+    Time: 53.397324
+    Delay: 0.832
   - Direction: 4
-    Time: 62.250656
+    Time: 53.951996
+    Delay: 0.555
+  - Direction: 1
+    Time: 54.506645
+    Delay: 0.555
+  - Direction: 3
+    Time: 55.061314
+    Delay: 0.555
+  - Direction: 1
+    Time: 55.615986
+    Delay: 0.555
+  - Direction: 3
+    Time: 56.17066
+    Delay: 0.555
+  - Direction: 4
+    Time: 56.72533
+    Delay: 0.555
+  - Direction: 4
+    Time: 57.00265
+    Delay: 0.277
+  - Direction: 1
+    Time: 57.83465
     Delay: 0.832
   - Direction: 3
-    Time: 62.826645
+    Time: 58.38932
+    Delay: 0.555
+  - Direction: 4
+    Time: 58.943993
+    Delay: 0.555
+  - Direction: 3
+    Time: 59.519978
     Delay: 0.576
-  - Direction: 1
-    Time: 63.381313
+  - Direction: 4
+    Time: 60.07465
+    Delay: 0.555
+  - Direction: 2
+    Time: 60.62932
     Delay: 0.555
   - Direction: 4
-    Time: 63.935986
+    Time: 61.18399
+    Delay: 0.555
+  - Direction: 4
+    Time: 61.461315
+    Delay: 0.277
+  - Direction: 2
+    Time: 62.293312
+    Delay: 0.832
+  - Direction: 3
+    Time: 62.84798
+    Delay: 0.555
+  - Direction: 4
+    Time: 63.402653
     Delay: 0.555
   - Direction: 2
-    Time: 64.490654
+    Time: 63.957325
+    Delay: 0.555
+  - Direction: 3
+    Time: 64.51199
     Delay: 0.555
   - Direction: 1
-    Time: 65.04533
+    Time: 65.06664
     Delay: 0.555
-  - Direction: 2
-    Time: 65.599976
-    Delay: 0.555
-  - Direction: 2
-    Time: 65.87733
-    Delay: 0.277
   - Direction: 3
-    Time: 66.70932
+    Time: 65.621315
+    Delay: 0.555
+  - Direction: 3
+    Time: 65.919975
+    Delay: 0.299
+  - Direction: 2
+    Time: 66.73066
+    Delay: 0.811
+  - Direction: 4
+    Time: 67.28533
+    Delay: 0.555
+  - Direction: 1
+    Time: 67.83998
+    Delay: 0.555
+  - Direction: 4
+    Time: 68.394646
+    Delay: 0.555
+  - Direction: 1
+    Time: 68.94932
+    Delay: 0.555
+  - Direction: 4
+    Time: 69.50399
+    Delay: 0.555
+  - Direction: 2
+    Time: 70.05866
+    Delay: 0.555
+  - Direction: 2
+    Time: 70.33598
+    Delay: 0.277
+  - Direction: 4
+    Time: 71.167984
     Delay: 0.832
   - Direction: 1
-    Time: 67.26399
+    Time: 71.72266
     Delay: 0.555
   - Direction: 3
-    Time: 67.818665
-    Delay: 0.555
-  - Direction: 2
-    Time: 68.373314
-    Delay: 0.555
-  - Direction: 1
-    Time: 68.92798
-    Delay: 0.555
-  - Direction: 3
-    Time: 69.48265
-    Delay: 0.555
-  - Direction: 4
-    Time: 70.03732
-    Delay: 0.555
-  - Direction: 4
-    Time: 70.31465
-    Delay: 0.277
-  - Direction: 3
-    Time: 71.146645
-    Delay: 0.832
-  - Direction: 4
-    Time: 71.70132
-    Delay: 0.555
-  - Direction: 1
-    Time: 72.12798
+    Time: 72.14932
     Delay: 0.427
   - Direction: 2
-    Time: 72.53331
-    Delay: 0.405
-  - Direction: 2
-    Time: 72.81066
-    Delay: 0.277
-  - Direction: 4
-    Time: 73.365326
-    Delay: 0.555
-  - Direction: 1
-    Time: 73.919975
-    Delay: 0.555
-  - Direction: 3
-    Time: 74.47465
-    Delay: 0.555
-  - Direction: 3
-    Time: 74.752
-    Delay: 0.277
-  - Direction: 4
-    Time: 75.58399
-    Delay: 0.832
-  - Direction: 3
-    Time: 76.15998
-    Delay: 0.576
-  - Direction: 2
-    Time: 76.56533
-    Delay: 0.405
-  - Direction: 1
-    Time: 76.992
-    Delay: 0.427
-  - Direction: 1
-    Time: 77.26932
-    Delay: 0.277
-  - Direction: 3
-    Time: 77.82399
-    Delay: 0.555
-  - Direction: 1
-    Time: 78.37866
-    Delay: 0.555
-  - Direction: 3
-    Time: 78.93331
-    Delay: 0.555
-  - Direction: 3
-    Time: 79.210655
-    Delay: 0.277
-  - Direction: 4
-    Time: 80.042656
-    Delay: 0.832
-  - Direction: 1
-    Time: 80.59732
-    Delay: 0.555
-  - Direction: 4
-    Time: 81.002655
-    Delay: 0.405
-  - Direction: 2
-    Time: 81.42932
+    Time: 72.57599
     Delay: 0.427
   - Direction: 2
-    Time: 81.70664
+    Time: 72.85331
     Delay: 0.277
+  - Direction: 3
+    Time: 73.40798
+    Delay: 0.555
   - Direction: 1
-    Time: 82.261314
+    Time: 73.962654
     Delay: 0.555
-  - Direction: 3
-    Time: 82.81599
+  - Direction: 4
+    Time: 74.51733
     Delay: 0.555
-  - Direction: 2
-    Time: 83.37066
-    Delay: 0.555
-  - Direction: 2
-    Time: 83.64798
+  - Direction: 4
+    Time: 74.79465
     Delay: 0.277
-  - Direction: 3
-    Time: 84.47998
+  - Direction: 2
+    Time: 75.62664
     Delay: 0.832
-  - Direction: 4
-    Time: 85.034645
-    Delay: 0.555
   - Direction: 1
-    Time: 85.46132
-    Delay: 0.427
-  - Direction: 4
-    Time: 85.866646
+    Time: 76.18131
+    Delay: 0.555
+  - Direction: 2
+    Time: 76.58665
     Delay: 0.405
-  - Direction: 4
-    Time: 86.14399
-    Delay: 0.277
-  - Direction: 3
-    Time: 86.69866
-    Delay: 0.555
-  - Direction: 2
-    Time: 87.25331
-    Delay: 0.555
   - Direction: 1
-    Time: 87.80798
-    Delay: 0.555
-  - Direction: 1
-    Time: 88.08533
-    Delay: 0.277
-  - Direction: 4
-    Time: 88.91733
-    Delay: 0.832
-  - Direction: 3
-    Time: 89.49331
-    Delay: 0.576
-  - Direction: 2
-    Time: 89.89866
-    Delay: 0.405
-  - Direction: 3
-    Time: 90.325325
+    Time: 77.01331
     Delay: 0.427
-  - Direction: 3
-    Time: 90.60265
+  - Direction: 1
+    Time: 77.29066
     Delay: 0.277
+  - Direction: 2
+    Time: 77.84533
+    Delay: 0.555
+  - Direction: 1
+    Time: 78.39998
+    Delay: 0.555
   - Direction: 4
-    Time: 91.157326
+    Time: 78.95465
     Delay: 0.555
-  - Direction: 3
-    Time: 91.712
-    Delay: 0.555
-  - Direction: 2
-    Time: 92.26665
-    Delay: 0.555
-  - Direction: 2
-    Time: 92.54399
+  - Direction: 4
+    Time: 79.231995
     Delay: 0.277
-  - Direction: 3
-    Time: 93.375984
+  - Direction: 1
+    Time: 80.06399
     Delay: 0.832
   - Direction: 2
-    Time: 93.93066
+    Time: 80.61866
     Delay: 0.555
-  - Direction: 3
-    Time: 94.33598
-    Delay: 0.405
   - Direction: 4
-    Time: 94.76265
+    Time: 81.04533
     Delay: 0.427
-  - Direction: 4
-    Time: 95.03998
-    Delay: 0.277
-  - Direction: 3
-    Time: 95.59465
-    Delay: 0.555
   - Direction: 1
-    Time: 96.14932
-    Delay: 0.555
-  - Direction: 4
-    Time: 96.70399
-    Delay: 0.555
-  - Direction: 4
-    Time: 96.981316
-    Delay: 0.277
-  - Direction: 1
-    Time: 97.81331
-    Delay: 0.832
-  - Direction: 2
-    Time: 98.36798
-    Delay: 0.555
-  - Direction: 4
-    Time: 98.79465
-    Delay: 0.427
-  - Direction: 2
-    Time: 99.199974
+    Time: 81.45066
     Delay: 0.405
-  - Direction: 2
-    Time: 99.477325
+  - Direction: 1
+    Time: 81.72798
     Delay: 0.277
   - Direction: 4
-    Time: 100.032
+    Time: 82.28265
     Delay: 0.555
-  - Direction: 2
-    Time: 100.58665
-    Delay: 0.555
-  - Direction: 4
-    Time: 101.14131
+  - Direction: 3
+    Time: 82.837326
     Delay: 0.555
   - Direction: 4
-    Time: 101.41866
+    Time: 83.392
+    Delay: 0.555
+  - Direction: 4
+    Time: 83.66932
     Delay: 0.277
   - Direction: 3
-    Time: 102.250656
+    Time: 84.50131
     Delay: 0.832
   - Direction: 4
-    Time: 102.826645
-    Delay: 0.576
+    Time: 85.055984
+    Delay: 0.555
+  - Direction: 1
+    Time: 85.48265
+    Delay: 0.427
   - Direction: 3
-    Time: 103.231995
+    Time: 85.90932
+    Delay: 0.427
+  - Direction: 3
+    Time: 86.186646
+    Delay: 0.277
+  - Direction: 1
+    Time: 86.74132
+    Delay: 0.555
+  - Direction: 4
+    Time: 87.29599
+    Delay: 0.555
+  - Direction: 2
+    Time: 87.850655
+    Delay: 0.555
+  - Direction: 2
+    Time: 88.12798
+    Delay: 0.277
+  - Direction: 4
+    Time: 88.95998
+    Delay: 0.832
+  - Direction: 1
+    Time: 89.51465
+    Delay: 0.555
+  - Direction: 2
+    Time: 89.919975
     Delay: 0.405
   - Direction: 4
-    Time: 103.65866
+    Time: 90.34664
     Delay: 0.427
   - Direction: 4
-    Time: 103.93599
+    Time: 90.62399
+    Delay: 0.277
+  - Direction: 3
+    Time: 91.178665
+    Delay: 0.555
+  - Direction: 4
+    Time: 91.73331
+    Delay: 0.555
+  - Direction: 2
+    Time: 92.28798
+    Delay: 0.555
+  - Direction: 2
+    Time: 92.56533
+    Delay: 0.277
+  - Direction: 3
+    Time: 93.39732
+    Delay: 0.832
+  - Direction: 4
+    Time: 93.951996
+    Delay: 0.555
+  - Direction: 2
+    Time: 94.37866
+    Delay: 0.427
+  - Direction: 4
+    Time: 94.78399
+    Delay: 0.405
+  - Direction: 4
+    Time: 95.06132
+    Delay: 0.277
+  - Direction: 3
+    Time: 95.61599
+    Delay: 0.555
+  - Direction: 1
+    Time: 96.170654
+    Delay: 0.555
+  - Direction: 3
+    Time: 96.72533
+    Delay: 0.555
+  - Direction: 3
+    Time: 97.002655
+    Delay: 0.277
+  - Direction: 1
+    Time: 97.83465
+    Delay: 0.832
+  - Direction: 2
+    Time: 98.38932
+    Delay: 0.555
+  - Direction: 1
+    Time: 98.81599
+    Delay: 0.427
+  - Direction: 3
+    Time: 99.24265
+    Delay: 0.427
+  - Direction: 3
+    Time: 99.51997
+    Delay: 0.277
+  - Direction: 4
+    Time: 100.074646
+    Delay: 0.555
+  - Direction: 2
+    Time: 100.62932
+    Delay: 0.555
+  - Direction: 1
+    Time: 101.18399
+    Delay: 0.555
+  - Direction: 1
+    Time: 101.46132
     Delay: 0.277
   - Direction: 2
-    Time: 104.490654
+    Time: 102.29331
+    Delay: 0.832
+  - Direction: 3
+    Time: 102.847984
     Delay: 0.555
+  - Direction: 2
+    Time: 103.25331
+    Delay: 0.405
   - Direction: 4
-    Time: 105.04533
-    Delay: 0.555
-  - Direction: 3
-    Time: 105.599976
-    Delay: 0.555
-  - Direction: 3
-    Time: 105.87733
+    Time: 103.67998
+    Delay: 0.427
+  - Direction: 4
+    Time: 103.95732
     Delay: 0.277
+  - Direction: 3
+    Time: 104.51199
+    Delay: 0.555
   - Direction: 4
-    Time: 111.42399
+    Time: 105.06664
+    Delay: 0.555
+  - Direction: 1
+    Time: 105.621315
+    Delay: 0.555
+  - Direction: 1
+    Time: 105.89866
+    Delay: 0.277
+  - Direction: 3
+    Time: 111.44533
     Delay: 5.547
   - Direction: 1
-    Time: 111.97866
-    Delay: 0.555
-  - Direction: 1
-    Time: 112.08533
-    Delay: 0.107
-  - Direction: 2
-    Time: 112.53331
-    Delay: 0.448
-  - Direction: 2
-    Time: 112.81066
-    Delay: 0.277
-  - Direction: 1
-    Time: 113.08798
-    Delay: 0.277
-  - Direction: 4
-    Time: 113.642654
-    Delay: 0.555
-  - Direction: 2
-    Time: 114.19733
+    Time: 111.99998
     Delay: 0.555
   - Direction: 4
-    Time: 114.752
-    Delay: 0.555
-  - Direction: 4
-    Time: 115.02932
-    Delay: 0.277
-  - Direction: 3
-    Time: 115.30664
-    Delay: 0.277
-  - Direction: 2
-    Time: 115.62664
-    Delay: 0.32
-  - Direction: 2
-    Time: 115.86131
-    Delay: 0.235
-  - Direction: 1
-    Time: 116.437325
-    Delay: 0.576
-  - Direction: 3
-    Time: 116.992
-    Delay: 0.555
-  - Direction: 3
-    Time: 117.26932
-    Delay: 0.277
-  - Direction: 2
-    Time: 117.546646
-    Delay: 0.277
-  - Direction: 4
-    Time: 118.10132
-    Delay: 0.555
-  - Direction: 2
-    Time: 118.65598
-    Delay: 0.555
-  - Direction: 1
-    Time: 119.210655
-    Delay: 0.555
-  - Direction: 1
-    Time: 119.48798
-    Delay: 0.277
-  - Direction: 2
-    Time: 119.76533
-    Delay: 0.277
-  - Direction: 4
-    Time: 120.31998
-    Delay: 0.555
-  - Direction: 3
-    Time: 120.87465
-    Delay: 0.555
-  - Direction: 2
-    Time: 121.42932
-    Delay: 0.555
-  - Direction: 2
-    Time: 121.70664
-    Delay: 0.277
-  - Direction: 3
-    Time: 121.98399
-    Delay: 0.277
-  - Direction: 2
-    Time: 122.538666
-    Delay: 0.555
-  - Direction: 4
-    Time: 123.09331
-    Delay: 0.555
-  - Direction: 3
-    Time: 123.64798
-    Delay: 0.555
-  - Direction: 3
-    Time: 123.92533
-    Delay: 0.277
-  - Direction: 2
-    Time: 124.20265
-    Delay: 0.277
-  - Direction: 1
-    Time: 124.757324
-    Delay: 0.555
-  - Direction: 3
-    Time: 125.312
-    Delay: 0.555
-  - Direction: 1
-    Time: 125.866646
-    Delay: 0.555
-  - Direction: 1
-    Time: 126.14399
-    Delay: 0.277
-  - Direction: 4
-    Time: 126.42132
-    Delay: 0.277
-  - Direction: 2
-    Time: 126.97598
-    Delay: 0.555
-  - Direction: 4
-    Time: 127.530655
-    Delay: 0.555
-  - Direction: 2
-    Time: 128.08533
-    Delay: 0.555
-  - Direction: 2
-    Time: 128.36266
-    Delay: 0.277
-  - Direction: 3
-    Time: 128.63998
-    Delay: 0.277
-  - Direction: 4
-    Time: 129.19464
-    Delay: 0.555
-  - Direction: 2
-    Time: 129.77066
+    Time: 112.57599
     Delay: 0.576
   - Direction: 4
-    Time: 130.32533
-    Delay: 0.555
+    Time: 112.85331
+    Delay: 0.277
+  - Direction: 2
+    Time: 113.13066
+    Delay: 0.277
   - Direction: 4
-    Time: 130.60265
+    Time: 113.685326
+    Delay: 0.555
+  - Direction: 1
+    Time: 114.239975
+    Delay: 0.555
+  - Direction: 2
+    Time: 114.79465
+    Delay: 0.555
+  - Direction: 2
+    Time: 115.072
+    Delay: 0.277
+  - Direction: 3
+    Time: 115.34932
     Delay: 0.277
   - Direction: 1
-    Time: 130.87997
-    Delay: 0.277
+    Time: 115.90399
+    Delay: 0.555
   - Direction: 2
-    Time: 131.43465
+    Time: 116.458664
     Delay: 0.555
-  - Direction: 4
-    Time: 131.98932
+  - Direction: 1
+    Time: 117.01331
     Delay: 0.555
+  - Direction: 1
+    Time: 117.29066
+    Delay: 0.277
   - Direction: 3
-    Time: 132.54399
-    Delay: 0.555
-  - Direction: 3
-    Time: 132.82132
-    Delay: 0.277
-  - Direction: 2
-    Time: 133.09866
-    Delay: 0.277
-  - Direction: 4
-    Time: 133.6533
-    Delay: 0.555
-  - Direction: 2
-    Time: 134.20798
-    Delay: 0.555
-  - Direction: 4
-    Time: 134.76265
-    Delay: 0.555
-  - Direction: 4
-    Time: 135.03998
+    Time: 117.567986
     Delay: 0.277
   - Direction: 1
-    Time: 135.31732
+    Time: 118.12265
+    Delay: 0.555
+  - Direction: 2
+    Time: 118.67732
+    Delay: 0.555
+  - Direction: 1
+    Time: 119.231995
+    Delay: 0.555
+  - Direction: 1
+    Time: 119.50932
     Delay: 0.277
   - Direction: 4
-    Time: 135.872
-    Delay: 0.555
-  - Direction: 3
-    Time: 136.42665
-    Delay: 0.555
-  - Direction: 2
-    Time: 136.98131
-    Delay: 0.555
-  - Direction: 2
-    Time: 137.25867
+    Time: 119.786644
     Delay: 0.277
   - Direction: 1
-    Time: 137.53598
+    Time: 120.34132
+    Delay: 0.555
+  - Direction: 3
+    Time: 120.89599
+    Delay: 0.555
+  - Direction: 1
+    Time: 121.45066
+    Delay: 0.555
+  - Direction: 1
+    Time: 121.72798
     Delay: 0.277
   - Direction: 3
-    Time: 138.64532
+    Time: 122.005325
+    Delay: 0.277
+  - Direction: 4
+    Time: 122.559975
+    Delay: 0.555
+  - Direction: 2
+    Time: 123.11465
+    Delay: 0.555
+  - Direction: 3
+    Time: 123.66932
+    Delay: 0.555
+  - Direction: 3
+    Time: 123.94665
+    Delay: 0.277
+  - Direction: 1
+    Time: 124.22399
+    Delay: 0.277
+  - Direction: 2
+    Time: 124.77866
+    Delay: 0.555
+  - Direction: 1
+    Time: 125.375984
+    Delay: 0.597
+  - Direction: 3
+    Time: 125.93066
+    Delay: 0.555
+  - Direction: 3
+    Time: 126.207985
+    Delay: 0.277
+  - Direction: 1
+    Time: 126.46399
+    Delay: 0.256
+  - Direction: 3
+    Time: 127.01866
+    Delay: 0.555
+  - Direction: 1
+    Time: 127.57331
+    Delay: 0.555
+  - Direction: 4
+    Time: 128.12798
+    Delay: 0.555
+  - Direction: 4
+    Time: 128.40533
+    Delay: 0.277
+  - Direction: 1
+    Time: 128.68265
+    Delay: 0.277
+  - Direction: 3
+    Time: 129.23732
+    Delay: 0.555
+  - Direction: 4
+    Time: 129.79199
+    Delay: 0.555
+  - Direction: 2
+    Time: 130.34665
+    Delay: 0.555
+  - Direction: 2
+    Time: 130.624
+    Delay: 0.277
+  - Direction: 4
+    Time: 130.90132
+    Delay: 0.277
+  - Direction: 2
+    Time: 131.456
+    Delay: 0.555
+  - Direction: 1
+    Time: 132.01065
+    Delay: 0.555
+  - Direction: 2
+    Time: 132.56532
+    Delay: 0.555
+  - Direction: 2
+    Time: 132.84265
+    Delay: 0.277
+  - Direction: 1
+    Time: 133.11998
+    Delay: 0.277
+  - Direction: 4
+    Time: 133.67465
+    Delay: 0.555
+  - Direction: 1
+    Time: 134.22932
+    Delay: 0.555
+  - Direction: 4
+    Time: 134.784
+    Delay: 0.555
+  - Direction: 4
+    Time: 135.06131
+    Delay: 0.277
+  - Direction: 2
+    Time: 135.33867
+    Delay: 0.277
+  - Direction: 1
+    Time: 135.89331
+    Delay: 0.555
+  - Direction: 4
+    Time: 136.44798
+    Delay: 0.555
+  - Direction: 1
+    Time: 137.00266
+    Delay: 0.555
+  - Direction: 1
+    Time: 137.27998
+    Delay: 0.277
+  - Direction: 4
+    Time: 137.55733
+    Delay: 0.277
+  - Direction: 2
+    Time: 138.66664
     Delay: 1.109
-  - Direction: 3
-    Time: 138.752
-    Delay: 0.107
-  - Direction: 2
-    Time: 139.75465
-    Delay: 1.003
-  - Direction: 1
-    Time: 140.864
-    Delay: 1.109
-  - Direction: 3
-    Time: 143.10399
-    Delay: 2.24
   - Direction: 4
-    Time: 144.21332
-    Delay: 1.109
+    Time: 139.79732
+    Delay: 1.131
   - Direction: 3
-    Time: 145.32265
+    Time: 140.90665
+    Delay: 1.109
+  - Direction: 4
+    Time: 143.12534
+    Delay: 2.219
+  - Direction: 3
+    Time: 144.23465
+    Delay: 1.109
+  - Direction: 4
+    Time: 145.344
     Delay: 1.109

@@ -1,18 +1,22 @@
 ﻿using DG.Tweening;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CrocoBrush
 {
     /// <summary>
-    /// Input and animation controller for the bird flying inside the crocodile's mouth.
+    /// Animation controller for the Bird.
+    /// Can be used to move the Bird or play animations.
     /// </summary>
-    [RequireComponent(typeof(Animator))]
     public class Bird : MonoBehaviour
     {
         /*
          * Variables.
          */
+
+        /// <summary>
+        /// Current Bird Instance.
+        /// </summary>
+        public static Bird Instance;
 
         /// <summary>
         /// Animation trigger for eating animation.
@@ -30,35 +34,6 @@ namespace CrocoBrush
         private readonly string Unblock = "Unblock";
 
         /// <summary>
-        /// Input name for the blocking nose animation trigger.
-        /// </summary>
-        private readonly string BlockInput = "Jump";
-
-        /// <summary>
-        /// Position for the down position in the mouth.
-        /// </summary>
-        [SerializeField]
-        private GameObject m_down;
-
-        /// <summary>
-        /// Position for the up position in the mouth.
-        /// </summary>
-        [SerializeField]
-        private GameObject m_up;
-
-        /// <summary>
-        /// Position for the left position in the mouth.
-        /// </summary>
-        [SerializeField]
-        private GameObject m_left;
-
-        /// <summary>
-        /// Position for the right position in the mouth.
-        /// </summary>
-        [SerializeField]
-        private GameObject m_right;
-
-        /// <summary>
         /// The bird's Animator component.
         /// Used when triggering differend animations.
         /// <see cref="Eat"/>
@@ -67,11 +42,9 @@ namespace CrocoBrush
         private Animator m_aimator;
 
         /// <summary>
-        /// Contains the input's name and the target position for that input.
-        /// string: Input's name in Unity's Input System. (Edit/Project Settings/Input)
-        /// Transform: Target position for the Input.
+        /// Bird data containing moving positions.
         /// </summary>
-        private Dictionary<string, Transform> m_directions;
+        private BirdData m_data;
 
         /*
          * Mono Behaviour Functions.
@@ -79,20 +52,14 @@ namespace CrocoBrush
 
         private void Awake()
         {
-            m_aimator = GetComponent<Animator>();
-            //Create dictionary containing all the direction inputs and corresponding positions.
-            m_directions = new Dictionary<string, Transform>()
+            if(Instance != null)
             {
-                { "Up", m_up.transform },
-                { "Down", m_down.transform },
-                { "Left", m_left.transform },
-                { "Right", m_right.transform }
-            };
-        }
+                Debug.LogError("Bird Instance already exists!");
+                return;
+            }
 
-        private void Update()
-        {
-            UpdateInput();
+            Instance = this;
+            m_aimator = GetComponentInChildren<Animator>();
         }
 
         /*
@@ -115,40 +82,51 @@ namespace CrocoBrush
         public void PlayUnblocAnimation() => m_aimator.SetTrigger(Unblock);
 
         /// <summary>
-        /// Update the current inputs.
+        /// Set bird data containing target positions for movement.
         /// </summary>
-        private void UpdateInput()
+        /// <param name="data">Bird data containing target positions.</param>
+        public void SetData(BirdData data)
         {
-            //Loop through the direction inputs.
-            //'set' is a key value pair, where the key is the input's name and the value is the target position.
-            foreach(var set in m_directions)
-            {
-                if(Input.GetButtonDown(set.Key))
-                {
-                    MoveToPoint(set.Value);
-                }
-            }
-
-            if(Input.GetButtonDown(BlockInput))
-            {
-                PlayBlockAnimation();
-            }
-            else if(Input.GetButtonUp(BlockInput))
-            {
-                PlayUnblocAnimation();
-            }
+            m_data = data;
         }
 
         /// <summary>
         /// Moves the Bird to a given position.
         /// </summary>
         /// <param name="target">Target position.</param>
-        private void MoveToPoint(Transform target)
+        /// <param name="join">Is the rotation tween join operation.</param>
+        /// <param name="eat">Does the bird play the eat animation after the tween.</param>
+        public void MoveToPoint(Transform target, bool join = true, bool eat = true)
         {
             DOTween.Kill(transform.position);
             var time = (transform.position == target.position) ? 0 : 0.5f;
-            transform.DOMove(target.transform.position, time)
-                     .OnComplete(PlayEatAnimation);
+            var sequence = DOTween.Sequence().Append(transform.DOMove(target.transform.position, time));
+
+            if(join)
+            {
+                sequence.Join(transform.DORotate(target.transform.rotation.eulerAngles, time));
+            }
+            else
+            {
+                sequence.Append(transform.DORotate(target.transform.rotation.eulerAngles, time));
+            }
+
+            if(eat)
+            {
+                sequence.OnComplete(() => PlayEatAnimation());
+            }
+
+            sequence.Play();
+        }
+
+        /// <summary>
+        /// Turns given direction into a corresponding transform.
+        /// </summary>
+        /// <param name="direction">Direction for transform.</param>
+        /// <returns>Transform for direction.</returns>
+        public Transform GetPosition(Direction direction)
+        {
+            return m_data?.GetDirection(direction) ?? transform;
         }
     }
 }

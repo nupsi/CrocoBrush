@@ -15,6 +15,11 @@ namespace CrocoBrush
         public string Name;
 
         /// <summary>
+        /// Level difficulty;
+        /// </summary>
+        public string Difficulty;
+
+        /// <summary>
         /// Level Audio.
         /// Played when the level start.
         /// </summary>

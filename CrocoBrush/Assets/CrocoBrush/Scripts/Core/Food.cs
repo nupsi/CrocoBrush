@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace CrocoBrush
 {
@@ -8,6 +9,7 @@ namespace CrocoBrush
     /// Controls Food placed on a Tooth.
     /// Use Initialize(Tooth, float) to place the Food on a Tooth.
     /// </summary>
+    [RequireComponent(typeof(BoxCollider))]
     public class Food : MonoBehaviour
     {
         /*
@@ -15,9 +17,16 @@ namespace CrocoBrush
          */
 
         /// <summary>
-        /// Child object that displays the Foods 'age'.
+        /// Used to visualize the Food's age.
         /// </summary>
+        [SerializeField]
         private GameObject m_circle;
+
+        /// <summary>
+        /// Displayd when the food is removed when the quality is bad.
+        /// </summary>
+        [SerializeField]
+        private GameObject m_miss;
 
         /// <summary>
         /// Controller for changing background color to visualize current direction.
@@ -25,10 +34,24 @@ namespace CrocoBrush
         private BackgroundColor m_background;
 
         /// <summary>
-        /// Current degrade loop. 
+        /// Current degrade loop.
         /// Used to start and stop the degrading process.
         /// </summary>
         private IEnumerator m_degrade;
+
+        /// <summary>
+        /// Current parent Tooth.
+        /// </summary>
+        private Tooth m_tooth;
+
+        /// <summary>
+        /// Box collider for detecting click.
+        /// Enabled and disabled to prevent multiple clicks.
+        /// </summary>
+        private BoxCollider m_collider;
+
+        private Sequence m_mainTween;
+        private Sequence m_exitTween;
 
         /*
          * Mono Behaviour Functions.
@@ -36,30 +59,35 @@ namespace CrocoBrush
 
         private void Awake()
         {
-            if(transform.childCount > 0)
-            {
-                m_circle = transform.GetChild(0).gameObject;
-                m_background = GetComponentInChildren<BackgroundColor>();
-            }
-            else
-            {
-                Debug.LogError("There is no child on Food object! (Add a child to represent the time left)");
-                Destroy(gameObject);
-            }
+            m_background = GetComponentInChildren<BackgroundColor>();
+            m_collider = GetComponent<BoxCollider>();
         }
 
         private void OnEnable()
         {
+            SetAlive(true);
             //Reset the Foods quality.
             Quality = Quality.Bad;
-            //Reset the time indicator scale.
-            m_circle.transform.localScale = Vector3.one * 2;
         }
 
         private void OnDisable()
         {
             //Make sure the active tween is killed.
-            DOTween.Kill(m_circle.transform);
+            m_mainTween?.Kill();
+            m_exitTween?.Kill();
+            //Make sure the current parent is cleared.
+            ClearParent();
+        }
+
+        private void OnMouseDown()
+        {
+            if(!EventSystem.current.IsPointerOverGameObject())
+            {
+                //Send request to remove the pressed Food.
+                RemoveFood();
+                //Disable collision to prevent clicking after first time.
+                m_collider.enabled = false;
+            }
         }
 
         /*
@@ -74,20 +102,22 @@ namespace CrocoBrush
         /// <param name="duration">Foods duration.</param>
         public void Initialize(Tooth tooth, float duration)
         {
+            m_tooth = tooth;
             m_background?.UpdateMaterial(tooth.Direction);
             //Start modifying the Foods quality over time.
             m_degrade = Degrade(duration);
             StartCoroutine(m_degrade);
-            //Start Tween to indicate the Foods lifespan.
-            m_circle.transform
-                .DOScale(Vector3.one, duration)
-                .SetEase(Ease.Linear)
-                .OnComplete(
-                    () => m_circle.transform
-                        .DOScale(Vector3.one, 0.3f)
-                        .SetEase(Ease.Linear)
-                        .OnComplete(() => tooth?.Remove())
-                );
+            m_mainTween = DOTween.Sequence()
+                .OnStart(() => m_circle.transform.localScale = Vector3.one * 2)
+                .Append(m_circle.transform.DOScale(Vector3.one, duration).SetEase(Ease.Linear))
+                .Append(m_circle.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.Linear))
+                .OnComplete(() =>
+                {
+                    Quality = Quality.Bad;
+                    RemoveFood();
+                })
+                .SetUpdate(UpdateType.Manual)
+                .Play();
         }
 
         /// <summary>
@@ -95,16 +125,16 @@ namespace CrocoBrush
         /// </summary>
         public void Hide()
         {
-            DOTween.Kill(m_circle.transform);
-            var size = TargetSize;
+            ClearParent();
+            m_mainTween?.Kill();
             StopCoroutine(m_degrade);
-            transform.DOScale(size, 0.3f * size)
-                .SetEase(size < 1 ? Ease.InBack : Ease.OutBack)
-                .OnComplete(() =>
-                {
-                    transform.DOScale(1, 0);
-                    gameObject.SetActive(false);
-                });
+            SetAlive(false, Quality == Quality.Bad);
+            m_exitTween = DOTween.Sequence()
+                .Append(transform.DOScale(0.5f, 0.2f).SetEase(Ease.InBack))
+                .Append(transform.DOScale(1, 0))
+                .OnComplete(() => gameObject.SetActive(false))
+                .SetUpdate(UpdateType.Manual)
+                .Play();
         }
 
         /// <summary>
@@ -114,13 +144,35 @@ namespace CrocoBrush
         /// <param name="duration">Foods duration.</param>
         private IEnumerator Degrade(float duration)
         {
-            yield return new WaitForSeconds(duration * 0.4f);
+            yield return new WaitForSeconds(duration * 0.5f);
             Quality = Quality.Good;
             yield return new WaitForSeconds(duration * 0.5f);
             Quality = Quality.Perfect;
-            yield return new WaitForSeconds(0.29f);
-            Quality = Quality.Bad;
         }
+
+        /// <summary>
+        /// Send a remove request to the current parent Tooth.
+        /// </summary>
+        private void RemoveFood()
+        {
+            if(m_tooth != null)
+            {
+                m_tooth.Remove();
+                ClearParent();
+            }
+        }
+
+        private void SetAlive(bool alive, bool miss = false)
+        {
+            m_circle.SetActive(alive);
+            m_miss.SetActive(miss);
+            m_collider.enabled = alive;
+        }
+
+        /// <summary>
+        /// Clear the current parent Tooth.
+        /// </summary>
+        private void ClearParent() => m_tooth = null;
 
         /*
          * Accessors.
@@ -132,23 +184,5 @@ namespace CrocoBrush
         /// </summary>
         /// <value>The Foods current quality.</value>
         public Quality Quality { get; private set; }
-
-        /// <summary>
-        /// Target size for end tween based on the quality.
-        /// </summary>
-        /// <value>The target size.</value>
-        private float TargetSize
-        {
-            get
-            {
-                switch(Quality)
-                {
-                    case Quality.Bad: return 0.5f;
-                    case Quality.Good: return 1.25f;
-                    case Quality.Perfect: return 1.5f;
-                    default: return 1f;
-                }
-            }
-        }
     }
 }

@@ -96,6 +96,17 @@ namespace CrocoBrush.Editors
             return m_textRect;
         }
 
+        private AnimationCurve CreateCurve()
+        {
+            var curve = new AnimationCurve();
+            var nodes = m_target.Nodes;
+            for(int i = 0; i < nodes.Count; i++)
+            {
+                curve.AddKey(new Keyframe(i, nodes[i].Delay, 0, 0, 0, 0));
+            }
+            return curve;
+        }
+
         public override void OnInspectorGUI()
         {
             m_default = EditorGUILayout.Toggle("Draw Defaul Inspector", m_default);
@@ -105,6 +116,11 @@ namespace CrocoBrush.Editors
                 return;
             }
 
+            if(GUILayout.Button("Analyze"))
+            {
+                Analyze();
+            }
+            EditorGUILayout.CurveField(CreateCurve());
             EditorGUILayout.LabelField("Song Notes", EditorStyles.boldLabel);
             if(GUILayout.Button("Calculate Delays"))
             {
@@ -150,6 +166,40 @@ namespace CrocoBrush.Editors
                 Repaint();
             }
             serializedObject.ApplyModifiedProperties();
+        }
+
+        private void Analyze()
+        {
+            var total = 0f;
+            var nodes = m_target.Nodes;
+            for(int i = 0; i < nodes.Count; i++)
+            {
+                var left = nodes.Count - i;
+                total += nodes[i].Delay;
+                Debug.Log($"Node {i}. Nodes left {left}");
+
+                if(left > 8)
+                {
+                    var sum = 0f;
+                    for(int j = 0; j < 8; j++)
+                    {
+                        sum += nodes[i + j].Delay;
+                    }
+                    Debug.Log($"\tNext 8 -> Sum: {sum} Avg. {sum / 8}");
+                }
+
+                if(left > 4)
+                {
+                    var sum = 0f;
+                    for(int j = 0; j < 4; j++)
+                    {
+                        sum += nodes[i + j].Delay;
+                    }
+                    Debug.Log($"\tNext 4 -> Sum: {sum} Avg. {sum / 4}");
+                }
+            }
+
+            Debug.Log($"Total Stats: Delay(Sum: {total} Avg: {total / nodes.Count})");
         }
 
         private void GenerateNoteDirections()

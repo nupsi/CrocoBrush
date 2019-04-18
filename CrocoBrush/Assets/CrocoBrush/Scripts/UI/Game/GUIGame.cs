@@ -1,4 +1,6 @@
-﻿namespace CrocoBrush.UI.Game
+﻿using System.Collections.Generic;
+
+namespace CrocoBrush.UI.Game
 {
     /// <summary>
     /// Base class for in game UI components that require updated when the event manager receives a UpdateGameUI request.
@@ -6,11 +8,23 @@
     public abstract class GUIGame : RegisteredBehaviour
     {
         /// <summary>
-        /// Event name to listen to
+        /// Update the component.
+        /// This should be called when something in the game updates.
         /// </summary>
-        /// <value>Event name to listen to.</value>
-        protected override string EventName => "UpdateGameUI";
+        protected abstract void UpdateComponent();
 
-        protected override abstract void UpdateComponent();
+        /// <summary>
+        /// Reset the component.
+        /// This shoul be called when the game start or is restarted.
+        /// </summary>
+        protected abstract void ResetComponent();
+
+        protected override Dictionary<string, Action> Actions =>
+            m_actions ??
+            (m_actions = new Dictionary<string, Action>
+            {
+                { "UpdateGameUI", UpdateComponent },
+                { "ResetGame", ResetComponent }
+            });
     }
 }

@@ -1,37 +1,42 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace CrocoBrush
 {
     /// <summary>
     /// Base class for registered components.
-    /// 
-    /// This components listens to a given event in the Event Manager
-    /// and triggers the UpdateComponent function when the Event Manager
-    /// receives a trigger request for the event name.
+    /// Starts and stops listening to the given events in the event manager.
+    /// Use Actions property to initialize m_actions dictionary which contains
+    /// the event names as keys and called functions as values.
     /// </summary>
     public abstract class RegisteredBehaviour : MonoBehaviour
     {
+        /// <summary>
+        /// Dictionary for all the events this component wants to listen.
+        /// </summary>
+        protected Dictionary<string, Action> m_actions;
+
         protected virtual void OnEnable()
         {
-            //Start listening to a event, when the game object is enabled.
-            EventManager.Instance.StartListening(EventName, UpdateComponent);
+            //Start listening to each trigger.
+            foreach(var pair in Actions)
+            {
+                EventManager.Instance.StartListening(pair.Key, pair.Value);
+            }
         }
 
         protected virtual void OnDisable()
         {
-            //Stop listening to a event, when the game object is deactivated.
-            EventManager.Instance.StopListening(EventName, UpdateComponent);
+            //Stop listening to each trigger.
+            foreach(var pair in Actions)
+            {
+                EventManager.Instance.StopListening(pair.Key, pair.Value);
+            }
         }
 
         /// <summary>
-        /// Function that gets called when the event is triggered.
+        /// Dictionary for all the events this component wants to listen.
         /// </summary>
-        protected abstract void UpdateComponent();
-
-        /// <summary>
-        /// Event name to listen to in the Event Manager.
-        /// </summary>
-        /// <value>Event name to listen to.</value>
-        protected abstract string EventName { get; }
+        protected abstract Dictionary<string, Action> Actions { get; }
     }
 }

@@ -91,7 +91,7 @@ namespace CrocoBrush.UI.Menu
         /// <summary>
         /// Used to reset the value to the default value.
         /// </summary>
-        protected override void UpdateComponent()
+        protected override void ResetSettings()
         {
             if(PlayerPrefs.HasKey(m_group))
             {

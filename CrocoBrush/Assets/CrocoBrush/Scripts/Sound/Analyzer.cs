@@ -11,6 +11,7 @@ namespace CrocoBrush.Sound
 
         protected float[] m_current;
         protected bool m_reset;
+        protected int m_channel = 6;
 
         private void Awake()
         {
@@ -29,12 +30,12 @@ namespace CrocoBrush.Sound
                 {
                     m_samples.Update();
                     m_current = m_samples.FrequencyBands;
-                    if(m_current[6] >= 0.05f && !m_reset)
+                    if(m_current[m_channel] >= 0.05f && !m_reset)
                     {
                         m_reset = true;
                         RequestInput();
                     }
-                    else if(m_current[6] <= 0.05f && m_reset)
+                    else if(m_current[m_channel] <= 0.05f && m_reset)
                     {
                         m_reset = false;
                     }

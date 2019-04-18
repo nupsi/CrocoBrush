@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace CrocoBrush
@@ -37,7 +38,7 @@ namespace CrocoBrush
         /// <summary>
         /// Dictionary to store current Food based on their parent tooth direction.
         /// </summary>
-        private Dictionary<Direction, Queue<Tooth>> m_notes;
+        private Dictionary<Direction, List<Tooth>> m_notes;
 
         /// <summary>
         /// Queue for pooling available Food.
@@ -84,7 +85,7 @@ namespace CrocoBrush
             }
             var tooth = m_teeth[direction][index];
             //Add the parent Tooth to the active queue in the given direction.
-            m_notes[direction].Enqueue(tooth);
+            m_notes[direction].Add(tooth);
             //Place the food on the free Tooth.
             tooth.PlaceFood(m_available.Dequeue(), Delay);
         }
@@ -98,13 +99,11 @@ namespace CrocoBrush
             //Check if there is Food in the given Direction.
             if(m_notes[direction].Count <= 0)
             {
-                //print("No food to clean");
-                EventManager.Instance.TriggerEvent("Miss");
-                Crocodile.Instance.Annoy();
+                //Nothing to clear.
+                Crocodile.Instance.AddScore(Quality.Bad);
             }
             else
             {
-                //print("There is food to clean (" + m_notes[direction].Count + ")");
                 //Remove the First Food in the given direction.
                 Remove(direction);
             }
@@ -113,41 +112,46 @@ namespace CrocoBrush
         /// <summary>
         /// Remove first Food from given Direction.
         /// </summary>
-        public void Remove(Direction direction)
+        /// <param name="direction">Direction to clear</param>
+        public void Remove(Direction direction) => Remove(m_notes[direction][0]);
+
+        /// <summary>
+        /// Remove specific Food from a given Tooth.
+        /// </summary>
+        /// <param name="tooth">Tooth to clear</param>
+        public void Remove(Tooth tooth)
         {
-            //Get the first Tooth in the direction.
-            var tooth = m_notes[direction].Dequeue();
-            //Get the current Food by clearing in from the Tooth
-            var food = tooth.Clear();
-            //Add score based on the Food's quality.
-            AddScore(food.Quality);
-            //Add the Food back to object pool.
-            m_available.Enqueue(food);
+            m_notes[tooth.Direction].Remove(tooth);
+            ProcessFood(tooth.Clear());
+        }
+
+        public void Restart()
+        {
+            Instance.StopAllCoroutines();
+            m_notes.Keys.ToList().ForEach((key) =>
+            {
+                m_notes[key].ForEach((tooth) =>
+                {
+                    var food = tooth.Clear();
+                    food.gameObject.SetActive(false);
+                    m_available.Enqueue(food);
+                });
+
+                m_notes[key] = new List<Tooth>();
+            });
         }
 
         /// <summary>
-        /// Add score to Crocodile based on the given quality.
+        /// Process the given food.
+        /// Processing the Food adds score based on its quality and adds the food back to object pool.
         /// </summary>
-        /// <param name="quality">Quality for given score.</param>
-        private void AddScore(Quality quality)
+        /// <param name="food">Food to process.</param>
+        private void ProcessFood(Food food)
         {
-            switch(quality)
-            {
-                case Quality.Bad:
-                    Crocodile.Instance.Annoy();
-                    EventManager.Instance.TriggerEvent("Miss");
-                    break;
-
-                case Quality.Good:
-                    Crocodile.Instance.AddScore(1);
-                    EventManager.Instance.TriggerEvent("Hit");
-                    break;
-
-                case Quality.Perfect:
-                    Crocodile.Instance.AddScore(2);
-                    EventManager.Instance.TriggerEvent("Hit");
-                    break;
-            }
+            //Add score based on the Food's quality.
+            Crocodile.Instance.AddScore(food.Quality);
+            //Add the Food back to object pool.
+            m_available.Enqueue(food);
         }
 
         /// <summary>
@@ -162,7 +166,7 @@ namespace CrocoBrush
             //Place the pool under the Mouth (For cleaner scene hierarchy).
             root.transform.SetParent(transform);
             //Create the pool.
-            for(int i = 0; i < 8; i++)
+            for(int i = 0; i < transform.childCount - 1; i++)
             {
                 //Instantiate the prefab.
                 var current = Instantiate(m_prefab);
@@ -181,7 +185,7 @@ namespace CrocoBrush
         private void InitializeTeeth()
         {
             //Create new dictionary for the notes.
-            m_notes = new Dictionary<Direction, Queue<Tooth>>();
+            m_notes = new Dictionary<Direction, List<Tooth>>();
             //Create new dictionary for the teeth.
             m_teeth = new Dictionary<Direction, List<Tooth>>();
             //Get tooth components from the child objects.
@@ -195,7 +199,7 @@ namespace CrocoBrush
                     //Create new list for the current direction in the teeth dictionary.
                     m_teeth.Add(tooth.Direction, new List<Tooth> { tooth });
                     //Create new queue for the current direction in the notes dictionary.
-                    m_notes.Add(tooth.Direction, new Queue<Tooth>());
+                    m_notes.Add(tooth.Direction, new List<Tooth>());
                 }
                 else
                 {
@@ -219,33 +223,15 @@ namespace CrocoBrush
             var teeth = m_teeth[direction];
             //Set the index to -1. This is the 'fail' state if no new index is found.
             var index = -1;
-            //Stores how many free spaces there are.
-            //We count free Teeth before randomizing the position to preven unlimited while loop.
-            var space = 0;
 
-            //Go through the Teeth.
-            teeth.ForEach((tooth) =>
+            for(int i = 0; i < m_teeth.Count; i++)
             {
-                //Add a space if the Teeth has no food.
-                if(!tooth.HasFood)
+                if(!teeth[i].HasFood)
                 {
-                    space++;
+                    index = i;
+                    break;
                 }
-            });
-
-            //If there are Free Teeth available.
-            if(space > 0)
-            {
-                //While loop to randomize the index until a free Tooth is found.
-                //Not the most optimized way if there are many Teeth.
-                do
-                {
-                    index = Random.Range(0, teeth.Count);
-                }
-                while(teeth[index].HasFood);
             }
-
-            //Return the index for a free theet or -1 if there is no space available.
             return index;
         }
 

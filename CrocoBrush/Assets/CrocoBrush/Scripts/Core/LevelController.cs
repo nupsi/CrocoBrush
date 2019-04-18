@@ -34,21 +34,47 @@ namespace CrocoBrush
 
         public void PlaySelectedLevel()
         {
+            Crocodile.Instance.Restart();
             EventManager.Instance.TriggerEvent("LevelStart");
             Mouth.Instance.Delay = SelectedLevel.Delay;
-            m_source.clip = SelectedLevel.Audio;
 
-            if(Mouth.Instance != null)
+            m_source.Stop();
+            m_source.clip = SelectedLevel.Audio;
+            m_source.time = 0;
+
+            if(Mouth != null)
             {
                 m_noteReader = new SongReader(Mouth, m_source, SelectedLevel.Notes);
                 m_noteReader.StartSong();
             }
 
-            if(Spacebar.Instance != null)
+            if(Spacebar != null)
             {
                 m_spaceReader = new SongReader(Spacebar, m_source, SelectedLevel.SpaceNotes);
                 m_spaceReader.StartSong();
             }
+        }
+
+        public void Pause()
+        {
+            if(m_source != null)
+            {
+                m_source.Pause();
+            }
+        }
+
+        public void UnPause()
+        {
+            if(m_source != null)
+            {
+                m_source.UnPause();
+            }
+        }
+
+        public void Stop()
+        {
+            Crocodile.Instance.StopGame();
+            m_source.Stop();
         }
 
         public LevelData SelectedLevel

@@ -34,6 +34,11 @@ namespace CrocoBrush.UI.Game
         /// </summary>
         private Queue<QualityText> m_texts;
 
+        /// <summary>
+        /// Queue for active texts.
+        /// </summary>
+        private Queue<QualityText> m_active;
+
         /*
          * Mono Behaviour Functions.
          */
@@ -59,12 +64,23 @@ namespace CrocoBrush.UI.Game
             }
 
             //Check if the anger has changed.
-            if(Crocodile.Anger != m_anger)
+            if(m_anger < Crocodile.Anger)
             {
                 //Display miss text.
                 DisplayMiss();
-                //Update the stored anger.
-                m_anger = Crocodile.Anger;
+            } 
+            m_anger = Crocodile.Anger;
+        }
+
+        protected override void ResetComponent()
+        {
+            m_score = Crocodile.Score;
+            m_anger = Crocodile.Anger;
+            for(int i = 0; i < m_active.Count; i++)
+            {
+                var text = m_active.Dequeue();
+                text.gameObject.SetActive(false);
+                m_texts.Enqueue(text);
             }
         }
 
@@ -74,6 +90,7 @@ namespace CrocoBrush.UI.Game
         private void CreateTextPool()
         {
             m_texts = new Queue<QualityText>();
+            m_active = new Queue<QualityText>();
             for(int i = 0; i < 8; i++)
             {
                 var go = new GameObject($"Text {i}", typeof(RectTransform));
@@ -101,6 +118,7 @@ namespace CrocoBrush.UI.Game
             var text = m_texts.Dequeue();
             //Set the text field active.
             text.gameObject.SetActive(true);
+            m_active.Enqueue(text);
             //Show a text based on the given quality.
             switch(quality)
             {
@@ -141,6 +159,7 @@ namespace CrocoBrush.UI.Game
         /// <param name="text">Text.</param>
         public void AddToPool(QualityText text)
         {
+            m_active.Dequeue();
             text.gameObject.SetActive(false);
             m_texts.Enqueue(text);
         }
