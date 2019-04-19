@@ -20,7 +20,7 @@ namespace CrocoBrush
             if(UnityEditor.EditorApplication.isPlaying)
             {
 #endif
-                Bird.Instance?.MoveToPoint(transform, false, false);
+                Bird.Instance?.MoveToPoint(transform, true, false, false);
 #if UNITY_EDITOR
             }
 #endif

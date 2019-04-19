@@ -96,11 +96,20 @@ namespace CrocoBrush
         /// <param name="target">Target position.</param>
         /// <param name="join">Is the rotation tween join operation.</param>
         /// <param name="eat">Does the bird play the eat animation after the tween.</param>
-        public void MoveToPoint(Transform target, bool join = true, bool eat = true)
+        public void MoveToPoint(Transform target, bool rotate = false, bool join = true, bool eat = true)
         {
             DOTween.Kill(transform.position);
             var time = (transform.position == target.position) ? 0 : 0.5f;
-            var sequence = DOTween.Sequence().Append(transform.DOMove(target.transform.position, time));
+            var sequence = DOTween.Sequence();
+
+            if(rotate)
+            {
+                var rotation = Quaternion.LookRotation(transform.position - target.position).eulerAngles;
+                sequence.Append(transform.DORotate(rotation, time * 0.5f));
+            }
+
+            sequence.Append(transform.DOMove(target.transform.position, time));
+
 
             if(join)
             {
@@ -113,7 +122,7 @@ namespace CrocoBrush
 
             if(eat)
             {
-                sequence.OnComplete(() => PlayEatAnimation());
+                sequence.OnComplete(PlayEatAnimation);
             }
 
             sequence.Play();
