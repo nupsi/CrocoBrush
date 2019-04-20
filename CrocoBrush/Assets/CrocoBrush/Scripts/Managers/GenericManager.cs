@@ -19,7 +19,7 @@ namespace CrocoBrush
         /// </summary>
         protected Stack<string> m_history;
 
-        public GenericManager()
+        protected GenericManager()
         {
             m_components = new List<T>();
             m_history = new Stack<string>();
