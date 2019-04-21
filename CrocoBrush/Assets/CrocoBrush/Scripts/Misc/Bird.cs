@@ -90,7 +90,7 @@ namespace CrocoBrush
             {
                 DOTween.Kill(transform.position);
                 var time = 0.75f;
-                var rotation = Quaternion.LookRotation(transform.position - target.position).eulerAngles;
+                var rotation = GetTargetRotation(target.position);
                 DOTween.Sequence()
                     .Append(transform.DORotate(rotation, time * 0.25f).OnComplete(StartTravel))
                     .Append(transform.DOMove(target.transform.position, time * 0.5f).OnComplete(StopTravel))
@@ -118,6 +118,22 @@ namespace CrocoBrush
                .Append(transform.DORotate(target.transform.rotation.eulerAngles, time * 0.25f))
                .OnComplete(PlayEatAnimation)
                .Play();
+        }
+
+        /// <summary>
+        /// Get euler angles to look towards the target.
+        /// </summary>
+        /// <returns>Rotation to face the target position.</returns>
+        /// <param name="target">Target position.</param>
+        private Vector3 GetTargetRotation(Vector3 target)
+        {
+            var y = Mathf.Abs(transform.position.y - target.y);
+            var distance = Vector3.Distance(transform.position, target);
+            if(distance * 0.9f > y)
+            {
+                target.y = transform.position.y;
+            }
+            return Quaternion.LookRotation(transform.position - target).eulerAngles;
         }
 
         /// <summary>
