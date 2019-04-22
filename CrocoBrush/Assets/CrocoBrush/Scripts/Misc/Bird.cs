@@ -29,6 +29,11 @@ namespace CrocoBrush
         /// </summary>
         private BirdData m_data;
 
+        /// <summary>
+        /// Current Tweening sequence.
+        /// </summary>
+        private Sequence m_sequence;
+
         /*
          * Mono Behaviour Functions.
          */
@@ -88,10 +93,11 @@ namespace CrocoBrush
         {
             if(NeedToMove(target.position))
             {
-                DOTween.Kill(transform.position);
+                DOTween.Kill(transform);
+                m_sequence.Kill();
                 var time = 0.75f;
                 var rotation = GetTargetRotation(target.position);
-                DOTween.Sequence()
+                m_sequence = DOTween.Sequence()
                     .Append(transform.DORotate(rotation, time * 0.25f).OnComplete(StartTravel))
                     .Append(transform.DOMove(target.transform.position, time * 0.5f).OnComplete(StopTravel))
                     .Append(transform.DORotate(target.transform.rotation.eulerAngles, time * 0.25f))
@@ -111,13 +117,17 @@ namespace CrocoBrush
                 return;
             }
 
-            DOTween.Kill(transform.position);
-            var time = 0.5f;
-            DOTween.Sequence()
-               .Append(transform.DOMove(target.transform.position, time))
-               .Append(transform.DORotate(target.transform.rotation.eulerAngles, time * 0.25f))
-               .OnComplete(PlayEatAnimation)
-               .Play();
+            DOTween.Kill(transform);
+            m_sequence.Kill();
+            var time = 0.4f;
+            var rotation = GetTargetRotation(target.position);
+            m_sequence = DOTween.Sequence()
+                .OnStart(StartTravel)
+                .Append(transform.DOMove(target.transform.position, time).OnComplete(StopTravel))
+                .Join(transform.DORotate(rotation, time * 0.25f))
+                .Append(transform.DORotate(target.transform.rotation.eulerAngles, time * 0.25f))
+                .OnComplete(PlayEatAnimation)
+                .Play();
         }
 
         /// <summary>
@@ -129,7 +139,7 @@ namespace CrocoBrush
         {
             var y = Mathf.Abs(transform.position.y - target.y);
             var distance = Vector3.Distance(transform.position, target);
-            if(distance * 0.9f > y)
+            if(distance * 0.9f < y)
             {
                 target.y = transform.position.y;
             }
