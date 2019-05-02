@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5c396bfb2e888a94797cec6b1b4304f6
+guid: 182a562bfb80d4939932888e90182eac
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Dimbo
+  fontName: Wendy One
   fontNames:
-  - Dimbo
+  - Wendy One
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
