@@ -3525,6 +3525,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 564379827662537892, guid: ec347ac1ba1b96d44896f50749a2531a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1130117914, guid: ec347ac1ba1b96d44896f50749a2531a, type: 3}
       propertyPath: m_havePropertiesChanged
       value: 1
@@ -4533,7 +4538,7 @@ PrefabInstance:
     - target: {fileID: 5440898471330251659, guid: eef1bad15cd055a47a7fb167b1e4c1a1,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1043877460, guid: eef1bad15cd055a47a7fb167b1e4c1a1, type: 3}
       propertyPath: m_havePropertiesChanged
@@ -4815,7 +4820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1139233849, guid: eef1bad15cd055a47a7fb167b1e4c1a1, type: 3}
       propertyPath: m_text
-      value: 'Scrore:'
+      value: 'Score:'
       objectReference: {fileID: 0}
     - target: {fileID: 1139233849, guid: eef1bad15cd055a47a7fb167b1e4c1a1, type: 3}
       propertyPath: m_textInfo.characterCount
