@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace CrocoBrush
@@ -125,20 +124,25 @@ namespace CrocoBrush
             ProcessFood(tooth.Clear());
         }
 
+        /// <summary>
+        /// Reset the mouth by deactivating all active components. 
+        /// </summary>
         public void Restart()
         {
             Instance.StopAllCoroutines();
-            m_notes.Keys.ToList().ForEach((key) =>
+            foreach(var key in m_notes.Keys)
             {
-                m_notes[key].ForEach((tooth) =>
+                if(m_notes[key].Count > 0)
                 {
-                    var food = tooth.Clear();
-                    food.gameObject.SetActive(false);
-                    m_available.Enqueue(food);
-                });
-
-                m_notes[key] = new List<Tooth>();
-            });
+                    for(int i = m_notes[key].Count - 1; i >= 0; i--)
+                    {
+                        var food = m_notes[key][i].Clear();
+                        food.gameObject.SetActive(false);
+                        m_available.Enqueue(food);
+                        m_notes[key].RemoveAt(i);
+                    }
+                }
+            }
         }
 
         /// <summary>
