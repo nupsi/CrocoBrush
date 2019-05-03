@@ -33,15 +33,26 @@ namespace CrocoBrush.UI.Menu
         [SerializeField]
         private Sprite m_lose;
 
+        [SerializeField]
+        private Image m_sprite;
+
+        [SerializeField]
+        private Sprite m_winSprite;
+
+        [SerializeField]
+        private Sprite m_loseSprite;
+
         private void Win()
         {
             m_image.sprite = m_win;
+            m_sprite.sprite = m_winSprite;
             UpdateEndInfo();
         }
 
         private void Lose()
         {
             m_image.sprite = m_lose;
+            m_sprite.sprite = m_loseSprite;
             UpdateEndInfo();
         }
 

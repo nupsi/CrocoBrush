@@ -62,7 +62,7 @@ namespace CrocoBrush
             {
                 if(Input.GetButtonDown(set.Key))
                 {
-                    Bird.MoveToPoint(Bird.GetPosition(set.Value));
+                    Bird.EatAt(Bird.GetPosition(set.Value));
                 }
             }
 
@@ -90,7 +90,7 @@ namespace CrocoBrush
                 if(touch.phase == TouchPhase.Began)
                 {
                     //Move the model to the current target direction.
-                    Bird.MoveToPoint(Bird.GetPosition(ScreenPointToDirection(touch.position)));
+                    Bird.EatAt(Bird.GetPosition(ScreenPointToDirection(touch.position)));
                 }
             }
 #else
@@ -98,7 +98,7 @@ namespace CrocoBrush
             if(Input.GetMouseButtonDown(0))
             {
                 //Move the model to the current target direction.
-                Bird.MoveToPoint(Bird.GetPosition(ScreenPointToDirection(Input.mousePosition)));
+                Bird.EatAt(Bird.GetPosition(ScreenPointToDirection(Input.mousePosition)));
             }
 #endif
         }
