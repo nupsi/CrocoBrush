@@ -125,7 +125,7 @@ namespace CrocoBrush
         }
 
         /// <summary>
-        /// Reset the mouth by deactivating all active components. 
+        /// Reset the mouth by deactivating all active components.
         /// </summary>
         public void Restart()
         {
