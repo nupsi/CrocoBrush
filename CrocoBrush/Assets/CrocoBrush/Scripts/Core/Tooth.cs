@@ -53,7 +53,7 @@ namespace CrocoBrush
         /// <summary>
         /// Sends the Mouth a remove request for the Tooth.
         /// </summary>
-        public void Remove() => Mouth.Remove(this);
+        public virtual void Remove() => Mouth.Remove(this);
 
         /// <summary>
         /// Return the current Food object while clearing the Tooth.
