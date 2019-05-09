@@ -16,11 +16,6 @@ namespace CrocoBrush
         [SerializeField]
         private float m_time = 1f;
 
-        private void Awake()
-        {
-            Deactive();
-        }
-
         public void OnEnable()
         {
             CameraManager.Instance.RegisterComponent(this);
@@ -48,15 +43,7 @@ namespace CrocoBrush
                 .Join(camera.transform.DORotate(transform.rotation.eulerAngles, TweenTime))
                 .Play();
         }
-
-        public void Deactive()
-        {
-            foreach(Transform child in transform)
-            {
-                child.gameObject.SetActive(false);
-            }
-        }
-
+        
         private void ActiveChild()
         {
             if(transform.childCount == 0)
@@ -66,6 +53,7 @@ namespace CrocoBrush
 
             foreach(Transform child in transform)
             {
+                child.gameObject.SetActive(false);
                 child.gameObject.SetActive(true);
             }
         }
