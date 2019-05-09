@@ -65,9 +65,24 @@ ModelImporter:
     13700000: Cube
     13700002: Sphere
     13700004: Sphere_001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 54613b76da3d15c43b2ff56bf9d3b479, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_001
+    second: {fileID: 2100000, guid: db46a1ead0049254ab446481fe3d9379, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_013
+    second: {fileID: 2100008, guid: 075b20bf4ea9987459b43e65eae9c7a7, type: 3}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1

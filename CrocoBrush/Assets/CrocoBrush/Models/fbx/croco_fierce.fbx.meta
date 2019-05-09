@@ -1,71 +1,95 @@
 fileFormatVersion: 2
-guid: 7c29553b5c339d94f9b79f5ea7eb06ae
+guid: 9e64fcc210f758842ad19a2a901a6276
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: Armature
     100002: Bone
-    100004: Bone_001
-    100006: Bone_002
-    100008: Bone_003
-    100010: Bone_004
-    100012: Bone_005
-    100014: Bone_006
-    100016: Bone_007
-    100018: Bone_008
-    100020: Bone_009
-    100022: Bone_010
-    100024: Bone_011
-    100026: Bone_012
-    100028: Bone_013
-    100030: Bone_014
-    100032: Bone_015
-    100034: Bone_016
-    100036: Bone_017
-    100038: Cube
-    100040: //RootNode
+    100004: Bone.001
+    100006: Bone.002
+    100008: Bone.003
+    100010: Bone.003_end
+    100012: Bone.004
+    100014: Bone.005
+    100016: Bone.006
+    100018: Bone.007
+    100020: Bone.007_end
+    100022: Bone.008
+    100024: Bone.009
+    100026: Bone.010
+    100028: Bone.010_end
+    100030: Bone.011
+    100032: Bone.012
+    100034: Bone.013
+    100036: Bone.013_end
+    100038: Bone.014
+    100040: Bone.015
+    100042: Bone.016
+    100044: Bone.016_end
+    100046: Bone.017
+    100048: Bone.017_end
+    100050: Bone.018
+    100052: Bone.018_end
+    100054: Bone.019
+    100056: Bone.019_end
+    100058: //RootNode
+    100060: Cube
+    100062: Sphere
+    100064: Sphere.001
     400000: Armature
     400002: Bone
-    400004: Bone_001
-    400006: Bone_002
-    400008: Bone_003
-    400010: Bone_004
-    400012: Bone_005
-    400014: Bone_006
-    400016: Bone_007
-    400018: Bone_008
-    400020: Bone_009
-    400022: Bone_010
-    400024: Bone_011
-    400026: Bone_012
-    400028: Bone_013
-    400030: Bone_014
-    400032: Bone_015
-    400034: Bone_016
-    400036: Bone_017
-    400038: Cube
-    400040: //RootNode
-    2100000: Material_013
+    400004: Bone.001
+    400006: Bone.002
+    400008: Bone.003
+    400010: Bone.003_end
+    400012: Bone.004
+    400014: Bone.005
+    400016: Bone.006
+    400018: Bone.007
+    400020: Bone.007_end
+    400022: Bone.008
+    400024: Bone.009
+    400026: Bone.010
+    400028: Bone.010_end
+    400030: Bone.011
+    400032: Bone.012
+    400034: Bone.013
+    400036: Bone.013_end
+    400038: Bone.014
+    400040: Bone.015
+    400042: Bone.016
+    400044: Bone.016_end
+    400046: Bone.017
+    400048: Bone.017_end
+    400050: Bone.018
+    400052: Bone.018_end
+    400054: Bone.019
+    400056: Bone.019_end
+    400058: //RootNode
+    400060: Cube
+    400062: Sphere
+    400064: Sphere.001
+    2100000: Material
     2100002: Crocodile
-    2100004: Crocodile_Mouth
-    2100006: Crocodile_Tooth
-    4300000: Cube
+    2100004: Crocodile Tooth
+    2100006: Crocodile Mouth
+    2100008: Material.001
+    4300000: Sphere
+    4300002: Cube
+    4300004: Sphere.001
     7400000: Open
-    7400002: ArmatureAction_002
-    7400004: Close
-    7400006: Walk
-    7400008: Idle
-    7400010: Mouth
+    7400002: Close
+    7400004: Walk
+    7400006: Idle
+    7400008: Mouth
+    7400010: Shake
     9500000: //RootNode
     13700000: Cube
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_013
-    second: {fileID: 2100000, guid: 54613b76da3d15c43b2ff56bf9d3b479, type: 2}
+    13700002: Sphere
+    13700004: Sphere.001
+  externalObjects: {}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -93,7 +117,7 @@ ModelImporter:
     clipAnimations:
     - serializedVersion: 16
       name: Open
-      takeName: Default Take
+      takeName: Armature|ArmatureAction.002
       firstFrame: 0
       lastFrame: 15
       wrapMode: 0
@@ -121,7 +145,7 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Close
-      takeName: Default Take
+      takeName: Armature|ArmatureAction.002
       firstFrame: 15
       lastFrame: 30
       wrapMode: 0
@@ -149,7 +173,7 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Walk
-      takeName: Default Take
+      takeName: Armature|ArmatureAction.002
       firstFrame: 40
       lastFrame: 100
       wrapMode: 0
@@ -158,7 +182,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -177,7 +201,7 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Idle
-      takeName: Default Take
+      takeName: Armature|ArmatureAction.002
       firstFrame: 110
       lastFrame: 190
       wrapMode: 0
@@ -186,7 +210,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -205,16 +229,44 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Mouth
-      takeName: Default Take
-      firstFrame: 218
-      lastFrame: 537
+      takeName: Armature|ArmatureAction.002
+      firstFrame: 221
+      lastFrame: 333
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Shake
+      takeName: Armature|ArmatureAction.002
+      firstFrame: 410
+      lastFrame: 435
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -255,7 +307,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
+    previousCalculatedGlobalScale: 0.01
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
