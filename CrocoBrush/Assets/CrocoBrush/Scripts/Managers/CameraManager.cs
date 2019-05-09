@@ -37,7 +37,10 @@ namespace CrocoBrush
                 if(component.Name == name)
                 {
                     component.SetCamera(Camera.main);
-                    return;
+                }
+                else
+                {
+                    component.Deactive();
                 }
             }
         }

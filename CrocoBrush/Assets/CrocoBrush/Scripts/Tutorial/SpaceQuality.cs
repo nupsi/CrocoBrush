@@ -35,7 +35,6 @@ namespace CrocoBrush.Tutorial
                 .OnStart(() => StartCoroutine(Degrade()))
                 .Append(m_image.transform.DOScale(0.1f, 0f))
                 .Append(m_image.transform.DOScale(1f, m_duration).SetEase(Ease.Linear))
-                .Append(m_image.transform.DOScale(1f, 0.3f).SetEase(Ease.Linear))
                 .Play();
         }
 
@@ -60,7 +59,7 @@ namespace CrocoBrush.Tutorial
             Quality = Quality.Good;
             yield return new WaitForSeconds(m_duration * 0.5f);
             Quality = Quality.Perfect;
-            yield return new WaitForSeconds(0.29f);
+            yield return new WaitForSeconds(0.4f);
             Quality = Quality.Bad;
             Loop();
         }

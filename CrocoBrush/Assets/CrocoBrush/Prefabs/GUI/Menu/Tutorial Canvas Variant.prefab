@@ -354,7 +354,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'If you miss the crocodile will get angry.
+  m_text: 'If you miss, the crocodile will get angry.
 
 
     If you hit 10x combo the crocodile will calm down a bit'
@@ -427,7 +427,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1324229413}
-    characterCount: 98
+    characterCount: 99
     spriteCount: 0
     spaceCount: 20
     wordCount: 20
@@ -896,7 +896,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Click to continue
+  m_text: Click to Start
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2dbdfb0e00e054f30865fc15ed6cd2d1, type: 2}
   m_sharedMaterial: {fileID: 21328077278444624, guid: 2dbdfb0e00e054f30865fc15ed6cd2d1,
@@ -906,8 +906,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294967040
+  m_fontColor: {r: 0, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -966,7 +966,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 5}
   m_textInfo:
     textComponent: {fileID: 4651727049611919343}
-    characterCount: 17
+    characterCount: 14
     spriteCount: 0
     spaceCount: 2
     wordCount: 3
@@ -3400,8 +3400,8 @@ RectTransform:
   m_Children:
   - {fileID: 6106985209560635979}
   - {fileID: 7731433586080470705}
-  - {fileID: 4644180919783064428}
   - {fileID: 590479256358925820}
+  - {fileID: 4644180919783064428}
   - {fileID: 1204843004}
   - {fileID: 2636906768947996047}
   m_Father: {fileID: 4677958760416231693}
@@ -4004,7 +4004,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4644180919783064428
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4018,7 +4018,7 @@ RectTransform:
   m_Children:
   - {fileID: 9151133688496855167}
   m_Father: {fileID: 5268695230544379959}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5482,7 +5482,7 @@ RectTransform:
   m_Children:
   - {fileID: 2394015326474271503}
   m_Father: {fileID: 5268695230544379959}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5725,12 +5725,12 @@ PrefabInstance:
     - target: {fileID: 1841332554545581076, guid: faf86d727da70b146905252ab694b0c1,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841332554545581076, guid: faf86d727da70b146905252ab694b0c1,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.3
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: faf86d727da70b146905252ab694b0c1, type: 3}

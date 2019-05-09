@@ -43,7 +43,7 @@ namespace CrocoBrush.Tutorial
         private void Show()
         {
             Hide();
-            if(m_current < m_parts.Length - 1)
+            if(m_current < m_parts.Length)
             {
                 m_parts[m_current].SetActive(true);
             }

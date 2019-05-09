@@ -56,7 +56,7 @@ namespace CrocoBrush.Tutorial
                             m_circle.gameObject.SetActive(false);
                             m_fail.gameObject.SetActive(true);
                         })
-                        .Append(transform.DOScale(0.5f, 0.2f).SetEase(Ease.InBack))
+                        .Append(transform.DOScale(0.5f, 0.3f).SetEase(Ease.InBack))
                         .Append(transform.DOScale(1, 0))
                         .OnComplete(Loop)
                         .Play();

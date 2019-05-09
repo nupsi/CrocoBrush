@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Level_2_Data
   m_EditorClassIdentifier: 
   Name: Level 2
-  Difficulty: Medium
+  Difficulty: Hard
   Audio: {fileID: 8300000, guid: 460a0c179121b754c9aada0b1cf37b78, type: 3}
-  Notes: {fileID: 11400000, guid: 962ebbac98fe1f34dba74ac6053dddf6, type: 2}
+  Notes: {fileID: 11400000, guid: 3ee089e6f828c41dab8d8632eb2dfa27, type: 2}
   SpaceNotes: {fileID: 11400000, guid: 50c9d8e68aeca9d48a2e50a4cfcff012, type: 2}
   Delay: 0.6
