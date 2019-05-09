@@ -32,14 +32,14 @@ namespace CrocoBrush
 
         protected override void ProcessComponents(string name)
         {
-            m_components.ForEach((component) =>
+            foreach(var component in m_components)
             {
                 if(component.Name == name)
                 {
                     component.SetCamera(Camera.main);
                     return;
                 }
-            });
+            }
         }
 
         /*

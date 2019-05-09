@@ -6,16 +6,10 @@ using UnityEngine.UI;
 
 namespace CrocoBrush.Tutorial
 {
-    /// <summary>
-    /// Displays how food acts over time.
-    /// </summary>
-    public class FoodQuality : MonoBehaviour
+    public class SpaceQuality : MonoBehaviour
     {
         [SerializeField]
-        private RawImage m_circle;
-
-        [SerializeField]
-        private RawImage m_fail;
+        private Image m_image;
 
         [SerializeField]
         private TextMeshProUGUI m_text;
@@ -37,30 +31,11 @@ namespace CrocoBrush.Tutorial
 
         private void Loop()
         {
-            m_fail.gameObject.SetActive(false);
-            m_circle.gameObject.SetActive(true);
             m_sequence = DOTween.Sequence()
-                .OnStart(() =>
-                {
-                    StartCoroutine(Degrade());
-                    m_circle.transform.localScale = Vector3.one * 2;
-                })
-                .Append(m_circle.transform.DOScale(Vector3.one, m_duration).SetEase(Ease.Linear))
-                .Append(m_circle.transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.Linear))
-                .OnComplete(() =>
-                {
-                    Quality = Quality.Bad;
-                    DOTween.Sequence()
-                        .OnStart(() =>
-                        {
-                            m_circle.gameObject.SetActive(false);
-                            m_fail.gameObject.SetActive(true);
-                        })
-                        .Append(transform.DOScale(0.5f, 0.2f).SetEase(Ease.InBack))
-                        .Append(transform.DOScale(1, 0))
-                        .OnComplete(Loop)
-                        .Play();
-                })
+                .OnStart(() => StartCoroutine(Degrade()))
+                .Append(m_image.transform.DOScale(0.1f, 0f))
+                .Append(m_image.transform.DOScale(1f, m_duration).SetEase(Ease.Linear))
+                .Append(m_image.transform.DOScale(1f, 0.3f).SetEase(Ease.Linear))
                 .Play();
         }
 
@@ -81,10 +56,13 @@ namespace CrocoBrush.Tutorial
 
         private IEnumerator Degrade()
         {
-            yield return new WaitForSeconds(m_duration * 0.5f);
+            yield return new WaitForSeconds(m_duration * 0.4f);
             Quality = Quality.Good;
             yield return new WaitForSeconds(m_duration * 0.5f);
             Quality = Quality.Perfect;
+            yield return new WaitForSeconds(0.29f);
+            Quality = Quality.Bad;
+            Loop();
         }
 
         private Quality Quality = Quality.Bad;
