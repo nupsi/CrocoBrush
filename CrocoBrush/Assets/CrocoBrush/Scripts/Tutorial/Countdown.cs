@@ -23,7 +23,6 @@ namespace CrocoBrush.Tutorial
 
         private void OnEnable()
         {
-            ActiveChild(false);
             m_current = 0;
             Display();
         }
