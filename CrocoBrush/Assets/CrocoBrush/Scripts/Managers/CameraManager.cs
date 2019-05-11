@@ -5,7 +5,7 @@ namespace CrocoBrush
     /// <summary>
     /// Manager for different camera positions.
     /// </summary>
-    public class CameraManager : GenericManager<CameraPosition>
+    public class CameraManager : GenericManager<CameraPosition, string>
     {
         /*
          * Variables.
@@ -27,14 +27,15 @@ namespace CrocoBrush
                 Debug.LogError("Camera Manager Instance already exists!");
                 return;
             }
+            m_track = false;
             m_instance = this;
         }
 
-        protected override void ProcessComponents(string name)
+        protected override void ProcessComponents(string data)
         {
             foreach(var component in m_components)
             {
-                if(component.Name == name)
+                if(component.Name == data)
                 {
                     component.SetCamera(Camera.main);
                     return;

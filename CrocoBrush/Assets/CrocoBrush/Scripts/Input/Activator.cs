@@ -20,9 +20,10 @@ namespace CrocoBrush
 
         public void Activate()
         {
-            CanvasManager.Instance.Show(m_separate ? m_canvas : m_name);
-            CameraManager.Instance.Show(m_separate ? m_position : m_name);
-            SceneManager.Instance.Show(m_separate ? m_canvas : m_name);
+            var data = m_separate
+                ? new FakeSceneData(m_canvas, m_canvas, m_position)
+                : new FakeSceneData(m_name);
+            SceneManager.Instance.Show(data);
         }
 
         /// <summary>
@@ -30,8 +31,6 @@ namespace CrocoBrush
         /// </summary>
         public void Back()
         {
-            CanvasManager.Instance.Back();
-            CameraManager.Instance.Back();
             SceneManager.Instance.Back();
         }
     }

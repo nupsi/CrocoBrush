@@ -9,7 +9,7 @@ namespace CrocoBrush.UI
     /// Use Activate(name) to active canvas.
     /// Active the previous canvas with Back().
     /// </summary>
-    public class CanvasManager : GenericManager<RegisteredCanvas>
+    public class CanvasManager : GenericManager<RegisteredCanvas, string>
     {
         /*
          * Variables.
@@ -31,6 +31,7 @@ namespace CrocoBrush.UI
                 Debug.LogError("Canvas Manager Instance already exists!");
                 return;
             }
+            m_track = false;
             m_instance = this;
         }
 
@@ -41,9 +42,9 @@ namespace CrocoBrush.UI
             component.Show(false);
         }
 
-        protected override void ProcessComponents(string name)
+        protected override void ProcessComponents(string data)
         {
-            m_components.ForEach((component) => component.Show(component.Name == name));
+            m_components.ForEach((component) => component.Show(component.Name == data));
         }
 
         /*

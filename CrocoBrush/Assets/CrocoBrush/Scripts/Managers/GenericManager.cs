@@ -2,12 +2,14 @@
 
 namespace CrocoBrush
 {
+
     /// <summary>
     /// Base class to create a manager that you can add and remove components.
     /// The Activate function will determinate what the activation does.
     /// </summary>
     /// <typeparam name="T">What the manager manages.</typeparam>
-    public abstract class GenericManager<T>
+    /// <typeparam name="U">What is used to change the manager.</typeparam>
+    public abstract class GenericManager<T, U>
     {
         /// <summary>
         /// List of registered components.
@@ -17,12 +19,17 @@ namespace CrocoBrush
         /// <summary>
         /// Show history.
         /// </summary>
-        protected Stack<string> m_history;
+        protected Stack<U> m_history;
+
+        /// <summary>
+        /// Keep track of the show history;
+        /// </summary>
+        protected bool m_track;
 
         protected GenericManager()
         {
             m_components = new List<T>();
-            m_history = new Stack<string>();
+            m_history = new Stack<U>();
         }
 
         /// <summary>
@@ -42,11 +49,23 @@ namespace CrocoBrush
         /// it the given name to the history so it can be called
         /// again with Back().
         /// </summary>
-        /// <param name="name">Target name to process.</param>
-        public virtual void Show(string name)
+        /// <param name="target">Target to process.</param>
+        public virtual void Show(U target)
         {
-            m_history.Push((name == string.Empty) ? m_history.Peek() : name);
-            ProcessComponents(name);
+            if(m_track)
+            {
+                m_history.Push(UsePrevious(target) ? m_history.Peek() : target);
+            }
+            ProcessComponents(target);
+        }
+
+        /// <summary>
+        /// Should the previously added element be used instead of adding the new one.
+        /// </summary>
+        /// <returns>Should the previous value be used instead of the new value.</returns>
+        protected virtual bool UsePrevious(U value)
+        {
+            return false;
         }
 
         /// <summary>
@@ -61,7 +80,7 @@ namespace CrocoBrush
         /// <summary>
         /// Process components stored in m_components.
         /// </summary>
-        /// <param name="name">Target component name.</param>
-        protected abstract void ProcessComponents(string name);
+        /// <param name="data">Target component name.</param>
+        protected abstract void ProcessComponents(U data);
     }
 }
