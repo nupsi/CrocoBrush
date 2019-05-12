@@ -4,6 +4,8 @@ namespace CrocoBrush
 {
     /// <summary>
     /// Manager for different camera positions.
+    /// Add Camera Position to a game object and give the component a name.
+    /// Call Show(component name) to move the camera to the location.
     /// </summary>
     public class CameraManager : GenericManager<CameraPosition, string>
     {
@@ -27,7 +29,6 @@ namespace CrocoBrush
                 Debug.LogError("Camera Manager Instance already exists!");
                 return;
             }
-            m_track = false;
             m_instance = this;
         }
 

@@ -6,8 +6,7 @@ namespace CrocoBrush.UI
     /// Manger to active and deactive different canvases by name.
     /// Add RegisteredCanvas to a game object with Canvas component
     /// to add it to the Canvas Manager.
-    /// Use Activate(name) to active canvas.
-    /// Active the previous canvas with Back().
+    /// Use Show(name) to active canvas.
     /// </summary>
     public class CanvasManager : GenericManager<RegisteredCanvas, string>
     {
@@ -31,7 +30,6 @@ namespace CrocoBrush.UI
                 Debug.LogError("Canvas Manager Instance already exists!");
                 return;
             }
-            m_track = false;
             m_instance = this;
         }
 
