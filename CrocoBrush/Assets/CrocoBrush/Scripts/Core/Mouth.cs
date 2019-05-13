@@ -79,7 +79,7 @@ namespace CrocoBrush
             //Check that we got a valid index.
             if(index < 0)
             {
-                Debug.LogError("No room to place food!");
+                Debug.LogError("No room to place food! " + Time.time);
                 return;
             }
             var tooth = m_teeth[direction][index];
@@ -227,8 +227,7 @@ namespace CrocoBrush
             var teeth = m_teeth[direction];
             //Set the index to -1. This is the 'fail' state if no new index is found.
             var index = -1;
-
-            for(int i = 0; i < m_teeth.Count; i++)
+            for(int i = 0; i < teeth.Count; i++)
             {
                 if(!teeth[i].HasFood)
                 {

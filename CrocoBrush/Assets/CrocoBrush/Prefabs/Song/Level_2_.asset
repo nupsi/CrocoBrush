@@ -208,10 +208,10 @@ MonoBehaviour:
   - Direction: 4
     Time: 48.274284
     Delay: 0.232
-  - Direction: 2
+  - Direction: 1
     Time: 48.692245
     Delay: 0.418
-  - Direction: 2
+  - Direction: 1
     Time: 48.901226
     Delay: 0.209
   - Direction: 3
@@ -223,10 +223,10 @@ MonoBehaviour:
   - Direction: 4
     Time: 49.96934
     Delay: 0.209
-  - Direction: 3
+  - Direction: 2
     Time: 50.410522
     Delay: 0.441
-  - Direction: 3
+  - Direction: 2
     Time: 50.619503
     Delay: 0.209
   - Direction: 4
@@ -268,16 +268,16 @@ MonoBehaviour:
   - Direction: 1
     Time: 55.124172
     Delay: 0.209
-  - Direction: 2
+  - Direction: 1
     Time: 55.542133
     Delay: 0.418
-  - Direction: 2
+  - Direction: 4
     Time: 55.77433
     Delay: 0.232
   - Direction: 4
     Time: 56.401268
     Delay: 0.627
-  - Direction: 4
+  - Direction: 3
     Time: 56.63347
     Delay: 0.232
   - Direction: 3
@@ -610,10 +610,10 @@ MonoBehaviour:
   - Direction: 3
     Time: 99.683266
     Delay: 0.209
-  - Direction: 2
+  - Direction: 1
     Time: 100.12444
     Delay: 0.441
-  - Direction: 2
+  - Direction: 1
     Time: 100.33343
     Delay: 0.209
   - Direction: 3
