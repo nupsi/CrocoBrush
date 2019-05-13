@@ -5,13 +5,6 @@ namespace CrocoBrush.Editors
     [CustomEditor(typeof(Activator))]
     public class ActivatorInspector : Editor
     {
-        private Activator m_target;
-
-        private void OnEnable()
-        {
-            m_target = Target;
-        }
-
         public override void OnInspectorGUI()
         {
             var separate = serializedObject.FindProperty("m_separate").boolValue;
@@ -32,14 +25,12 @@ namespace CrocoBrush.Editors
             serializedObject.ApplyModifiedProperties();
         }
 
-        private void TextField(string label, string target)
+        private void TextField(string label, string field)
         {
-            var text = serializedObject.FindProperty(target).stringValue;
+            var text = serializedObject.FindProperty(field).stringValue;
             serializedObject
-                .FindProperty(target)
+                .FindProperty(field)
                 .stringValue = EditorGUILayout.TextField(label, text);
         }
-
-        private Activator Target => (Activator)target;
     }
 }

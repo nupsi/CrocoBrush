@@ -2,11 +2,8 @@
 
 namespace CrocoBrush.Managers
 {
-    public class FakeScene : MonoBehaviour
+    public class FakeScene : GenericComponent<FakeScene, FakeSceneData>
     {
-        [SerializeField]
-        private string m_name = "None";
-
         [SerializeField]
         private Behaviour[] m_behaviour;
 
@@ -14,10 +11,6 @@ namespace CrocoBrush.Managers
         private GameObject[] m_gameObjects;
 
         private bool m_current = true;
-
-        public void OnEnable() => SceneManager.Instance.RegisterComponent(this);
-
-        public void OnDisable() => SceneManager.Instance.RemoveComponent(this);
 
         public void Process(string name)
         {
@@ -39,5 +32,9 @@ namespace CrocoBrush.Managers
 
             m_current = isTarget;
         }
+
+        protected override FakeScene Component => this;
+
+        public override GenericManager<FakeScene, FakeSceneData> Manager => SceneManager.Instance;
     }
 }

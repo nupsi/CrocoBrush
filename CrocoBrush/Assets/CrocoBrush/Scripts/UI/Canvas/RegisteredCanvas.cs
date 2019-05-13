@@ -7,17 +7,11 @@ namespace CrocoBrush.UI
     /// Canvas Manager is used to control the visibility.
     /// </summary>
     [RequireComponent(typeof(Canvas))]
-    public class RegisteredCanvas : MonoBehaviour
+    public class RegisteredCanvas : GenericComponent<RegisteredCanvas, string>
     {
         /*
          * Variables.
          */
-
-        /// <summary>
-        /// Name to identify the component.
-        /// </summary>
-        [SerializeField]
-        private string m_name = "None";
 
         /// <summary>
         /// Target canvas to enable and disable.
@@ -31,16 +25,6 @@ namespace CrocoBrush.UI
         private void Awake()
         {
             m_canvas = GetComponent<Canvas>();
-        }
-
-        public void OnEnable()
-        {
-            CanvasManager.Instance.RegisterComponent(this);
-        }
-
-        public void OnDisable()
-        {
-            CanvasManager.Instance.RemoveComponent(this);
         }
 
         /*
@@ -67,5 +51,9 @@ namespace CrocoBrush.UI
         /// Name to identify the component.
         /// </summary>
         public string Name => m_name;
+
+        public override GenericManager<RegisteredCanvas, string> Manager => CanvasManager.Instance;
+
+        protected override RegisteredCanvas Component => this;
     }
 }
