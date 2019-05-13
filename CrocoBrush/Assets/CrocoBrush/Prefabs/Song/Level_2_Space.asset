@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7331506cb391bfc4d877596fe8cbd152, type: 3}
+  m_Name: Level_2_Space
+  m_EditorClassIdentifier: 
+  Nodes:
+  - Direction: 0
+    Time: 60.906666
+    Delay: 60.907
+  - Direction: 0
+    Time: 64.32
+    Delay: 3.413
+  - Direction: 0
+    Time: 67.75467
+    Delay: 3.435
+  - Direction: 0
+    Time: 71.18933
+    Delay: 3.435
+  - Direction: 0
+    Time: 74.60267
+    Delay: 3.413
+  - Direction: 0
+    Time: 78.03733
+    Delay: 3.435
+  - Direction: 0
+    Time: 81.472
+    Delay: 3.435
+  - Direction: 0
+    Time: 84.90667
+    Delay: 3.435
+  - Direction: 0
+    Time: 118.336
+    Delay: 33.429
+  - Direction: 0
+    Time: 119.18933
+    Delay: 0.853
+  - Direction: 0
+    Time: 120.04266
+    Delay: 0.853
+  - Direction: 0
+    Time: 120.896
+    Delay: 0.853
+  - Direction: 0
+    Time: 121.74934
+    Delay: 0.853
+  - Direction: 0
+    Time: 122.60267
+    Delay: 0.853
+  - Direction: 0
+    Time: 123.47733
+    Delay: 0.875
+  - Direction: 0
+    Time: 124.330666
+    Delay: 0.853
+  - Direction: 0
+    Time: 125.184
+    Delay: 0.853
+  - Direction: 0
+    Time: 126.03733
+    Delay: 0.853

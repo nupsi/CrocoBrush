@@ -53,11 +53,11 @@ namespace CrocoBrush
 
         private IEnumerator Degrade(float duration)
         {
-            yield return new WaitForSeconds(duration * 0.4f);
+            yield return new WaitForSeconds(duration * 0.5f);
             Quality = Quality.Good;
             yield return new WaitForSeconds(duration * 0.5f);
             Quality = Quality.Perfect;
-            yield return new WaitForSeconds(0.29f);
+            yield return new WaitForSeconds(0.3f);
             Quality = Quality.Bad;
             ClearSpace();
         }

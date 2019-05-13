@@ -68,7 +68,7 @@ namespace CrocoBrush.UI.Game
             {
                 //Display miss text.
                 DisplayMiss();
-            } 
+            }
             m_anger = Crocodile.Anger;
         }
 

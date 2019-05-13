@@ -4,27 +4,14 @@ using UnityEngine;
 namespace CrocoBrush
 {
     [RequireComponent(typeof(CameraGizmo))]
-    public class CameraPosition : MonoBehaviour
+    public class CameraPosition : GenericComponent<CameraPosition, string>
     {
-        [SerializeField]
-        private string m_name = "None";
-
         [SerializeField]
         [Range(0, 179)]
         private float m_fieldOfView = 0f;
 
         [SerializeField]
         private float m_time = 1f;
-
-        public void OnEnable()
-        {
-            CameraManager.Instance.RegisterComponent(this);
-        }
-
-        public void OnDisable()
-        {
-            CameraManager.Instance.RemoveComponent(this);
-        }
 
         public void SetCamera(Camera camera)
         {
@@ -60,6 +47,10 @@ namespace CrocoBrush
 
         public string Name => m_name;
 
-        private float TweenTime => Time.time == 0 ? 0f : m_time;
+        public override GenericManager<CameraPosition, string> Manager => CameraManager.Instance;
+
+        protected override CameraPosition Component => this;
+
+        private float TweenTime => Time.time <= 0.01f ? 0f : m_time;
     }
 }

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 450fadb2d79df5042a6df67c2f425ab5, type: 3}
+  m_Name: Level_2_Data
+  m_EditorClassIdentifier: 
+  Name: Level 2
+  Difficulty: Hard
+  Audio: {fileID: 8300000, guid: 460a0c179121b754c9aada0b1cf37b78, type: 3}
+  Notes: {fileID: 11400000, guid: 3ee089e6f828c41dab8d8632eb2dfa27, type: 2}
+  SpaceNotes: {fileID: 11400000, guid: 50c9d8e68aeca9d48a2e50a4cfcff012, type: 2}
+  Delay: 0.6

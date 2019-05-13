@@ -165,6 +165,9 @@ namespace CrocoBrush.Editors
                 EditorUtility.SetDirty(target);
                 Repaint();
             }
+
+
+            EditorUtility.SetDirty(target);
             serializedObject.ApplyModifiedProperties();
         }
 

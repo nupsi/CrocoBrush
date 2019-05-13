@@ -4,8 +4,10 @@ namespace CrocoBrush
 {
     /// <summary>
     /// Manager for different camera positions.
+    /// Add Camera Position to a game object and give the component a name.
+    /// Call Show(component name) to move the camera to the location.
     /// </summary>
-    public class CameraManager : GenericManager<CameraPosition>
+    public class CameraManager : GenericManager<CameraPosition, string>
     {
         /*
          * Variables.
@@ -30,16 +32,16 @@ namespace CrocoBrush
             m_instance = this;
         }
 
-        protected override void ProcessComponents(string name)
+        protected override void ProcessComponents(string data)
         {
-            m_components.ForEach((component) =>
+            foreach(var component in m_components)
             {
-                if(component.Name == name)
+                if(component.Name == data)
                 {
                     component.SetCamera(Camera.main);
                     return;
                 }
-            });
+            }
         }
 
         /*

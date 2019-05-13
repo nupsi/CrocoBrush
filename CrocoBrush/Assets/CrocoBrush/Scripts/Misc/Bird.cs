@@ -147,7 +147,7 @@ namespace CrocoBrush
         }
 
         /// <summary>
-        /// Checks if the distance between current and target positions is long enough 
+        /// Checks if the distance between current and target positions is long enough
         /// for requiring movement.
         /// </summary>
         /// <returns>Is movement needed to reach the target position.</returns>
