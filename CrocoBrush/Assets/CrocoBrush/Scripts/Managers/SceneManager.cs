@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using CrocoBrush.UI;
+﻿using CrocoBrush.UI;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace CrocoBrush.Managers
@@ -8,7 +8,7 @@ namespace CrocoBrush.Managers
     /// Fake scene manager to make linear scene changes in the game.
     /// Requires Canvas and Camera managers for GUI and camera movement.
     /// Add Fake Scene to a game object. It gets enabled/disabled when that fake scene is active.
-    /// You can change scene with Show(scene data), where scene data contains scene name, canvas 
+    /// You can change scene with Show(scene data), where scene data contains scene name, canvas
     /// and camera position names.
     /// </summary>
     public class SceneManager : GenericManager<FakeScene, FakeSceneData>

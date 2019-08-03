@@ -22,7 +22,7 @@ namespace CrocoBrush.UI
          * Mono Behaviour functions.
          */
 
-        private void Awake()
+        protected void Awake()
         {
             m_canvas = GetComponent<Canvas>();
         }

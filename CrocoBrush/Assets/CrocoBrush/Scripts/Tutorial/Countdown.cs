@@ -21,13 +21,13 @@ namespace CrocoBrush.Tutorial
             "GO"
         };
 
-        private void OnEnable()
+        protected void OnEnable()
         {
             m_current = 0;
             Display();
         }
 
-        private void OnDisable()
+        protected void OnDisable()
         {
             m_sequence.Kill();
         }

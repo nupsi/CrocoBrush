@@ -28,7 +28,7 @@ namespace CrocoBrush
          * Mono Behaviour Functions.
          */
 
-        private void Awake()
+        protected void Awake()
         {
             if(m_materials.Length == 0)
             {
@@ -40,7 +40,7 @@ namespace CrocoBrush
             m_renderer = GetComponent<MeshRenderer>();
         }
 
-        private void OnEnable()
+        protected void OnEnable()
         {
             //Change the shared material (to preven instantiated materials) to a random material.
             m_renderer.sharedMaterial = RandomMaterial;

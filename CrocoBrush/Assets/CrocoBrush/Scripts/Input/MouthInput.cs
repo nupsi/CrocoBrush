@@ -17,7 +17,7 @@ namespace CrocoBrush
          * Mono Behaviour Functions.
          */
 
-        private void Awake()
+        protected void Awake()
         {
             //Create input dictionary.
             //key = input name (in Unity's input system)
@@ -31,7 +31,7 @@ namespace CrocoBrush
             };
         }
 
-        private void Update()
+        protected void Update()
         {
             //Go through all the inputs.
             //set.key = input name.

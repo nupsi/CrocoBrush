@@ -10,7 +10,7 @@ namespace CrocoBrush
 
         private MeshRenderer m_renderer;
 
-        private void Awake()
+        protected void Awake()
         {
             m_renderer = GetComponent<MeshRenderer>();
         }

@@ -4,7 +4,7 @@ namespace CrocoBrush
 {
     public class SpacebarInput : MonoBehaviour
     {
-        private void Update()
+        protected void Update()
         {
             if(Input.GetButtonDown("Jump"))
             {

@@ -2,7 +2,9 @@
 {
     public class FakeSceneData
     {
-        public FakeSceneData(string name) : this(name, name, name) { }
+        public FakeSceneData(string name) : this(name, name, name)
+        {
+        }
 
         public FakeSceneData(string scene, string canvas, string position)
         {

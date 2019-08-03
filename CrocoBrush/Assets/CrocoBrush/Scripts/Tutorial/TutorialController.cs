@@ -11,12 +11,12 @@ namespace CrocoBrush.Tutorial
         private int m_current;
         private Activator m_activator;
 
-        private void Awake()
+        protected void Awake()
         {
             m_activator = GetComponent<Activator>();
         }
 
-        private void OnEnable()
+        protected void OnEnable()
         {
             StartTutorial();
         }

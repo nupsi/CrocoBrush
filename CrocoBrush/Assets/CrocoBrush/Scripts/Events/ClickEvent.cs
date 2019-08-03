@@ -8,7 +8,7 @@ namespace CrocoBrush.Events
         [SerializeField]
         private CustomEvent m_onMouseUp;
 
-        private void OnMouseUp()
+        protected void OnMouseUp()
         {
             m_onMouseUp.Invoke();
         }

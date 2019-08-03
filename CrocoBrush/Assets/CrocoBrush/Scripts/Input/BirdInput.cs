@@ -29,7 +29,7 @@ namespace CrocoBrush
          * Mono Behaviour Functions.
          */
 
-        private void Awake()
+        protected void Awake()
         {
             //Create dictionary containing all the direction inputs and corresponding positions.
             m_directions = new Dictionary<string, Direction>()
@@ -41,7 +41,7 @@ namespace CrocoBrush
             };
         }
 
-        private void Update()
+        protected void Update()
         {
             UpdateInput();
             UpdateTouch();

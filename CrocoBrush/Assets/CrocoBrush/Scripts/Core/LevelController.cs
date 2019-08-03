@@ -15,7 +15,7 @@ namespace CrocoBrush
         private SongReader m_noteReader;
         private SongReader m_spaceReader;
 
-        private void Awake()
+        protected void Awake()
         {
             if(Instance != null)
             {
@@ -26,7 +26,7 @@ namespace CrocoBrush
             m_source = GetComponent<AudioSource>();
         }
 
-        private void Reset()
+        protected void Reset()
         {
             m_source = GetComponent<AudioSource>();
             m_source.playOnAwake = false;
@@ -57,18 +57,12 @@ namespace CrocoBrush
 
         public void Pause()
         {
-            if(m_source != null)
-            {
-                m_source.Pause();
-            }
+            m_source?.Pause();
         }
 
         public void UnPause()
         {
-            if(m_source != null)
-            {
-                m_source.UnPause();
-            }
+            m_source?.UnPause();
         }
 
         public void Stop()

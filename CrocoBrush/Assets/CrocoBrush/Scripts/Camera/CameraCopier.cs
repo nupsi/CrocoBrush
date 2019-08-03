@@ -8,7 +8,7 @@ namespace CrocoBrush.Editors
 #if UNITY_EDITOR
         private bool m_enabled = false;
 
-        private void OnDrawGizmosSelected()
+        protected void OnDrawGizmosSelected()
         {
             if(m_enabled)
             {

@@ -13,7 +13,7 @@ namespace CrocoBrush.Sound
         protected bool m_reset;
         protected int m_channel = 6;
 
-        private void Awake()
+        protected void Awake()
         {
             m_source = GetComponent<AudioSource>();
             m_samples = new AudioSamples(m_source);

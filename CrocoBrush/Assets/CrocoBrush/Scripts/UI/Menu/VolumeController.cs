@@ -60,7 +60,7 @@ namespace CrocoBrush.UI.Menu
                 : DefaultValue;
         }
 
-        private void Reset()
+        protected void Reset()
         {
             m_slider = GetComponent<Slider>();
             m_slider.minValue = MinValue;

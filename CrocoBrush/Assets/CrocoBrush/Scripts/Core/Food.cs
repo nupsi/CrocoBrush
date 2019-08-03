@@ -50,27 +50,36 @@ namespace CrocoBrush
         /// </summary>
         private BoxCollider m_collider;
 
+        /// <summary>
+        /// Tween sequence to visualize food's lifespan.
+        /// </summary>
         private Sequence m_mainTween;
+
+        /// <summary>
+        /// Tween sequence to hide the food.
+        /// </summary>
         private Sequence m_exitTween;
 
         /*
          * Mono Behaviour Functions.
          */
 
-        private void Awake()
+        protected void Awake()
         {
+            //Get required components.
             m_background = GetComponentInChildren<BackgroundColor>();
             m_collider = GetComponent<BoxCollider>();
         }
 
-        private void OnEnable()
+        protected void OnEnable()
         {
+            //Show required child objects.
             SetAlive(true);
             //Reset the Foods quality.
             Quality = Quality.Bad;
         }
 
-        private void OnDisable()
+        protected void OnDisable()
         {
             //Make sure the active tween is killed.
             m_mainTween?.Kill();
@@ -79,7 +88,7 @@ namespace CrocoBrush
             ClearParent();
         }
 
-        private void OnMouseDown()
+        protected void OnMouseDown()
         {
             if(!EventSystem.current.IsPointerOverGameObject())
             {
@@ -102,11 +111,14 @@ namespace CrocoBrush
         /// <param name="duration">Foods duration.</param>
         public void Initialize(Tooth tooth, float duration)
         {
+            //Set parent tooth.
             m_tooth = tooth;
+            //Update backgroudn color to match the tooth's direction.
             m_background?.UpdateMaterial(tooth.Direction);
-            //Start modifying the Foods quality over time.
-            m_degrade = Degrade(duration);
-            StartCoroutine(m_degrade);
+            //Start coroutine to degrade the food's quality.
+            StartCoroutine(m_degrade = Degrade(duration));
+            //Main tween sequence to visualize the food's lifespan and quality.
+            //NOTE: This sequence uses manual update.
             m_mainTween = DOTween.Sequence()
                 .OnStart(() => m_circle.transform.localScale = Vector3.one * 2)
                 .Append(m_circle.transform.DOScale(Vector3.one, duration).SetEase(Ease.Linear))
@@ -155,13 +167,16 @@ namespace CrocoBrush
         /// </summary>
         private void RemoveFood()
         {
-            if(m_tooth != null)
-            {
-                m_tooth.Remove();
-                ClearParent();
-            }
+            m_tooth?.Remove();
+            ClearParent();
         }
 
+        /// <summary>
+        /// Active/Deactive collider and time visualization if alive.
+        /// Dispaly miss icon if miss = true.
+        /// </summary>
+        /// <param name="alive">Is the food active.</param>
+        /// <param name="miss">Display miss icon.</param>
         private void SetAlive(bool alive, bool miss = false)
         {
             m_circle.SetActive(alive);

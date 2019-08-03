@@ -10,19 +10,19 @@ namespace CrocoBrush.UI.Menu
         private TextMeshProUGUI m_text;
         private float m_time = 1.5f;
 
-        private void Awake()
+        protected void Awake()
         {
             m_text = GetComponent<TextMeshProUGUI>();
             Fade(0);
         }
 
-        private void OnEnable()
+        protected void OnEnable()
         {
             m_text.DOFade(1, 0)
                 .OnComplete(() => Fade(0));
         }
 
-        private void OnDisable()
+        protected void OnDisable()
         {
             DOTween.Kill(m_text);
         }

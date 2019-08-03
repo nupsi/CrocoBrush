@@ -1,5 +1,4 @@
 ﻿using CrocoBrush.Managers;
-using CrocoBrush.UI;
 using UnityEngine;
 
 namespace CrocoBrush

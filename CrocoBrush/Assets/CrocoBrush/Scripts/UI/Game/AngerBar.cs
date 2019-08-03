@@ -75,8 +75,7 @@ namespace CrocoBrush.UI.Game
             else
             {
                 LevelController.Instance.Stop();
-                EventManager.Instance.TriggerEvent("LevelEnd");
-                EventManager.Instance.TriggerEvent("LevelLose");
+                EventManager.Instance.TriggerEvent("LevelEnd", "LevelLose");
                 m_activator.Activate();
             }
         }
@@ -87,7 +86,7 @@ namespace CrocoBrush.UI.Game
         private void UpdateFill()
         {
             //Hide the Fill if the progress is zero.
-            m_slider.fillRect.gameObject.SetActive((m_slider.value != 0));
+            m_slider.fillRect.gameObject.SetActive(m_slider.value != 0);
         }
 
         /*

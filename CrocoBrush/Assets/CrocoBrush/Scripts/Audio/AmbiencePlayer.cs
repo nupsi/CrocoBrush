@@ -8,7 +8,7 @@ namespace CrocoBrush
     {
         private AudioSource m_source;
 
-        private void Awake()
+        protected void Awake()
         {
             m_source = GetComponent<AudioSource>();
         }

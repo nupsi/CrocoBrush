@@ -25,7 +25,7 @@ namespace CrocoBrush
 
         /// <summary>
         /// Property for the current component.
-        /// This should usually just be 'Component => this', since T should be managed type 
+        /// This should usually just be 'Component => this', since T should be managed type
         /// and the current class should be what is managed.
         /// </summary>
         /// <value>Component to add and remove.</value>

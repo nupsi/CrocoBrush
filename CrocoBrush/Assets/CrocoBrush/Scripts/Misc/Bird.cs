@@ -38,7 +38,7 @@ namespace CrocoBrush
          * Mono Behaviour Functions.
          */
 
-        private void Awake()
+        protected void Awake()
         {
             if(Instance != null)
             {
