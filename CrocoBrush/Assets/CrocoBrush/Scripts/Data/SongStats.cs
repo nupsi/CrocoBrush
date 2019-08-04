@@ -6,13 +6,15 @@ namespace CrocoBrush
     [Serializable]
     public struct SongStats
     {
+        public string Name;
         public int NoteCount;
         public int Score;
         public int BestStreak;
         public Dictionary<Quality, int> HitCount;
 
-        public SongStats(int noteCount)
+        public SongStats(string name, int noteCount)
         {
+            Name = name;
             NoteCount = noteCount;
             Score = 0;
             BestStreak = 0;

@@ -37,8 +37,9 @@ namespace CrocoBrush
 
         private void InitializeValues()
         {
+            var name = LevelController.Instance.SelectedLevel.Name;
             var noteCount = LevelController.Instance.SelectedLevel.Notes.Nodes.Count;
-            m_stats = new SongStats(noteCount);
+            m_stats = new SongStats(name, noteCount);
             Anger = 0;
             Streak = 0;
         }
