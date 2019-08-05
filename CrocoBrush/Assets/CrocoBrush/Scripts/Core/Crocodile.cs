@@ -35,6 +35,11 @@ namespace CrocoBrush
             EventManager.Instance.TriggerEvent("ResetGame");
         }
 
+        public void SaveStats()
+        {
+            LevelController.Instance.Save.AddStat(m_stats);
+        }
+
         private void InitializeValues()
         {
             var name = LevelController.Instance.SelectedLevel.Name;

@@ -20,6 +20,7 @@ namespace CrocoBrush.Audio
             if(m_source.time >= m_source.clip.length)
             {
                 EventManager.Instance.TriggerEvent("LevelEnd", "LevelWin");
+                Crocodile.Instance.SaveStats();
                 m_activator.Activate();
             }
         }

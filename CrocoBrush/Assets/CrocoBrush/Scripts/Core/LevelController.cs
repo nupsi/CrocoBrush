@@ -10,6 +10,9 @@ namespace CrocoBrush
         [SerializeField]
         private LevelData m_current;
 
+        [SerializeField]
+        private GameSave m_save;
+
         private AudioSource m_source;
 
         private SongReader m_noteReader;
@@ -77,7 +80,10 @@ namespace CrocoBrush
             set => m_current = value;
         }
 
+        public GameSave Save => m_save;
+
         private Mouth Mouth => Mouth.Instance;
+
         private Spacebar Spacebar => Spacebar.Instance;
     }
 }
