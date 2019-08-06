@@ -25,9 +25,10 @@ namespace CrocoBrush
             m_data = new Dictionary<string, List<SongStats>>();
             foreach(var stat in Stats)
             {
-                if(m_data[stat.Name] != null)
+                if(m_data.TryGetValue(stat.Name, out var current))
                 {
-                    m_data[stat.Name].Add(stat);
+                    current.Add(stat);
+                    m_data[stat.Name] = current;
                 }
                 else
                 {
@@ -49,6 +50,21 @@ namespace CrocoBrush
             }
 
             return m_data[level] ?? new List<SongStats>();
+        }
+
+        /// <summary>
+        /// Get the maximum score in the given level.
+        /// </summary>
+        /// <param name="level">Level name.</param>
+        /// <returns>Max score.</returns>
+        public int GetMaxScore(string level)
+        {
+            var max = 0;
+            foreach(var stat in GetLevelStats(level))
+            {
+                max = Mathf.Max(max, stat.Score);
+            }
+            return max;
         }
 
         /// <summary>

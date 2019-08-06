@@ -63,6 +63,10 @@ namespace CrocoBrush.UI.Menu
             m_great.SetText(Crocodile.HitCounts[Quality.Good].ToString());
             m_miss.SetText(Crocodile.HitCounts[Quality.Bad].ToString());
             m_score.SetText(Crocodile.Score.ToString());
+            Debug.Log(
+                LevelController.Instance.Save.GetMaxScore(
+                    LevelController.Instance.SelectedLevel.Name
+                ));
         }
 
         protected override Dictionary<string, Action> Actions =>
