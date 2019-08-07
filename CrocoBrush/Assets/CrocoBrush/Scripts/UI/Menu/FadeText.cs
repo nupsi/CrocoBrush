@@ -7,26 +7,20 @@ namespace CrocoBrush.UI.Menu
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class FadeText : MonoBehaviour
     {
+        [SerializeField]
+        private float m_duration = 1.5f;
+
         private TextMeshProUGUI m_text;
-        private float m_time = 1.5f;
 
         protected void Awake()
         {
             m_text = GetComponent<TextMeshProUGUI>();
-            Fade(0);
         }
 
-        protected void OnEnable()
-        {
-            m_text.DOFade(1, 0)
-                .OnComplete(() => Fade(0));
-        }
+        protected void OnEnable() => m_text.DOFade(1, 0).OnComplete(() => Fade(0));
 
-        protected void OnDisable()
-        {
-            DOTween.Kill(m_text);
-        }
+        protected void OnDisable() => m_text.DOKill();
 
-        private void Fade(int target) => m_text.DOFade(target, m_time).OnComplete(() => Fade(target == 0 ? 1 : 0));
+        private void Fade(int alpha) => m_text.DOFade(alpha, m_duration).OnComplete(() => Fade(alpha == 0 ? 1 : 0));
     }
 }

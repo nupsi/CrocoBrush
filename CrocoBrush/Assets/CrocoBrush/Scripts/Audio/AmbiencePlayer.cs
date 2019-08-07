@@ -21,8 +21,8 @@ namespace CrocoBrush
             m_actions ??
             (m_actions = new Dictionary<string, Action>
             {
-                        { "LevelStart", LevelStart },
-                        { "LevelEnd", LevelEnd }
+                { "LevelStart", LevelStart },
+                { "LevelEnd", LevelEnd }
             });
     }
 }

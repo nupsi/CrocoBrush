@@ -13,30 +13,30 @@ namespace CrocoBrush
          */
 
         /// <summary>
-        /// Delay between checking the song and next note in seconds.
-        /// </summary>
-        private readonly WaitForSeconds m_readDelay;
-
-        /// <summary>
         /// Current song notes to play.
         /// </summary>
-        private SongNotes m_song;
+        private readonly SongNotes m_song;
 
         /// <summary>
         /// Current audio source for playing the music.
         /// This is played with delay with the PlaySong() function.
         /// </summary>
-        private AudioSource m_source;
+        private readonly AudioSource m_source;
+
+        /// <summary>
+        /// The target object for creating objects from the current notes.
+        /// </summary>
+        private readonly ICreator m_creator;
+
+        /// <summary>
+        /// Update speed for generating song notes.
+        /// </summary>
+        private readonly WaitForSeconds m_updateSpeed;
 
         /// <summary>
         /// Current Note index.
         /// </summary>
         private int m_current;
-
-        /// <summary>
-        /// The target object for creating objects from the current notes.
-        /// </summary>
-        private ICreator m_creator;
 
         /*
          * Functions.
@@ -47,7 +47,7 @@ namespace CrocoBrush
             m_source = source;
             m_creator = creator;
             m_song = notes;
-            m_readDelay = new WaitForSeconds(0.0001f);
+            m_updateSpeed = new WaitForSeconds(0.0001f);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace CrocoBrush
                         m_current++;
                     }
                 }
-                yield return m_readDelay;
+                yield return m_updateSpeed;
             }
         }
 
@@ -115,7 +115,7 @@ namespace CrocoBrush
         /// Used to match the spawning of the Food with the audio.
         /// </summary>
         /// <value>The currnt audio souce time with the delay.</value>
-        private float CurrentTime => (m_source.time + Delay);
+        private float CurrentTime => m_source.time + Delay;
 
         /// <summary>
         /// Returns the delay time for current Note.

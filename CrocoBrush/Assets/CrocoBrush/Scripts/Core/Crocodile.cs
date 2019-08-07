@@ -15,6 +15,7 @@ namespace CrocoBrush
             {
                 Debug.LogError("Multiple Crocodile Instances");
             }
+            EventManager.Instance.StartListening("LevelStart", Restart);
             Instance = this;
             InitializeValues();
         }
@@ -42,8 +43,8 @@ namespace CrocoBrush
 
         private void InitializeValues()
         {
-            var name = LevelController.Instance.SelectedLevel?.Name;
-            var noteCount = LevelController.Instance.SelectedLevel.Notes.Nodes.Count;
+            var name = LevelController.Instance?.SelectedLevel.Name;
+            var noteCount = LevelController.Instance?.SelectedLevel.Notes.Nodes.Count ?? 0;
             m_stats = new SongStats(name, noteCount);
             Anger = 0;
             Streak = 0;
