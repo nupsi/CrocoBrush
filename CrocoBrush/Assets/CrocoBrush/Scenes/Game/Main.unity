@@ -5772,5 +5772,9 @@ PrefabInstance:
       propertyPath: m_fontStyle
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 159373355, guid: eef1bad15cd055a47a7fb167b1e4c1a1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eef1bad15cd055a47a7fb167b1e4c1a1, type: 3}

@@ -44,16 +44,20 @@ namespace CrocoBrush.UI.Menu
 
         private void Win()
         {
-            m_image.sprite = m_win;
-            m_sprite.sprite = m_winSprite;
+            UpdateSprites(m_win, m_winSprite);
             UpdateEndInfo();
         }
 
         private void Lose()
         {
-            m_image.sprite = m_lose;
-            m_sprite.sprite = m_loseSprite;
+            UpdateSprites(m_lose, m_loseSprite);
             UpdateEndInfo();
+        }
+
+        private void UpdateSprites(Sprite background, Sprite Icon)
+        {
+            m_image.sprite = background;
+            m_sprite.sprite = Icon;
         }
 
         private void UpdateEndInfo()
@@ -63,10 +67,6 @@ namespace CrocoBrush.UI.Menu
             m_great.SetText(Crocodile.HitCounts[Quality.Good].ToString());
             m_miss.SetText(Crocodile.HitCounts[Quality.Bad].ToString());
             m_score.SetText(Crocodile.Score.ToString());
-            Debug.Log(
-                LevelController.Instance.Save.GetMaxScore(
-                    LevelController.Instance.SelectedLevel.Name
-                ));
         }
 
         protected override Dictionary<string, Action> Actions =>
