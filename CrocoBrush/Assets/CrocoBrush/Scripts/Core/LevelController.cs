@@ -89,7 +89,14 @@ namespace CrocoBrush
         /// <summary>
         /// Pause the current song.
         /// </summary>
-        public void Pause() => AudioSource?.Pause();
+        public void Pause()
+        {
+            //Prevent error when called on OnDisaple and the target audio source is destroyed.
+            if(AudioSource != null)
+            {
+                AudioSource.Pause();
+            }
+        }
 
         /// <summary>
         /// Continue the current song.

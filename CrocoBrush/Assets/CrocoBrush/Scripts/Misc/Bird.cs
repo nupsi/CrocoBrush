@@ -95,7 +95,7 @@ namespace CrocoBrush
             {
                 DOTween.Kill(transform);
                 m_sequence.Kill();
-                var time = 0.75f;
+                const float time = 0.75f;
                 var rotation = GetTargetRotation(target.position);
                 m_sequence = DOTween.Sequence()
                     .Append(transform.DORotate(rotation, time * 0.25f).OnComplete(StartTravel))
@@ -119,7 +119,7 @@ namespace CrocoBrush
 
             DOTween.Kill(transform);
             m_sequence.Kill();
-            var time = 0.4f;
+            const float time = 0.4f;
             var rotation = GetTargetRotation(target.position);
             m_sequence = DOTween.Sequence()
                 .OnStart(StartTravel)
@@ -137,13 +137,15 @@ namespace CrocoBrush
         /// <param name="target">Target position.</param>
         private Vector3 GetTargetRotation(Vector3 target)
         {
-            var y = Mathf.Abs(transform.position.y - target.y);
-            var distance = Vector3.Distance(transform.position, target);
-            if(distance * 0.9f < y)
+            var distance = Vector3.Distance(transform.position, target) * 0.9f;
+            if(distance < Mathf.Abs(transform.position.y - target.y))
             {
                 target.y = transform.position.y;
             }
-            return Quaternion.LookRotation(transform.position - target).eulerAngles;
+            var position = transform.position - target;
+            return position == Vector3.zero
+                ? Vector3.zero
+                : Quaternion.LookRotation(position).eulerAngles;
         }
 
         /// <summary>
