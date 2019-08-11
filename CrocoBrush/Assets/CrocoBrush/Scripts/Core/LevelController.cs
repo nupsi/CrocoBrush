@@ -128,6 +128,16 @@ namespace CrocoBrush
         public GameSave Save => m_save;
 
         /// <summary>
+        /// Return Maximum score saved for the current level.
+        /// </summary>
+        public int SelectedLevelMaxScore => Save.GetMaxScore(SelectedLevel.Name);
+
+        /// <summary>
+        /// Audio source for playing level audio.
+        /// </summary>
+        public AudioSource AudioSource => m_source ?? (m_source = GetComponent<AudioSource>());
+
+        /// <summary>
         /// Current Mouth Instance.
         /// </summary>
         private Mouth Mouth => Mouth.Instance;
@@ -136,10 +146,5 @@ namespace CrocoBrush
         /// Current Spacebar Instance.
         /// </summary>
         private Spacebar Spacebar => Spacebar.Instance;
-
-        /// <summary>
-        /// Audio source for playing level audio.
-        /// </summary>
-        public AudioSource AudioSource => m_source ?? (m_source = GetComponent<AudioSource>());
     }
 }
