@@ -37,6 +37,14 @@
             Position = Position.Length == 0 ? data.Position : Position;
         }
 
+        public override string ToString()
+        {
+            return string.Format("{0} ({1}, {2})",
+                Scene.Length == 0 ? "-" : Scene,
+                Canvas.Length == 0 ? "-" : Canvas,
+                Position.Length == 0 ? "-" : Position);
+        }
+
         /// <summary>
         /// Scene name.
         /// </summary>

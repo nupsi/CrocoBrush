@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -60}
-  m_SizeDelta: {x: 300.4, y: 213.2}
+  m_SizeDelta: {x: 300, y: 212.9}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &260538812
 CanvasRenderer:
@@ -275,7 +275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1771993421
 RectTransform:
   m_ObjectHideFlags: 0
@@ -325,8 +325,9 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Click to Start
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2dbdfb0e00e054f30865fc15ed6cd2d1, type: 2}
+  m_sharedMaterial: {fileID: 21328077278444624, guid: 2dbdfb0e00e054f30865fc15ed6cd2d1,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -359,7 +360,6 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_textAlignment: 514
-  m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -386,6 +386,7 @@ MonoBehaviour:
   m_verticalMapping: 0
   m_uvLineOffset: 0
   m_geometrySortingOrder: 0
+  m_VertexBufferAutoSizeReduction: 1
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
@@ -400,12 +401,9 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
-  m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
@@ -430,6 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b97ac9d95c387884cb733aa3728fdeff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_duration: 1.5
 --- !u!1001 &1862526596721008874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -441,11 +440,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Start Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 8006623117047223965, guid: 21c2a7e2976a0c446a73e93bfd9ce41b,
-        type: 3}
-      propertyPath: m_name
-      value: Start
       objectReference: {fileID: 0}
     - target: {fileID: 3638493049271132157, guid: 21c2a7e2976a0c446a73e93bfd9ce41b,
         type: 3}
@@ -551,6 +545,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8006623117047223965, guid: 21c2a7e2976a0c446a73e93bfd9ce41b,
+        type: 3}
+      propertyPath: m_name
+      value: Start
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21c2a7e2976a0c446a73e93bfd9ce41b, type: 3}
