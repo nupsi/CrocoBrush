@@ -6,6 +6,10 @@ TextureImporter:
     21300002: arrow
     21300004: cross
     21300006: gear
+    21300008: background
+    21300010: slider_background
+    21300012: slider_handle
+    21300014: square
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -92,7 +96,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
+        y: 768
         width: 256
         height: 256
       alignment: 1
@@ -111,13 +115,13 @@ TextureImporter:
       name: arrow
       rect:
         serializedVersion: 2
-        x: 257
-        y: 255
-        width: 254
+        x: 259
+        y: 769
+        width: 251
         height: 254
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 1, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -131,10 +135,10 @@ TextureImporter:
       name: cross
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 256
-        height: 256
+        x: 1
+        y: 512
+        width: 254
+        height: 254
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,7 +156,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 0
+        y: 512
         width: 256
         height: 256
       alignment: 1
@@ -163,6 +167,86 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 5ae1e4efe1f03ae44965eb240e1829c5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: background
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 769
+        width: 256
+        height: 255
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 20, y: 20, z: 20, w: 20}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 026e64e5f52c9f748ad79f3c9a922cc3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slider_background
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 992
+        width: 234
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 10, y: 10, z: 10, w: 10}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 393249d6fe671784cb9498e513fb3f18
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slider_handle
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 951
+        width: 35
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e88a4fcfb9caa74aae809a64d909276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 844
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5e5a546381eec6409cec4e542682c07
       vertices: []
       indices: 
       edges: []
