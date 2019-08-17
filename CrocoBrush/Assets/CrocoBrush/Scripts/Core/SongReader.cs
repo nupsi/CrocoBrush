@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
 using UnityEngine;
 
 namespace CrocoBrush
@@ -29,11 +29,6 @@ namespace CrocoBrush
         private readonly ICreator m_creator;
 
         /// <summary>
-        /// Update speed for generating song notes.
-        /// </summary>
-        private readonly WaitForSeconds m_updateSpeed;
-
-        /// <summary>
         /// Current Note index.
         /// </summary>
         private int m_current;
@@ -47,7 +42,6 @@ namespace CrocoBrush
             m_source = source;
             m_creator = creator;
             m_song = notes;
-            m_updateSpeed = new WaitForSeconds(0.0001f);
         }
 
         /// <summary>
@@ -55,87 +49,46 @@ namespace CrocoBrush
         /// </summary>
         public void StartSong()
         {
-            //Start the Food spwaning loop.
-            Mouth.Instance.StartCoroutine(PlayNext());
-            //Start the audio with delay.
-            Mouth.Instance.StartCoroutine(PlaySong());
+            PlaySong();
+            PlayNote();
         }
 
         /// <summary>
-        /// Loop to go through the Song Notes.
-        /// If the audio source time is smaller than the delay,
-        /// we use the Note delay for spawning Food.
-        /// If the audio source time is greater than the delay,
-        /// we use audio sources time to spwan Food based on the Note time.
-        /// </summary>
-        private IEnumerator PlayNext()
-        {
-            //Loop until the current index is smaller than the note count.
-            while(m_current < m_song.Nodes.Count)
-            {
-                //Decide between spawing with delay and time.
-                if(m_source.time < Delay)
-                {
-                    if(m_song.Nodes[m_current].Delay < Delay)
-                    {
-                        //Wait for the delay time and spawn note.
-                        yield return new WaitForSeconds(NoteDelay);
-                        m_creator.Create(m_song.Nodes[m_current].Direction);
-                    }
-                }
-                else
-                {
-                    //Wait for the Note time match with audio sources time.
-                    if(CurrentTime >= m_song.Nodes[m_current].Time)
-                    {
-                        m_creator.Create(m_song.Nodes[m_current].Direction);
-                        m_current++;
-                    }
-                }
-                yield return m_updateSpeed;
-            }
-        }
-
-        /// <summary>
-        /// Start playing audio with a delay.
+        /// Start playing the audio with a delay.
         /// The delay is the time it takes for the circle around the Food to close in.
         /// </summary>
-        private IEnumerator PlaySong()
+        private void PlaySong()
         {
-            yield return new WaitForSeconds(Delay);
-            m_source.Play();
-        }
-
-        /*
-         * Accessors.
-         */
-
-        /// <summary>
-        /// Returns the current audio source time with the delay.
-        /// Used to match the spawning of the Food with the audio.
-        /// </summary>
-        /// <value>The currnt audio souce time with the delay.</value>
-        private float CurrentTime => m_source.time + Delay;
-
-        /// <summary>
-        /// Returns the delay time for current Note.
-        /// Automatically increments the current index.
-        /// </summary>
-        /// <value>The delay for the current Note.</value>
-        private float NoteDelay
-        {
-            get
-            {
-                var time = m_song.Nodes[m_current].Delay;
-                m_current++;
-                return time;
-            }
+            Debug.Log("Play Song");
+            DOTween.Sequence()
+                .PrependInterval(Mouth.Instance.Delay)
+                .OnComplete(() => m_source.Play())
+                .SetUpdate(UpdateType.Manual)
+                .Play();
         }
 
         /// <summary>
-        /// The delay between creating notes and the correct time hitting them.
+        /// Play the current note with the note delay.
         /// </summary>
-        /// <value>The current delay.</value>
-        private float Delay => Mouth.Instance.Delay;
+        private void PlayNote()
+        {
+            //Continue to play after the game is lost.
+            DOTween.Sequence()
+                .PrependInterval(m_song.Nodes[m_current].Delay)
+                .OnComplete(() =>
+                {
+                    m_creator.Create(m_song.Nodes[m_current].Direction);
+                    if(Crocodile.Instance.gameObject.activeInHierarchy)
+                    {
+                        m_current++;
+                        if(m_current < m_song.Nodes.Count)
+                        {
+                            PlayNote();
+                        }
+                    }
+                })
+                .SetUpdate(UpdateType.Manual)
+                .Play();
+        }
     }
 }
