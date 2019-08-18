@@ -12,6 +12,8 @@ namespace CrocoBrush
          * Variables.
          */
 
+        private const string DestroyEvent = "LevelEnd";
+
         /// <summary>
         /// Current song notes to play.
         /// </summary>
@@ -29,6 +31,18 @@ namespace CrocoBrush
         private readonly ICreator m_creator;
 
         /// <summary>
+        /// Song playing sequence.
+        /// Used to delay the background song from the note generation.
+        /// </summary>
+        private Sequence m_songSequence;
+
+        /// <summary>
+        /// Note playing sequence.
+        /// Used to spawn the notes.
+        /// </summary>
+        private Sequence m_noteSequence;
+
+        /// <summary>
         /// Current Note index.
         /// </summary>
         private int m_current;
@@ -39,6 +53,7 @@ namespace CrocoBrush
 
         public SongReader(ICreator creator, AudioSource source, SongNotes notes)
         {
+            EventManager.Instance.StartListening(DestroyEvent, Destroy);
             m_source = source;
             m_creator = creator;
             m_song = notes;
@@ -59,8 +74,7 @@ namespace CrocoBrush
         /// </summary>
         private void PlaySong()
         {
-            Debug.Log("Play Song");
-            DOTween.Sequence()
+            m_songSequence = DOTween.Sequence()
                 .PrependInterval(Mouth.Instance.Delay)
                 .OnComplete(() => m_source.Play())
                 .SetUpdate(UpdateType.Manual)
@@ -73,7 +87,7 @@ namespace CrocoBrush
         private void PlayNote()
         {
             //Continue to play after the game is lost.
-            DOTween.Sequence()
+            m_noteSequence = DOTween.Sequence()
                 .PrependInterval(m_song.Nodes[m_current].Delay)
                 .OnComplete(() =>
                 {
@@ -89,6 +103,16 @@ namespace CrocoBrush
                 })
                 .SetUpdate(UpdateType.Manual)
                 .Play();
+        }
+
+        /// <summary>
+        /// Remove the current song reader from the event manager and kill the current tweens.
+        /// </summary>
+        private void Destroy()
+        {
+            EventManager.Instance.StopListening(DestroyEvent, Destroy);
+            m_songSequence.Kill();
+            m_noteSequence.Kill();
         }
     }
 }
