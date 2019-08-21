@@ -96,7 +96,7 @@ namespace CrocoBrush
         public void PressDirection(Direction direction)
         {
             //Check if there is Food in the given Direction.
-            if(m_notes[direction].Count <= 0)
+            if(m_notes[direction].Count == 0)
             {
                 //Nothing to clear.
                 Crocodile.Instance.AddScore(Quality.Bad);

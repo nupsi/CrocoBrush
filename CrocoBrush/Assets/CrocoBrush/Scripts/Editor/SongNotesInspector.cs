@@ -166,7 +166,6 @@ namespace CrocoBrush.Editors
                 Repaint();
             }
 
-
             EditorUtility.SetDirty(target);
             serializedObject.ApplyModifiedProperties();
         }
@@ -268,11 +267,7 @@ namespace CrocoBrush.Editors
             }
         }
 
-        private void ResetNoteDirections()
-        {
-            m_target.Nodes.ForEach((node) => node.Direction = Direction.None);
-        }
-
+        private void ResetNoteDirections() => m_target.Nodes.ForEach((node) => node.Direction = Direction.None);
         private SongNotes Target => (SongNotes)target;
         private bool UseSingleLine => !(EditorGUIUtility.currentViewWidth < 365);
     }
