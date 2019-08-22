@@ -49,7 +49,7 @@ namespace CrocoBrush
                 Load();
             }
 
-            return m_data[level] ?? new List<SongStats>();
+            return m_data.ContainsKey(level) ? m_data[level] : new List<SongStats>();
         }
 
         /// <summary>

@@ -27,6 +27,9 @@ namespace CrocoBrush.UI.Game
         /// </summary>
         private int m_anger;
 
+        /// <summary>
+        /// Activator to activate when the anger bar is full.
+        /// </summary>
         private Activator m_activator;
 
         /*

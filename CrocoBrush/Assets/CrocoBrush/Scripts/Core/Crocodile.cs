@@ -17,7 +17,6 @@ namespace CrocoBrush
             }
             EventManager.Instance.StartListening("LevelStart", Restart);
             Instance = this;
-            InitializeValues();
         }
 
         public void StopGame() => Mouth.Instance.Restart();
@@ -43,11 +42,14 @@ namespace CrocoBrush
 
         private void InitializeValues()
         {
-            var name = LevelController.Instance?.SelectedLevel.Name;
-            var noteCount = LevelController.Instance?.SelectedLevel.Notes.Nodes.Count ?? 0;
-            m_stats = new SongStats(name, noteCount);
-            Anger = 0;
-            Streak = 0;
+            if(SelectedLevel != null)
+            {
+                var name = SelectedLevel.Name;
+                var noteCount = SelectedLevel.Notes.Nodes.Count;
+                m_stats = new SongStats(name, noteCount);
+                Anger = 0;
+                Streak = 0;
+            }
         }
 
         private void ProcessQuality(Quality quality)
@@ -90,5 +92,7 @@ namespace CrocoBrush
         }
 
         public Dictionary<Quality, int> HitCounts => m_stats.HitCount;
+
+        private LevelData SelectedLevel => LevelController.Instance.SelectedLevel;
     }
 }
