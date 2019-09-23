@@ -10,12 +10,12 @@ namespace CrocoBrush.Events
         [SerializeField]
         private CustomEvent m_startEvents;
 
-        private void Awake()
+        protected void Awake()
         {
             m_awakeEvents.Invoke();
         }
 
-        private void Start()
+        protected void Start()
         {
             m_startEvents.Invoke();
         }

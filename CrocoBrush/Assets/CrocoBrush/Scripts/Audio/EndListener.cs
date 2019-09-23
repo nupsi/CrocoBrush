@@ -9,18 +9,18 @@ namespace CrocoBrush.Audio
         private AudioSource m_source;
         private Activator m_activator;
 
-        private void Awake()
+        protected void Awake()
         {
             m_source = GetComponent<AudioSource>();
             m_activator = GetComponent<Activator>();
         }
 
-        private void Update()
+        protected void Update()
         {
             if(m_source.time >= m_source.clip.length)
             {
-                EventManager.Instance.TriggerEvent("LevelEnd");
-                EventManager.Instance.TriggerEvent("LevelWin");
+                EventManager.Instance.TriggerEvent("LevelEnd", "LevelWin");
+                Crocodile.Instance.SaveStats();
                 m_activator.Activate();
             }
         }

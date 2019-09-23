@@ -9,7 +9,7 @@ namespace CrocoBrush.Events
         [SerializeField]
         private CustomEvent m_onMouseUp;
 
-        private void OnMouseUp()
+        protected void OnMouseUp()
         {
             if(!EventSystem.current.IsPointerOverGameObject())
             {

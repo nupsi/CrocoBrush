@@ -32,7 +32,7 @@ namespace CrocoBrush.UI.Game
          * Mono Behaviour Functions.
          */
 
-        private void Awake()
+        protected void Awake()
         {
             //Cache the rect transform for tweening.
             m_transform = GetComponent<RectTransform>();
@@ -44,7 +44,7 @@ namespace CrocoBrush.UI.Game
             m_text.richText = false;
         }
 
-        private void OnEnable()
+        protected void OnEnable()
         {
             //Offset range for the text's position.
             var range = 50;
@@ -56,7 +56,7 @@ namespace CrocoBrush.UI.Game
             };
         }
 
-        private void OnDisable()
+        protected void OnDisable()
         {
             //Kill any possible tweens running on the transform.
             m_sequence.Kill();

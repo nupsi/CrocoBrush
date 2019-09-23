@@ -4,15 +4,20 @@ using UnityEngine;
 
 namespace CrocoBrush.Tutorial
 {
+    /// <summary>
+    /// Countdown text display.
+    /// Countdown is started on OnEnable and automatically disabled when the countdown ends.
+    /// </summary>
     public class Countdown : MonoBehaviour
     {
-        [SerializeField]
-        private TextMeshProUGUI m_text;
+        /*
+         * Variables.
+         */
 
-        private Sequence m_sequence;
-        private int m_current;
-
-        private string[] m_countdown = new string[]
+        /// <summary>
+        /// Countdown texts displayed in linear order, starting from zero.
+        /// </summary>
+        private readonly string[] m_countdown = new string[]
         {
             "Get Ready!",
             "3",
@@ -21,17 +26,45 @@ namespace CrocoBrush.Tutorial
             "GO"
         };
 
-        private void OnEnable()
+        /// <summary>
+        /// Text Field to display the countdown.
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI m_text;
+
+        /// <summary>
+        /// Tween sequence for the countdown.
+        /// </summary>
+        private Sequence m_sequence;
+
+        /// <summary>
+        /// Current countdown position.
+        /// </summary>
+        private int m_current;
+
+        /*
+         * Mono Behaviour Functions.
+         */
+
+        protected void OnEnable()
         {
             m_current = 0;
             Display();
         }
 
-        private void OnDisable()
+        protected void OnDisable()
         {
             m_sequence.Kill();
         }
 
+        /*
+         * Functions.
+         */
+
+        /// <summary>
+        /// Display the next step of the countdown.
+        /// If there are no more steps the textfield is disabled.
+        /// </summary>
         private void Display()
         {
             if(m_current < m_countdown.Length)

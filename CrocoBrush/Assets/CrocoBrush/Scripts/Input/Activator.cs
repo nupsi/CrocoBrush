@@ -1,5 +1,4 @@
 ﻿using CrocoBrush.Managers;
-using CrocoBrush.UI;
 using UnityEngine;
 
 namespace CrocoBrush
@@ -18,20 +17,21 @@ namespace CrocoBrush
         [SerializeField]
         private string m_position;
 
-        public void Activate()
-        {
-            var data = m_separate
-                ? new FakeSceneData(m_canvas, m_canvas, m_position)
-                : new FakeSceneData(m_name);
-            SceneManager.Instance.Show(data);
-        }
+        /// <summary>
+        /// Activate the target scene.
+        /// </summary>
+        public void Activate() => SceneManager.Instance.Show(SceneData);
 
         /// <summary>
         /// Go back to the previous state.
         /// </summary>
-        public void Back()
-        {
-            SceneManager.Instance.Back();
-        }
+        public void Back() => SceneManager.Instance.Back();
+
+        /// <summary>
+        /// Target scene data.
+        /// </summary>
+        public FakeSceneData SceneData => m_separate
+            ? new FakeSceneData(m_canvas, m_canvas, m_position)
+            : new FakeSceneData(m_name);
     }
 }

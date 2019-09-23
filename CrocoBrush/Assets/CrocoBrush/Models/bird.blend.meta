@@ -25,6 +25,32 @@ ModelImporter:
     100038: Bone_017
     100040: Bone_018
     100042: Sphere
+    100044: Bone.001
+    100046: Bone.002
+    100048: Bone.003
+    100050: Bone.004
+    100052: Bone.005
+    100054: Bone.006
+    100056: Bone.006_end
+    100058: Bone.007
+    100060: Bone.007_end
+    100062: Bone.008
+    100064: Bone.008_end
+    100066: Bone.009
+    100068: Bone.010
+    100070: Bone.010_end
+    100072: Bone.011
+    100074: Bone.011_end
+    100076: Bone.012
+    100078: Bone.013
+    100080: Bone.014
+    100082: Bone.015
+    100084: Bone.016
+    100086: Bone.016_end
+    100088: Bone.017
+    100090: Bone.017_end
+    100092: Bone.018
+    100094: Bone.018_end
     400000: Armature
     400002: //RootNode
     400004: Bone
@@ -47,6 +73,32 @@ ModelImporter:
     400038: Bone_017
     400040: Bone_018
     400042: Sphere
+    400044: Bone.001
+    400046: Bone.002
+    400048: Bone.003
+    400050: Bone.004
+    400052: Bone.005
+    400054: Bone.006
+    400056: Bone.006_end
+    400058: Bone.007
+    400060: Bone.007_end
+    400062: Bone.008
+    400064: Bone.008_end
+    400066: Bone.009
+    400068: Bone.010
+    400070: Bone.010_end
+    400072: Bone.011
+    400074: Bone.011_end
+    400076: Bone.012
+    400078: Bone.013
+    400080: Bone.014
+    400082: Bone.015
+    400084: Bone.016
+    400086: Bone.016_end
+    400088: Bone.017
+    400090: Bone.017_end
+    400092: Bone.018
+    400094: Bone.018_end
     2100000: Bird_skin_material
     4300000: Sphere
     7400000: Default Take

@@ -8,7 +8,7 @@ namespace CrocoBrush
     {
         private AudioSource m_source;
 
-        private void Awake()
+        protected void Awake()
         {
             m_source = GetComponent<AudioSource>();
         }
@@ -21,8 +21,8 @@ namespace CrocoBrush
             m_actions ??
             (m_actions = new Dictionary<string, Action>
             {
-                        { "LevelStart", LevelStart },
-                        { "LevelEnd", LevelEnd }
+                { "LevelStart", LevelStart },
+                { "LevelEnd", LevelEnd }
             });
     }
 }

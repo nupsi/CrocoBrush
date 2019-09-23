@@ -2,20 +2,47 @@
 
 namespace CrocoBrush
 {
+    /// <summary>
+    /// Singleton controller for selected level data.
+    /// </summary>
     [RequireComponent(typeof(AudioSource))]
     public class LevelController : MonoBehaviour
     {
+        /*
+         * Variables.
+         */
+
+        /// <summary>
+        /// Current Level Controller singleton.
+        /// </summary>
         public static LevelController Instance;
 
+        /// <summary>
+        /// Current playthrough game save data.
+        /// </summary>
         [SerializeField]
-        private LevelData m_current;
+        private GameSave m_save;
 
+        /// <summary>
+        /// Audio source for playing level audio.
+        /// </summary>
         private AudioSource m_source;
 
+        /// <summary>
+        /// Note reader for generating food notes.
+        /// </summary>
         private SongReader m_noteReader;
+
+        /// <summary>
+        /// Note reader for generating spacebar notes.
+        /// </summary>
         private SongReader m_spaceReader;
 
-        private void Awake()
+        /*
+         * Mono Behaviour Functions.
+         */
+
+        protected void Awake()
         {
             if(Instance != null)
             {
@@ -23,67 +50,101 @@ namespace CrocoBrush
                 return;
             }
             Instance = this;
-            m_source = GetComponent<AudioSource>();
         }
 
-        private void Reset()
+        protected void Reset()
         {
-            m_source = GetComponent<AudioSource>();
-            m_source.playOnAwake = false;
+            AudioSource.playOnAwake = false;
         }
 
+        /*
+         * Functions.
+         */
+
+        /// <summary>
+        /// Start playing the selected level from the start.
+        /// </summary>
         public void PlaySelectedLevel()
         {
-            Crocodile.Instance.Restart();
             EventManager.Instance.TriggerEvent("LevelStart");
             Mouth.Instance.Delay = SelectedLevel.Delay;
 
-            m_source.Stop();
-            m_source.clip = SelectedLevel.Audio;
-            m_source.time = 0;
+            AudioSource.Stop();
+            AudioSource.clip = SelectedLevel.Audio;
+            AudioSource.time = 0;
 
             if(Mouth != null)
             {
-                m_noteReader = new SongReader(Mouth, m_source, SelectedLevel.Notes);
+                m_noteReader = new SongReader(Mouth, AudioSource, SelectedLevel.Notes);
                 m_noteReader.StartSong();
             }
 
             if(Spacebar != null)
             {
-                m_spaceReader = new SongReader(Spacebar, m_source, SelectedLevel.SpaceNotes);
+                m_spaceReader = new SongReader(Spacebar, AudioSource, SelectedLevel.SpaceNotes);
                 m_spaceReader.StartSong();
             }
         }
 
+        /// <summary>
+        /// Pause the current song.
+        /// </summary>
         public void Pause()
         {
-            if(m_source != null)
+            //Prevent error when called on OnDisaple and the target audio source is destroyed.
+            if(AudioSource != null)
             {
-                m_source.Pause();
+                AudioSource.Pause();
             }
         }
 
-        public void UnPause()
-        {
-            if(m_source != null)
-            {
-                m_source.UnPause();
-            }
-        }
+        /// <summary>
+        /// Continue the current song.
+        /// </summary>
+        public void UnPause() => AudioSource?.UnPause();
 
+        /// <summary>
+        /// Stop the current song.
+        /// </summary>
         public void Stop()
         {
             Crocodile.Instance.StopGame();
-            m_source.Stop();
+            AudioSource.Stop();
         }
 
-        public LevelData SelectedLevel
-        {
-            get => m_current;
-            set => m_current = value;
-        }
+        /*
+         * Accessors.
+         */
 
+        /// <summary>
+        /// Selected level data.
+        /// </summary>
+        public LevelData SelectedLevel { get; set; }
+
+        /// <summary>
+        ///  Current playthrough game save data.
+        ///  Created on <see cref="PlaySelectedLevel"/>.
+        /// </summary>
+        public GameSave Save => m_save;
+
+        /// <summary>
+        /// Return Maximum score saved for the current level.
+        /// </summary>
+        public int SelectedLevelMaxScore => Save.GetMaxScore(SelectedLevel.Name);
+
+        /// <summary>
+        /// Audio source for playing level audio.
+        /// </summary>
+        public AudioSource AudioSource => m_source ?? (m_source = GetComponent<AudioSource>());
+
+        /// <summary>
+        /// Current Mouth Instance.
+        /// </summary>
         private Mouth Mouth => Mouth.Instance;
+
+        /// <summary>
+        /// Current Spacebar Instance.
+        /// </summary>
         private Spacebar Spacebar => Spacebar.Instance;
     }
 }

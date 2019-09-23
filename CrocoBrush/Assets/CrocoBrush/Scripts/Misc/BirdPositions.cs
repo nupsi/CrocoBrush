@@ -46,7 +46,7 @@ namespace CrocoBrush
          * Mono Behaviour Functions.
          */
 
-        private void Awake()
+        protected void Awake()
         {
             m_data = new BirdData(m_up.transform, m_down.transform, m_left.transform, m_right.transform);
         }

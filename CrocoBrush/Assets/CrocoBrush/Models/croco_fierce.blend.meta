@@ -28,6 +28,34 @@ ModelImporter:
     100044: Cube
     100046: Sphere
     100048: Sphere_001
+    100050: Bone.001
+    100052: Bone.002
+    100054: Bone.003
+    100056: Bone.003_end
+    100058: Bone.004
+    100060: Bone.005
+    100062: Bone.006
+    100064: Bone.007
+    100066: Bone.007_end
+    100068: Bone.008
+    100070: Bone.009
+    100072: Bone.010
+    100074: Bone.010_end
+    100076: Bone.011
+    100078: Bone.012
+    100080: Bone.013
+    100082: Bone.013_end
+    100084: Bone.014
+    100086: Bone.015
+    100088: Bone.016
+    100090: Bone.016_end
+    100092: Bone.017
+    100094: Bone.017_end
+    100096: Bone.018
+    100098: Bone.018_end
+    100100: Bone.019
+    100102: Bone.019_end
+    100104: Sphere.001
     400000: Armature
     400002: Bone
     400004: Bone_001
@@ -53,18 +81,49 @@ ModelImporter:
     400044: Cube
     400046: Sphere
     400048: Sphere_001
+    400050: Bone.001
+    400052: Bone.002
+    400054: Bone.003
+    400056: Bone.003_end
+    400058: Bone.004
+    400060: Bone.005
+    400062: Bone.006
+    400064: Bone.007
+    400066: Bone.007_end
+    400068: Bone.008
+    400070: Bone.009
+    400072: Bone.010
+    400074: Bone.010_end
+    400076: Bone.011
+    400078: Bone.012
+    400080: Bone.013
+    400082: Bone.013_end
+    400084: Bone.014
+    400086: Bone.015
+    400088: Bone.016
+    400090: Bone.016_end
+    400092: Bone.017
+    400094: Bone.017_end
+    400096: Bone.018
+    400098: Bone.018_end
+    400100: Bone.019
+    400102: Bone.019_end
+    400104: Sphere.001
     2100000: Material
     2100002: Material_013
     2100004: Material_001
     4300000: Sphere
     4300002: Cube
     4300004: Sphere_001
+    4300006: Sphere.001
     7400000: Default Take
     7400002: ArmatureAction_002
+    7400004: Armature|ArmatureAction.002
     9500000: //RootNode
     13700000: Cube
     13700002: Sphere
     13700004: Sphere_001
+    13700006: Sphere.001
   externalObjects:
   - first:
       type: UnityEngine:Material

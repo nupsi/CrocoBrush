@@ -7,42 +7,25 @@ namespace CrocoBrush
     {
         public static Crocodile Instance;
 
-        private void Awake()
+        private SongStats m_stats;
+
+        protected void Awake()
         {
             if(Instance != null)
             {
                 Debug.LogError("Multiple Crocodile Instances");
             }
+            EventManager.Instance.StartListening("LevelStart", Restart);
             Instance = this;
-            InitializeValues();
         }
 
         public void StopGame() => Mouth.Instance.Restart();
 
         public void AddScore(Quality quality)
         {
-            HitCounts[quality]++;
-            if(quality <= 0)
-            {
-                Annoy();
-                EventManager.Instance.TriggerEvent("Miss");
-            }
-            else
-            {
-                ProcessQuality(quality);
-                EventManager.Instance.TriggerEvent("Hit");
-            }
-
-            EventManager.Instance.TriggerEvent("UpdateGameUI");
-        }
-
-        public void CalmDown()
-        {
-            if(Anger > 0)
-            {
-                Anger--;
-                EventManager.Instance.TriggerEvent("UpdateGameUI");
-            }
+            ProcessQuality(quality);
+            m_stats.AddScore(quality);
+            EventManager.Instance.TriggerEvent(quality > 0 ? "Hit" : "Miss", "UpdateGameUI");
         }
 
         public void Restart()
@@ -52,45 +35,64 @@ namespace CrocoBrush
             EventManager.Instance.TriggerEvent("ResetGame");
         }
 
-        private void Annoy()
+        public void SaveStats()
+        {
+            LevelController.Instance.Save.AddStat(m_stats);
+        }
+
+        private void InitializeValues()
+        {
+            if(SelectedLevel != null)
+            {
+                var name = SelectedLevel.Name;
+                var noteCount = SelectedLevel.Notes.Nodes.Count;
+                m_stats = new SongStats(name, noteCount);
+                Anger = 0;
+                Streak = 0;
+            }
+        }
+
+        private void ProcessQuality(Quality quality)
+        {
+            if(quality > 0)
+            {
+                Hit();
+            }
+            else
+            {
+                Miss();
+            }
+        }
+
+        private void Hit()
+        {
+            m_stats.CheckStreak(++Streak);
+            if(Streak % 10 == 0)
+            {
+                Anger = Mathf.Clamp(--Anger, 0, int.MaxValue);
+            }
+        }
+
+        private void Miss()
         {
             Streak = 0;
             Anger++;
         }
 
-        private void ProcessQuality(Quality quality)
-        {
-            Score += (int)quality;
-            Streak++;
-            if(Streak > BestStreak)
-            {
-                BestStreak = Streak;
-            }
-
-            if(Streak % 10 == 0)
-            {
-                CalmDown();
-            }
-        }
-
-        private void InitializeValues()
-        {
-            Score = 0;
-            Anger = 0;
-            Streak = 0;
-            BestStreak = 0;
-            HitCounts = new Dictionary<Quality, int>()
-            {
-                { Quality.Bad, 0 },
-                { Quality.Good, 0  },
-                { Quality.Perfect, 0 }
-            };
-        }
-
-        public int Score { get; private set; }
         public int Streak { get; private set; }
-        public int BestStreak { get; private set; }
+
         public int Anger { get; private set; }
-        public Dictionary<Quality, int> HitCounts { get; private set; }
+
+        public int Score => m_stats.Score;
+
+        public int BestStreak
+        {
+            get => m_stats.BestStreak;
+            set => m_stats.BestStreak = value;
+        }
+
+        public Dictionary<Quality, int> HitCounts => m_stats.HitCount;
+
+        private LevelData SelectedLevel => LevelController.Instance.SelectedLevel;
     }
 }

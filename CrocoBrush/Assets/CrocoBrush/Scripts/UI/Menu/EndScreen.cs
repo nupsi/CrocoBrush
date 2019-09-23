@@ -23,6 +23,12 @@ namespace CrocoBrush.UI.Menu
         [SerializeField]
         private TextMeshProUGUI m_score;
 
+        [SerializeField]
+        private TextMeshProUGUI m_newMaxScore;
+
+        [SerializeField]
+        private TextMeshProUGUI m_maxScore;
+
         [Header("Sprites")]
         [SerializeField]
         private Image m_image;
@@ -44,16 +50,20 @@ namespace CrocoBrush.UI.Menu
 
         private void Win()
         {
-            m_image.sprite = m_win;
-            m_sprite.sprite = m_winSprite;
+            UpdateSprites(m_win, m_winSprite);
             UpdateEndInfo();
         }
 
         private void Lose()
         {
-            m_image.sprite = m_lose;
-            m_sprite.sprite = m_loseSprite;
+            UpdateSprites(m_lose, m_loseSprite);
             UpdateEndInfo();
+        }
+
+        private void UpdateSprites(Sprite background, Sprite Icon)
+        {
+            m_image.sprite = background;
+            m_sprite.sprite = Icon;
         }
 
         private void UpdateEndInfo()
@@ -63,6 +73,8 @@ namespace CrocoBrush.UI.Menu
             m_great.SetText(Crocodile.HitCounts[Quality.Good].ToString());
             m_miss.SetText(Crocodile.HitCounts[Quality.Bad].ToString());
             m_score.SetText(Crocodile.Score.ToString());
+            m_newMaxScore.SetText(Crocodile.Score > LevelController.Instance.SelectedLevelMaxScore ? "New Max Score" : "");
+            m_maxScore.SetText(LevelController.Instance.SelectedLevelMaxScore.ToString());
         }
 
         protected override Dictionary<string, Action> Actions =>

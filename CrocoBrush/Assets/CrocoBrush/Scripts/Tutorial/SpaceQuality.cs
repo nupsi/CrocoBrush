@@ -18,13 +18,13 @@ namespace CrocoBrush.Tutorial
 
         private Sequence m_sequence;
 
-        private void OnEnable()
+        protected void OnEnable()
         {
             Loop();
             StartCoroutine(UpdateText());
         }
 
-        private void OnDisable()
+        protected void OnDisable()
         {
             m_sequence.Kill();
         }

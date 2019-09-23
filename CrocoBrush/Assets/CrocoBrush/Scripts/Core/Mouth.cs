@@ -48,7 +48,7 @@ namespace CrocoBrush
          * Mono Behaviour Functions.
          */
 
-        private void Awake()
+        protected void Awake()
         {
             //Make sure there is only one Instance.
             if(Instance != null)
@@ -96,7 +96,7 @@ namespace CrocoBrush
         public void PressDirection(Direction direction)
         {
             //Check if there is Food in the given Direction.
-            if(m_notes[direction].Count <= 0)
+            if(m_notes[direction].Count == 0)
             {
                 //Nothing to clear.
                 Crocodile.Instance.AddScore(Quality.Bad);
@@ -222,7 +222,8 @@ namespace CrocoBrush
         private int GetFreeTooth(Direction direction)
         {
             //Check if the dictionary contains a key for the given direction.
-            if(!m_teeth.ContainsKey(direction)) return -1;
+            if(!m_teeth.ContainsKey(direction))
+                return -1;
             //Store the current Teeth list in a temporary variable.
             var teeth = m_teeth[direction];
             //Set the index to -1. This is the 'fail' state if no new index is found.

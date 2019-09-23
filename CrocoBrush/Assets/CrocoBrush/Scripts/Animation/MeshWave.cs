@@ -17,14 +17,14 @@ namespace CrocoBrush.Animation
 
         private Vector3[] m_vertices;
 
-        private void Awake()
+        protected void Awake()
         {
             m_filter = GetComponent<MeshFilter>();
             m_renderer = GetComponent<Renderer>();
             m_renderer.sharedMaterial.SetTextureOffset("_MainTex", Vector2.zero);
         }
 
-        private void FixedUpdate()
+        protected void FixedUpdate()
         {
             var x = m_offsetX * Time.time;
             var y = m_offsetY * Time.time;

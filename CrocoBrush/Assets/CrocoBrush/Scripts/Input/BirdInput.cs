@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CrocoBrush
 {
@@ -7,7 +6,7 @@ namespace CrocoBrush
     /// Bird Input Manager to move Bird inside Crocodile's Mouth.
     /// TODO: Test touch input.
     /// </summary>
-    public class BirdInput : MonoBehaviour
+    public class BirdInput : DirectionInputReader
     {
         /*
          * Variables.
@@ -18,32 +17,13 @@ namespace CrocoBrush
         /// </summary>
         private readonly string BlockInput = "Jump";
 
-        /// <summary>
-        /// Contains the input's name and the target position for that input.
-        /// string: Input's name in Unity's Input System. (Edit/Project Settings/Input)
-        /// Transform: Target position for the Input.
-        /// </summary>
-        private Dictionary<string, Direction> m_directions;
-
         /*
          * Mono Behaviour Functions.
          */
 
-        private void Awake()
+        protected override void Update()
         {
-            //Create dictionary containing all the direction inputs and corresponding positions.
-            m_directions = new Dictionary<string, Direction>()
-            {
-                { "Up", Direction.Up },
-                { "Down", Direction.Down },
-                { "Left", Direction.Left },
-                { "Right", Direction.Right }
-            };
-        }
-
-        private void Update()
-        {
-            UpdateInput();
+            base.Update();
             UpdateTouch();
         }
 
@@ -54,17 +34,9 @@ namespace CrocoBrush
         /// <summary>
         /// Update the current inputs.
         /// </summary>
-        private void UpdateInput()
+        protected override void UpdateInput()
         {
-            //Loop through the direction inputs.
-            //'set' is a key value pair, where the key is the input's name and the value is the target position.
-            foreach(var set in m_directions)
-            {
-                if(Input.GetButtonDown(set.Key))
-                {
-                    Bird.EatAt(Bird.GetPosition(set.Value));
-                }
-            }
+            base.UpdateInput();
 
             if(Input.GetButtonDown(BlockInput))
             {
@@ -75,6 +47,8 @@ namespace CrocoBrush
                 Bird.PlayUnblocAnimation();
             }
         }
+
+        protected override void PressDirection(Direction direction) => Bird.EatAt(Bird.GetPosition(direction));
 
         /// <summary>
         /// Moves bird to the right position pased on click/touch position.

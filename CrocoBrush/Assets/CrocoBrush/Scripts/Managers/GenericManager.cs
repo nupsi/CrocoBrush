@@ -2,7 +2,6 @@
 
 namespace CrocoBrush
 {
-
     /// <summary>
     /// Base class to create a manager that you can add and remove components.
     /// The Activate function will determinate what the activation does.

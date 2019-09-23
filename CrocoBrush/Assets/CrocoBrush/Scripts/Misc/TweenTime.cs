@@ -5,19 +5,10 @@ namespace CrocoBrush.Tweening
 {
     public class TweenTime : MonoBehaviour
     {
-        private void OnEnable()
-        {
-            LevelController.Instance?.UnPause();
-        }
+        protected void OnEnable() => LevelController.Instance?.UnPause();
 
-        private void OnDisable()
-        {
-            LevelController.Instance?.Pause();
-        }
+        protected void OnDisable() => LevelController.Instance?.Pause();
 
-        private void Update()
-        {
-            DOTween.ManualUpdate(Time.deltaTime, Time.unscaledDeltaTime);
-        }
+        protected void Update() => DOTween.ManualUpdate(Time.deltaTime, Time.unscaledDeltaTime);
     }
 }

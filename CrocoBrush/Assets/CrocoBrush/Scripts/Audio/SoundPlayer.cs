@@ -11,12 +11,12 @@ namespace CrocoBrush.Audio
 
         protected AudioSource m_source;
 
-        private void Awake()
+        protected void Awake()
         {
             m_source = GetComponent<AudioSource>();
         }
 
-        private void Reset()
+        protected void Reset()
         {
             m_source = GetComponent<AudioSource>();
             m_source.playOnAwake = false;

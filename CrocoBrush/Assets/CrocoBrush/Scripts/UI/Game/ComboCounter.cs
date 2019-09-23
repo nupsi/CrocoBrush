@@ -10,7 +10,7 @@ namespace CrocoBrush.UI.Game
         private TextMeshProUGUI m_text;
         private int m_streak;
 
-        private void Awake()
+        protected void Awake()
         {
             m_text = GetComponent<TextMeshProUGUI>();
         }

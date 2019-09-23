@@ -7,12 +7,12 @@ namespace CrocoBrush
     {
         private Activator m_activator;
 
-        private void Awake()
+        protected void Awake()
         {
             m_activator = GetComponent<Activator>();
         }
 
-        private void Update()
+        protected void Update()
         {
             if(Input.GetButtonDown("Cancel"))
             {

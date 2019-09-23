@@ -30,7 +30,8 @@ namespace CrocoBrush
 
         public void StopListening(string name, Action listener)
         {
-            if(m_instance == null) return;
+            if(m_instance == null)
+                return;
             if(m_events.TryGetValue(name, out var current))
             {
                 current -= listener;
@@ -38,11 +39,14 @@ namespace CrocoBrush
             }
         }
 
-        public void TriggerEvent(string name)
+        public void TriggerEvent(params string[] name)
         {
-            if(m_events.TryGetValue(name, out var current))
+            foreach(var entry in name)
             {
-                current.Invoke();
+                if(m_events.TryGetValue(entry, out var current))
+                {
+                    current.Invoke();
+                }
             }
         }
 
